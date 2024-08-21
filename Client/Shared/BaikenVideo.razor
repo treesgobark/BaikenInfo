@@ -1,0 +1,11 @@
+@if (!string.IsNullOrWhiteSpace(Src))
+{
+    <video controls>
+        <source type="video/mp4" src="@Constants.VideoUri(Src)"/>
+    </video>
+}
+
+@code {
+    [Parameter]
+    public string? Src { get; set; }
+}
