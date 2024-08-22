@@ -1,0 +1,41 @@
+<MudTooltip>
+    <ChildContent>
+        @if (!string.IsNullOrWhiteSpace(Move.DustloopTag))
+        {
+            <MudLink Color="@TextColor" Href="@DustloopUrl" Target="_blank">@Move.DisplayText</MudLink>
+        }
+        else
+        {
+            <MudText Color="@TextColor">@Move.DisplayText</MudText>
+        }
+    </ChildContent>
+    <TooltipContent>
+        <MudStack>
+            <MudImage Src="@ImageUri" Height="200"></MudImage>
+            <MudText>@Move.EnglishName</MudText>
+            @if (!string.IsNullOrWhiteSpace(Move.FriendlyName))
+            {
+                <MudText>"@Move.FriendlyName"</MudText>
+            }
+        </MudStack>
+    </TooltipContent>
+</MudTooltip>
+
+@code {
+    [Parameter]
+    public Move Move { get; set; }
+
+    private string ImageUri => $"Moves/{Move.ImageName}.png";
+
+    private Color TextColor => Move.AttackButton switch
+    {
+        AttackButton.P => Color.Primary,
+        AttackButton.K => Color.Info,
+        AttackButton.S => Color.Success,
+        AttackButton.H => Color.Error,
+        AttackButton.D => Color.Warning,
+        _              => Color.Default,
+    };
+
+    private string DustloopUrl => $"https://www.dustloop.com/w/GGST/Baiken#{Move.DustloopTag}";
+}

@@ -2,6 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{CCC68750-151D-4C5C-80C2-4575D5586FEB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{7D883D9E-7BCC-4509-B379-A1B0F1DF3475}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\azure-static-web-apps-jolly-meadow-0c88a040f.yml = .github\workflows\azure-static-web-apps-jolly-meadow-0c88a040f.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
