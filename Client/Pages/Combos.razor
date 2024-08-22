@@ -10,7 +10,7 @@
             <MudGrid>
                 @foreach (var combo in list.Combos)
                 {
-                    <MudItem xs="4">
+                    <MudItem xs="12" md="6" lg="4" xl="3">
                         <MudCard Style="height: 100%; padding: 24px;" Outlined>
                             <MudCardContent>
                                 <MudStack>
@@ -47,11 +47,11 @@
         [
             new ComboList("Your First Combos",
             [
-                new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH]),
-                new Combo([Moves._2H, Moves.HKab, Moves.HkabH]),
-                new Combo([Moves.jS.AddPrefix("rising"), Moves.AirDash, Moves.jS, Moves.Youzansen]),
-                new Combo([Moves._5P, Moves._6K, Moves.Tatami],
-                        "light-button-safejumps"),
+                new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],           "combos/round start fS 2H hkabh"),
+                new Combo([Moves._2H, Moves.HKab, Moves.HkabH],                                     "combos/round start 2H hkabh"),
+                new Combo([Moves.jS.AddPrefix("rising"), Moves.AirDash, Moves.jS, Moves.Youzansen], "combos/round start jS dash jS yzn"),
+                new Combo([Moves.jS.AddPrefix("rising").AddPrefix("CH"), Moves.AirDash, Moves.Delay, Moves.jS, Moves.Youzansen], "combos/round start CH jS dash jS yzn"),
+                new Combo([Moves._5P, Moves._6K, Moves.Tatami]),
             ]),
             new ComboList("The Next Step",
             [

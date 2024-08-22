@@ -69,6 +69,7 @@ public static class Moves
     public static Move Throw    { get; } = new Move("4D/6D",   "Ground Throw", "Throw", NamePreference.Friendly, AttackButton.D, "GroundThrow", "Ground_Throw_(Tether)");
     public static Move AirThrow    { get; } = new Move("j.4D/j.6D",   "Air Throw", "", NamePreference.Friendly, AttackButton.D, "GroundThrow", "Air_Throw");
     public static Move Dash    { get; } = new Move("66",   "Dash", "", NamePreference.English, AttackButton.None, "Dash", "");
-    public static Move AirDash    { get; } = new Move("j.66",   "Air Dash", "", NamePreference.English, AttackButton.None, "Dash", "");
-    public static Move IAD    { get; } = new Move("IAD",   "Instant Air Dash", "", NamePreference.English, AttackButton.None, "Dash", "");
+    public static Move AirDash    { get; } = new Move("j.66",   "Air Dash", "", NamePreference.English, AttackButton.None, "AirDash", "");
+    public static Move IAD    { get; } = new Move("IAD",   "Instant Air Dash", "", NamePreference.English, AttackButton.None, "AirDash", "");
+    public static Move Delay    { get; } = new Move("dl.",   "Wait a few frames", "delay", NamePreference.English, AttackButton.None, "Stand", "");
 }

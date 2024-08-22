@@ -6,6 +6,6 @@ public static class Constants
 
     public static string VideoUri(string name)
     {
-        return $"https://baikenstorage.blob.core.windows.net/baiken-media/{name}.mp4";
+        return $"https://baikenstorage.blob.core.windows.net/baiken-media/{name}.webm";
     }
 }
