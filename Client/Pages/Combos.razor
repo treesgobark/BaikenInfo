@@ -27,6 +27,17 @@
                                             }
                                         }
                                     </MudText>
+                                    @for (int index = 0; index < combo.AdditionalNotes.Count; index++)
+                                    {
+                                        if (index == 0)
+                                        {
+                                            <MudDivider/>
+                                        }
+                                        RenderFragment? note = combo.AdditionalNotes[index];
+                                        <MudText Align="Align.Center">
+                                            @note
+                                        </MudText>
+                                    }
                                 </MudStack>
                             </MudCardContent>
                         </MudCard>
@@ -39,7 +50,23 @@
 
 @code {
 
-    private record Combo(List<Move> Moves, string VideoName = "");
+    private class Combo
+    {
+        public Combo(List<Move> moves, string videoName = "", List<RenderFragment> additionalNotes = null)
+        {
+            Moves     = moves;
+            VideoName = videoName;
+
+            if (additionalNotes is not null)
+            {
+                AdditionalNotes = additionalNotes;
+            }
+        }
+
+        public List<RenderFragment> AdditionalNotes { get; } = [];
+        public List<Move> Moves { get; init; }
+        public string VideoName { get; init; }
+    }
 
     private record ComboList(string SectionTitle, List<Combo> Combos);
 
@@ -47,24 +74,54 @@
         [
             new ComboList("Your First Combos",
             [
-                new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],           "combos/round start fS 2H hkabh"),
-                new Combo([Moves._2H, Moves.HKab, Moves.HkabH],                                     "combos/round start 2H hkabh"),
-                new Combo([Moves.jS.AddPrefix("rising"), Moves.AirDash, Moves.jS, Moves.Youzansen], "combos/round start jS dash jS yzn"),
-                new Combo([Moves.jS.AddPrefix("rising").AddPrefix("CH"), Moves.AirDash, Moves.Delay, Moves.jS, Moves.Youzansen], "combos/round start CH jS dash jS yzn"),
-                new Combo([Moves._5P, Moves._6K, Moves.Tatami]),
+                new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],
+                          "combos/round start fS 2H hkabh"),
+                new Combo([Moves._2H, Moves.HKab, Moves.HkabH],
+                          "combos/round start 2H hkabh"),
+                new Combo([Moves.jS.AddPrefix("rising"), Moves.AirDash, Moves.jS, Moves.Youzansen],
+                          "combos/round start jS dash jS yzn"),
+                new Combo([Moves.jS.AddPrefix("rising").AddPrefix("CH"), Moves.AirDash, Moves.Delay, Moves.jS, Moves.Youzansen],
+                          "combos/round start CH jS dash jS yzn"),
+                new Combo([Moves._5P, Moves._6K, Moves.Tatami],
+                          "combos/5P 6K tatami"),
             ]),
             new ComboList("The Next Step",
             [
-                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH]),
-                new Combo([Moves.IAD, Moves.jS, Moves.Youzansen]),
-                new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami]),
+                new Combo([Moves.cS, Moves._2H, Moves.HKab, Moves.HkabH],
+                          "combos/cS 2H hkabh"),
+                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH],
+                          "combos/bnb"),
+                new Combo([Moves.IAD, Moves.jS, Moves.Youzansen],
+                          "combos/IAD jS yzn"),
+                new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami],
+                          "combos/IAD jH cS 2H tatami"),
             ]),
             new ComboList("Now That's What I Call Hit Confirms 56",
             [
-                new Combo([Moves._5K.AddPrefix("(aerial opponent)"), Moves._6H, Moves.HKab, Moves.HkabH]),
-                new Combo([Moves._2H.AddPrefix("CH"), Moves.HKab, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH]),
-                new Combo([Moves._6K.AddPrefix("CH"), Moves.Tatami, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH]),
-                new Combo([Moves.Tatami.AddPrefix("CH"), Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves._5K.AddPrefix("(aerial opponent)"), Moves._6H, Moves.HKab, Moves.HkabH],
+                          "combos/5K 6H hkabh",
+                          [@<span>
+                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              for additional damage if in range.
+                           </span>]),
+                new Combo([Moves._2H.AddPrefix("CH"), Moves.HKab, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                          "combos/CH 2H hkab 5K 6H hkabh",
+                          [@<span>
+                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              for additional damage if in range.
+                           </span>]),
+                new Combo([Moves._6K.AddPrefix("CH"), Moves.Tatami, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                          "combos/CH 6K tatami 5K 6H hkabh",
+                          [@<span>
+                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              for additional damage if in range.
+                           </span>]),
+                new Combo([Moves.Tatami.AddPrefix("CH"), Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                          "combos/CH tatami 5K 6H hkabh",
+                          [@<span>
+                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              for additional damage if in range.
+                           </span>]),
             ]),
         ];
 

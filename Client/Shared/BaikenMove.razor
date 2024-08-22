@@ -2,11 +2,11 @@
     <ChildContent>
         @if (!string.IsNullOrWhiteSpace(Move.DustloopTag))
         {
-            <MudLink Color="@TextColor" Href="@DustloopUrl" Target="_blank">@Move.DisplayText</MudLink>
+            <MudLink Typo="Typo" Color="@TextColor" Href="@DustloopUrl" Target="_blank">@DisplayText</MudLink>
         }
         else
         {
-            <MudText Color="@TextColor">@Move.DisplayText</MudText>
+            <MudText Typo="Typo" Color="@TextColor">@DisplayText</MudText>
         }
     </ChildContent>
     <TooltipContent>
@@ -25,6 +25,10 @@
     [Parameter]
     public Move Move { get; set; }
 
+    [Parameter] public NamePreference Naming { get; set; } = NamePreference.Notation;
+
+    [Parameter] public Typo Typo { get; set; } = Typo.body1;
+
     private string ImageUri => $"Moves/{Move.ImageName}.png";
 
     private Color TextColor => Move.AttackButton switch
@@ -37,5 +41,13 @@
         _              => Color.Default,
     };
 
+    private string DisplayText => Naming switch
+    {
+        NamePreference.English  => Move.DisplayEnglishText,
+        NamePreference.Friendly => Move.DisplayFriendlyText,
+        NamePreference.Notation => Move.DisplayNotationText,
+        _                       => "",
+    };
+    
     private string DustloopUrl => $"https://www.dustloop.com/w/GGST/Baiken#{Move.DustloopTag}";
 }
