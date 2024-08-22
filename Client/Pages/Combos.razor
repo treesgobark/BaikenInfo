@@ -1,12 +1,71 @@
 @page "/Combos"
-
 @using Client.Shared
 
-<MudText>5P/5K/2K > 6K > 236K (soft knockdown), IAD j.H (meaty)</MudText>
-<MudText>2K > 2D > 236K (soft knockdown), IAD j.H (meaty)</MudText>
-<MudText>5K > 2D > 236K (soft knockdown), super jump IAD j.H (meaty)</MudText>
-<BaikenVideo Src="light-button-safejumps"></BaikenVideo>
+<PageTitle>@Constants.TitlePrefix Combos</PageTitle>
+
+<MudExpansionPanels MultiExpansion>
+    @foreach (var list in AllCombos)
+    {
+        <MudExpansionPanel Text="@list.SectionTitle">
+            <MudGrid>
+                @foreach (var combo in list.Combos)
+                {
+                    <MudItem xs="4">
+                        <MudCard Style="height: 100%; padding: 24px;" Outlined>
+                            <MudCardContent>
+                                <MudStack>
+                                    <BaikenVideo Src="@combo.VideoName"></BaikenVideo>
+                                    <MudDivider/>
+                                    <MudText HtmlTag="span" Align="Align.Center">
+                                        @for (int index = 0; index < combo.Moves.Count; index++)
+                                        {
+                                            Move? move = combo.Moves[index];
+                                            <BaikenMove Move="move"></BaikenMove>
+                                            if (index < combo.Moves.Count - 1)
+                                            {
+                                                <MudText HtmlTag="span"> &gt; </MudText>
+                                            }
+                                        }
+                                    </MudText>
+                                </MudStack>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudExpansionPanel>
+    }
+</MudExpansionPanels>
 
 @code {
-    
+
+    private record Combo(List<Move> Moves, string VideoName = "");
+
+    private record ComboList(string SectionTitle, List<Combo> Combos);
+
+    private List<ComboList> AllCombos { get; } =
+        [
+            new ComboList("Your First Combos",
+            [
+                new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves._2H, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves.jS.AddPrefix("rising"), Moves.AirDash, Moves.jS, Moves.Youzansen]),
+                new Combo([Moves._5P, Moves._6K, Moves.Tatami],
+                        "light-button-safejumps"),
+            ]),
+            new ComboList("The Next Step",
+            [
+                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves.IAD, Moves.jS, Moves.Youzansen]),
+                new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami]),
+            ]),
+            new ComboList("Now That's What I Call Hit Confirms 56",
+            [
+                new Combo([Moves._5K.AddPrefix("(aerial opponent)"), Moves._6H, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves._2H.AddPrefix("CH"), Moves.HKab, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves._6K.AddPrefix("CH"), Moves.Tatami, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves.Tatami.AddPrefix("CH"), Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH]),
+            ]),
+        ];
+
 }

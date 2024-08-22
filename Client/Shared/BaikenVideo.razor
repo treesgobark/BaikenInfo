@@ -1,11 +1,24 @@
 @if (!string.IsNullOrWhiteSpace(Src))
 {
-    <video controls>
-        <source type="video/mp4" src="@Constants.VideoUri(Src)"/>
-    </video>
+    @if (IsActive)
+    {
+        <video controls style="width: 100%">
+            <source type="video/mp4" src="@Constants.VideoUri(Src)"/>
+        </video>
+    }
+    else
+    {
+        <MudButton Variant="Variant.Outlined" Style="width: 100%;height: 100%" OnClick="() => IsActive = true">Click to load video</MudButton>
+    }
+}
+else
+{
+    <MudText Align="Align.Center">No Video Available</MudText>
 }
 
 @code {
     [Parameter]
     public string? Src { get; set; }
+
+    private bool IsActive { get; set; }
 }

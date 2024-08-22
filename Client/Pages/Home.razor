@@ -3,4 +3,25 @@
 
 <PageTitle>@Constants.TitlePrefix Home</PageTitle>
 
-<MudImage Src="https://www.dustloop.com/wiki/images/6/6e/GGST_Baiken_Portrait.png"></MudImage>
+<MudStack>
+    <MudText Typo="Typo.h3">So you want to play baiken...</MudText>
+    <MudGrid>
+        <MudItem>
+            <MudPaper Class="d-flex" Style="padding: 12px">
+                <MudButton Size="Size.Large" Style="text-align: center" Href="BeginnerGuide">Brand new to Baiken? Start here!</MudButton>
+            </MudPaper>
+        </MudItem>
+        <MudItem>
+            <MudPaper Style="padding: 24px">
+                <MudStack>
+                    <MudText Typo="Typo.h6">Some helpful external links:</MudText>
+                    <MudList T="string">
+                        <MudListItem Href="https://glossary.infil.net" Target="_blank">Terms Glossary</MudListItem>
+                        <MudListItem Href="https://www.dustloop.com/w/Notation" Target="_blank">Dustloop's Notation Guide</MudListItem>
+                        <MudListItem Href="https://www.dustloop.com/w/GGST/Baiken" Target="_blank">Baiken's Dustloop Page</MudListItem>
+                    </MudList>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudStack>
