@@ -3,8 +3,8 @@
     @if (IsActive)
     {
         <MudButton Variant="Variant.Outlined" Style="width: 100%;height: 100%" OnClick="() => IsActive = false">Close Video</MudButton>
-        <video controls style="width: 100%">
-            <source type="video/mp4" src="@Constants.VideoUri(Src)"/>
+        <video controls style="width: 100%" src="@Constants.VideoUri(Src)">
+            <a href="@Constants.VideoUri(Src)">@Constants.VideoUri(Src)</a>
         </video>
     }
     else
