@@ -10,12 +10,16 @@
         }
     </ChildContent>
     <TooltipContent>
-        <MudStack>
-            <MudImage Src="@ImageUri" Height="200"></MudImage>
+        <MudStack AlignItems="AlignItems.Center">
+            <MudImage Src="@ImageUri" Height="200" Style="width: auto"></MudImage>
             <MudText>@Move.EnglishName</MudText>
             @if (!string.IsNullOrWhiteSpace(Move.FriendlyName))
             {
                 <MudText>"@Move.FriendlyName"</MudText>
+            }
+            @foreach (string note in Move.AdditionalNotes)
+            {
+                <MudText Style="max-width: 300px;" Align="Align.Center">@note</MudText>
             }
         </MudStack>
     </TooltipContent>
