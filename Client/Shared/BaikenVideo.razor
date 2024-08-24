@@ -2,9 +2,23 @@
 {
     @if (IsActive)
     {
-        <MudButton Variant="Variant.Outlined" Style="width: 100%;height: 100%" OnClick="() => IsActive = false">Close Video</MudButton>
-        <video controls style="width: 100%" src="@Constants.VideoUri(Src)">
-            <a href="@Constants.VideoUri(Src)">@Constants.VideoUri(Src)</a>
+        <MudStack Row AlignItems="AlignItems.Center">
+            <MudButton Variant="Variant.Outlined" Style="width: 100%;height: 100%" OnClick="() => IsActive = false">Close Video</MudButton>
+            <MudTooltip>
+                <ChildContent>
+                    <MudIcon Style="align-self: end" Icon="@Icons.Material.Filled.Warning"/>
+                </ChildContent>
+                <TooltipContent>
+                    <MudText Style="text-wrap: normal;width: 300px;">
+                        For whatever psychopathic reason, Chrome has a bug with its video player that makes it so
+                        you can't scrub through the timeline until the whole video is loaded. Once the video plays
+                        once all the way through, close the video and reopen it and you should be able to use the
+                        timeline, even if you reload the page.
+                    </MudText>
+                </TooltipContent>
+            </MudTooltip>
+        </MudStack>
+        <video controls preload="metadata" style="width: 100%" src="@Constants.VideoUri(Src)">
         </video>
     }
     else
