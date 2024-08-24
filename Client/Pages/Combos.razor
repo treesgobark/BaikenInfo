@@ -75,7 +75,17 @@
             new ComboList("Your First Combos",
             [
                 new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],
-                          "round start fS 2H hkabh"),
+                          "round start fS 2H hkabh",
+                          [@<span>
+                               If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
+                               tiny bit.
+                          </span>]),
+                new Combo([Moves._2S.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],
+                          "round start CH 2S 2H hkabh",
+                          [@<span>
+                              If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
+                              tiny bit.
+                          </span>]),
                 new Combo([Moves._2H, Moves.HKab, Moves.HkabH],
                           "round start 2H hkabh"),
                 new Combo([Moves.jS.AddPrefix("rising"), Moves.AirDash, Moves.jS, Moves.Youzansen],
@@ -89,12 +99,17 @@
             [
                 new Combo([Moves.cS, Moves._2H, Moves.HKab, Moves.HkabH],
                           "cS 2H hkabh"),
-                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH],
-                          "bnb"),
                 new Combo([Moves.IAD, Moves.jS, Moves.Youzansen],
                           "IAD jS yzn"),
                 new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami],
                           "IAD jH cS 2H tatami"),
+                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH],
+                          "bnb",
+                          [@<span>
+                               This is the higher damage alternative to the first <BaikenMove Move="Moves.cS"/> combo
+                               in this section, but if you're spending too much time getting the timing right on the 
+                               <BaikenMove Move="Moves._2S"/>, it's best move on to the next section and come back later.
+                          </span>]),
             ]),
             new ComboList("Now That's What I Call Hit Confirms 56",
             [

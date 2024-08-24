@@ -1,24 +1,54 @@
 using System.Collections.Immutable;
+using Microsoft.AspNetCore.Components;
 
 namespace Client.Shared;
 
 public enum NamePreference { Notation, English, Friendly }
 public enum AttackButton { P, K, S, H, D, None }
 
-public record Move(
-    string         NotationName,
-    string         EnglishName,
-    string         FriendlyName,
-    AttackButton   AttackButton,
-    string         ImageName,
-    string         DustloopTag)
+public class Move
 {
+    public Move(string               NotationName,
+                string               EnglishName,
+                string               FriendlyName,
+                AttackButton         AttackButton,
+                string               ImageName,
+                string               DustloopTag,
+                List<string> AdditionalNotes = null)
+    {
+        this.NotationName    = NotationName;
+        this.EnglishName     = EnglishName;
+        this.FriendlyName    = FriendlyName;
+        this.AttackButton    = AttackButton;
+        this.ImageName       = ImageName;
+        this.DustloopTag     = DustloopTag;
+        this.AdditionalNotes = AdditionalNotes is null ? [] : AdditionalNotes;
+    }
+    
+    public Move(Move other)
+    {
+        NotationName    = other.NotationName;
+        EnglishName     = other.EnglishName;
+        FriendlyName    = other.FriendlyName;
+        AttackButton    = other.AttackButton;
+        ImageName       = other.ImageName;
+        DustloopTag     = other.DustloopTag;
+        AdditionalNotes = [..other.AdditionalNotes];
+    }
+
     public string DisplayNotationText => string.Join(" ", Prefixes.Append(NotationName).Concat(Suffixes));
     public string DisplayEnglishText => string.Join(" ", Prefixes.Append(EnglishName).Concat(Suffixes));
     public string DisplayFriendlyText => string.Join(" ", Prefixes.Append(FriendlyName).Concat(Suffixes));
     
     private ImmutableList<string> Prefixes { get; set; } = [];
     private ImmutableList<string> Suffixes { get; set; } = [];
+    public string NotationName { get; init; }
+    public string EnglishName { get; init; }
+    public string FriendlyName { get; init; }
+    public AttackButton AttackButton { get; init; }
+    public string ImageName { get; init; }
+    public string DustloopTag { get; init; }
+    public List<string> AdditionalNotes { get; init; }
 
     public Move AddPrefix(string prefix)
     {
@@ -58,7 +88,9 @@ public static class Moves
     public static Move AerialTatami    { get; } = new Move("j.236K",    "Aerial Tatami Gaeshi", "j.Tatami", AttackButton.K, "236K", "Tatami_Gaeshi");
     public static Move Hiiragi    { get; } = new Move("236P",    "Hiiragi", "Parry", AttackButton.P, "236P", "Hiiragi");
     public static Move HKab  { get; } = new Move("41236H",  "Kabari (HS version)", "hkab(1)", AttackButton.H, "41236H", "Kabari");
-    public static Move HkabH { get; } = new Move("~H", "Kabari (HS version) Follow-up", "hkabh", AttackButton.H, "41236HH", "Kabari");
+    public static Move HkabH { get; } = new Move("~H", "Kabari (HS version) Follow-up", "hkabh", AttackButton.H, "41236HH", "Kabari",
+                                                 ["Note: never hit the input for this move more than once. It will cause you to drop combos." +
+                                                  " Sometimes you may have to delay it, though, if your opponent is too high."]);
     public static Move SKab  { get; } = new Move("41236S",  "Kabari (S version)", "skab", AttackButton.S, "41236S", "Kabari");
     public static Move Youzansen  { get; } = new Move("j.236S",  "Youzansen", "yzn", AttackButton.S, "j236S", "Youzansen");
     public static Move cS       { get; } = new Move("c.S",     "Close Slash", "", AttackButton.S, "cS", "c.S");
