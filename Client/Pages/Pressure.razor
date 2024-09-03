@@ -1,8 +1,63 @@
 @page "/Pressure"
 @using Client.Shared
 
-<PageTitle>@Constants.TitlePrefix Beginner Guide</PageTitle>
+<PageTitle>@Constants.TitlePrefix Pressure</PageTitle>
 
+<MudText>
+    Start <MudLink Href="https://glossary.infil.net/?t=Pressure" Target="_blank">here</MudLink> first.
+</MudText>
+<br/>
+<MudText>
+    The first rule of offense is that you must first earn the privilege of getting in close to your opponent. You can't
+    just run at them and expect to be able to land your best offensive starter: <BaikenMove Move="Moves.cS"/>. Most of
+    the time your opponent isn't going to let you do that for free. If you want to get in close, you need to get a
+    knockdown on your opponent. To learn to do this check out the <MudLink Href="Neutral">Neutral</MudLink> page.
+</MudText>
+<br/>
+<MudText>
+    In a nutshell, pressure is the method by which you turn your opponent's disadvantage state (and by extension your
+    advantage stage) into health loss and eventually round loss. Advantage and disadvantage will typically change
+    between each player many times in one round, but what does it actually mean to be disadvantaged? The simplest way to
+    define advantage is that the advantaged player gets to act before the disadvantaged player does. You will gain
+    familiarity with this concept over the course of this section.
+</MudText>
+<br/>
+<MudText>
+    Let's walk through an example of a typical
+    <MudLink Href="https://glossary.infil.net/?t=Pressure" Target="_blank">blockstring</MudLink> step-by-step. Suppose
+    you have just knocked your opponent down with
+    <BaikenMove Move="Moves.HkabH" Naming="NamePreference.Friendly"/>. You're in advantage because you have the ability
+    to act and make decisions while your opponent is stuck on the ground, unable to act. We typically use this time to
+    set up a <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> safejump. More information about
+    that in the <MudLink Href="Safejumps">Safejumps</MudLink> section.
+</MudText>
+<br/>
+<MudText>
+    Now that you've set up your knockdown and your safejump, your opponent has a choice as they're waking up:
+    <MudList T="string" ReadOnly>
+        <MudListItem>
+            - Do an invincible reversal (if you've performed your safejump correctly, you would block it and they would
+            eat a guaranteed punish since invincible reversals are always punishable on block, though there are some
+            that will take specific knowledge to punish.)
+        </MudListItem>
+        <MudListItem>
+            - Do a non-invincible move (if you've performed your safejump correctly, your opponent will get hit
+            by the <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> mat here immediately since
+            it's an active projectile that is already on top of them when they
+            wake up. You can combo off of this hit, but it will take some practice.)
+        </MudListItem>
+        <MudListItem>
+            - Block (This is by far their safest option because there isn't actually anything that can punish them for
+            blocking the <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>)
+        </MudListItem>
+    </MudList>
+    It should be clear to see that if the opponent doesn't want to get blown up and die, that their only real option is
+    to block. But your opponent might not know that, so you always have to be ready for them to do one of the other two
+    options. You want to have the ability to convert either of those hits into a combo that ends in a safejump so that you
+    can loop back around to the beginning of your pressure again. Combos for these starters can be found in the "Now
+    That's What I Call Hit Confirms 56" section of the <MudLink Href="Combos">Combos</MudLink> page. Once your opponent
+    actually learns to block, you can move on.
+</MudText>
 <MudGrid Justify="Justify.Center">
     <MudItem xs="4">
         <MudCard>
@@ -15,6 +70,11 @@
         </MudCard>
     </MudItem>
 </MudGrid>
+@* <br/> *@
+@* <MudText> *@
+@*     Alright, your opponent has chosen to block your *@
+@*     <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>, what now? *@
+@* </MudText> *@
 
 @code {
     
