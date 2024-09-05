@@ -77,6 +77,8 @@ public static class Moves
     public static Move _2P      { get; } = new Move("2P",      "Crouching Punch", "", AttackButton.P, "2P", "2P");
     public static Move _2S      { get; } = new Move("2S",      "Crouching Slash", "", AttackButton.S, "2S", "2S");
     public static Move _5D      { get; } = new Move("5D",      "Standing Dust", "Dust", AttackButton.D, "5D", "5D");
+    public static Move Charged_5D      { get; } = new Move("5[D]",      "Charged Dust", "", AttackButton.D, "5D", "5D", 
+        ["To input this, you hold the D button."]);
     public static Move _5H      { get; } = new Move("5H",      "Standing Heavy Slash", "", AttackButton.H, "5H", "5H");
     public static Move _5K      { get; } = new Move("5K",      "Standing Kick", "", AttackButton.K, "5K", "5K");
     public static Move _5P      { get; } = new Move("5P",      "Standing Punch", "", AttackButton.P, "5P", "5P");
