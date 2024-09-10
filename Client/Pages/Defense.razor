@@ -3,162 +3,164 @@
 
 <PageTitle>@Constants.TitlePrefix Defense</PageTitle>
 
-<MudText>
-    Baiken has a somewhat unique role as a sort of defensive character in Strive. This does not mean that Baiken is
-    designed to run away and counter everything your opponent does. Strive is still an offensively-oriented game and
-    the player on offense is always the one who gains more advantage. However, Baiken has many strong neutral tools she
-    can use to prevent your opponents from beginning their offense, which some would call defensive. Please refer to the
-    <MudLink Href="Neutral">Neutral</MudLink> page to learn more about these strong keep-away tools. If you're looking
-    for ways to end your opponent's offense once it's already begun, that's what this page is for.
-</MudText>
-<br/>
-<MudText>
-    If you're anything like me (you're reading essays about how to play a video game, you are at least somewhat like
-    me), you think Baiken's <BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.Friendly"/> is the coolest thing
-    ever and it's one of the main reasons you enjoy playing the character. This is Baiken's premier, unique defensive
-    tool. One wrong move from your opponent's offense means they take a huge chunk of damage and are now subjected to
-    your offense instead. It's a reversal in every sense of the word. There's a catch, though,
-    <BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.English"/> is a dangerous "feast or famine" type of move
-    that can easily make you eat a huge combo if used incorrectly or if called out by the opponent.
-</MudText>
-<br/>
-<MudText>
-    Parrying things is fun, but if you want to access the most consistent situations to parry, you need to first learn
-    the importance of blocking. Yes, yes, I know, blocking is "lame" and you paid a bunch of money to play a fighting
-    game, not a blocking game, I get it, okay. But hear me out. Blocking is the single best way to learn to stop your
-    opponent's offense. If you want to be the very best, like no one ever was, you have to adopt a growth mindset.
-    Here's the thing about Strive: every single character is a complete asshole and makes your life miserable in their
-    own unique way. This will not change the better you get. Because the better you get, the better your opponents get
-    at serving you their character's unique brand of
-    <MudLink Href="https://www.urbandictionary.com/define.php?term=200%20years">
-        200 years of game design experience
-    </MudLink>
-    . Of course, I'm being <MudLink Href="https://www.merriam-webster.com/dictionary/flippant">flippant</MudLink> with
-    the way im talking about the game, but you have to accept that the reason defense can sometimes suck so much is
-    the same reason that you get to have so much fun when wailing on your opponent with all the crazy stuff you've
-    learned to do to them.
-</MudText>
-<br/>
-<MudText>
-    With all that being said, if you want your opponent's offense to be the least painful it can be,
-    you need to learn to settle down, cool off, think carefully, and observe your opponent during the course of a match.
-    If you don't, you will end up getting hit over and over again until you die and you will have learned very little
-    about where the points of interaction are in your opponent's offense. Now that I've laid that out, let's talk about
-    Baiken's best investigation tools for figuring out your opponent's offense:
-    <MudList T="string" ReadOnly>
-        First, universal skills:
-        <MudItem>
-            - Blocking
-        </MudItem>
-        <MudItem>
-            - Backdash
-        </MudItem>
-        <MudItem>
-            - Jump
-        </MudItem>
-        Next, Baiken-specific tools:
-        <MudItem>
-            - <BaikenMove Move="Moves._5P"/>
-        </MudItem>
-        <MudItem>
-            - <BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.English"/>
-        </MudItem>
-    </MudList>
-</MudText>
-<br/>
-<MudText Typo="Typo.h5">Blocking</MudText>
-<br/>
-<MudText>
-    Let's talk about blocking. Just hold the horizontal direction opposite from
-    your opponent and you will walk away while also blocking any* moves from your opponent. You can also hold crouch
-    while blocking, this prevents you from moving backward. If your opponent has jumped and is in the air, almost any
-    attack they do while they're up there will count as an
-    <MudLink Href="https://glossary.infil.net/?t=Overhead%20Attack" Target="_blank">overhead</MudLink> attack. Crouching
-    will prevent you from blocking these attacks. Certain attacks (typically performed while crouching) are
-    <MudLink Href="https://glossary.infil.net/?t=Low%20Attack" Target="_blank">low</MudLink> attacks. Standing will
-    prevent you from blocking these attacks.
-</MudText>
-<br/>
-<MudText Typo="Typo.h5">Throws</MudText>
-<br/>
-<MudText>
-    Blocking cannot defend against a <BaikenMove Move="Moves.Throw"/>,
-    regardless of whether you are crouching. Throws have an
-    extremely short range and any throw attempt when not in range will cause that player to
-    <MudLink Href="https://glossary.infil.net/?t=Tiger%20Knee" Target="_blank">whiff</MudLink> the throw and be locked
-    in an animation that gives a free
-    <MudLink Href="https://glossary.infil.net/?t=Counter%20Hit" Target="_blank">counter hit</MudLink> if their opponent
-    makes contact. Defending against a throw can be done in several ways, you can input throw
-    as well within 10 frames of being thrown to
-    <MudLink Href="https://glossary.infil.net/?t=Throw%20Tech" Target="_blank">throw tech</MudLink> and make your opponent
-    bounce off of you, resetting you to
-    <MudLink Href="https://glossary.infil.net/?t=Neutral" Target="_blank">neutral</MudLink>. Alternatively, you can
-    become airborne, either through jump, backdash, some character-specific options
-    (<MudLink Href="https://glossary.infil.net/?t=Tiger%20Knee" Target="_blank">TK</MudLink>
-    <BaikenMove Move="Moves.Youzansen"/> counts as being airborne), or some other more niche defenses. Being airborne
-    makes you immune to ground throws and will cause a whiff from your opponent, making this the highest reward option
-    for defending against a throw. You may notice that you or your opponent may whiff a throw, even when you are right
-    next to each other and both grounded. This is caused by some form of throw immunity, which is gained in a few ways:
-    <MudList T="string" ReadOnly>
-        <MudListItem>
-            - Being in <MudLink Href="https://glossary.infil.net/?t=Block%20stun" Target="_blank">block stun</MudLink>
-            , in <MudLink Href="https://glossary.infil.net/?t=Hit%20stun" Target="_blank">hit stun</MudLink>, or
-            knocked on the ground.
-            This means your opponent cannot perform a true combo into a throw, except
-            for some characters who have access to the
-            <MudLink Href="https://www.dustloop.com/w/GGST/Mechanics#Stagger_Recovery">stagger</MudLink>
-            mechanic on their moves, like our <BaikenMove Move="Moves._6K"/> on counterhit. No need to focus on this,
-            just be aware that it can happen.
-        </MudListItem>
-        <MudListItem>
-            - Having recently exited block stun or hit stun. You get 5 frames where you are immune to throws after you
-            recover from blocking or getting hit. Think about the consequences of this. This means that there must always
-            be a 5 frame gap before any throw attempt by your opponent. Every character has a move that is 5 frames or
-            faster. Ours is <BaikenMove Move="Moves._5P"/> (it's actually 4 frames!), more about
-            <BaikenMove Move="Moves._5P"/> later.
-            <MudLink Href="https://www.dustloop.com/w/GGST/Mechanics#Guard_Crush">Guard crush</MudLink> is the exception
-            to this rule. Some moves apply guard crush on block, like
-            <BaikenMove Move="Moves.Kenjyu" Naming="NamePreference.English"/>. Again, don't focus on it too much, just
-            be aware it exists.
-        </MudListItem>
-        <MudListItem>
-            - Performing most invincible reversals. (<BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.English"/>
-            is an exception to this rule, it does not provide throw immunity. But <BaikenMove Move="Moves.SwordSuper"/>
-            does.)
-        </MudListItem>
-    </MudList>
-</MudText>
-<br/>
-<MudText Typo="Typo.h5">Backdash</MudText>
-<br/>
-<MudText>
-    Backdash gives you a short period of invulnerability, then leaves you in recovery for a bit. As mentioned earlier,
-    it's good for avoiding and punishing throw attempts preemptively. Your opponent typically will have options that
-    will catch and punish your backdash, even by accident, so use it sparingly, especially when your back is to the
-    corner.
-</MudText>
-<br/>
-<MudText Typo="Typo.h5">Jump</MudText>
-<br/>
-<MudText>
-    Jump is what it sounds like and I already mentioned how it dodges throws, but it's worth mentioning that jump has a
-    small startup time for every character where they cannot block, so holding jump in the middle of your opponent's
-    blockstring can give them a free hit. Also note that you can block both lows and overheads while blocking in the air.
-    Blocking in the air leaves you super disadvantaged even after you land though, so be careful.
-</MudText>
+<MudContainer>
+    <MudText>
+        Baiken has a somewhat unique role as a sort of defensive character in Strive. This does not mean that Baiken is
+        designed to run away and counter everything your opponent does. Strive is still an offensively-oriented game and
+        the player on offense is always the one who gains more advantage. However, Baiken has many strong neutral tools she
+        can use to prevent your opponents from beginning their offense, which some would call defensive. Please refer to the
+        <MudLink Href="Neutral">Neutral</MudLink> page to learn more about these strong keep-away tools. If you're looking
+        for ways to end your opponent's offense once it's already begun, that's what this page is for.
+    </MudText>
+    <br/>
+    <MudText>
+        If you're anything like me (you're reading essays about how to play a video game, you are at least somewhat like
+        me), you think Baiken's <BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.Friendly"/> is the coolest thing
+        ever and it's one of the main reasons you enjoy playing the character. This is Baiken's premier, unique defensive
+        tool. One wrong move from your opponent's offense means they take a huge chunk of damage and are now subjected to
+        your offense instead. It's a reversal in every sense of the word. There's a catch, though,
+        <BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.English"/> is a dangerous "feast or famine" type of move
+        that can easily make you eat a huge combo if used incorrectly or if called out by the opponent.
+    </MudText>
+    <br/>
+    <MudText>
+        Parrying things is fun, but if you want to access the most consistent situations to parry, you need to first learn
+        the importance of blocking. Yes, yes, I know, blocking is "lame" and you paid a bunch of money to play a fighting
+        game, not a blocking game, I get it, okay. But hear me out. Blocking is the single best way to learn to stop your
+        opponent's offense. If you want to be the very best, like no one ever was, you have to adopt a growth mindset.
+        Here's the thing about Strive: every single character is a complete asshole and makes your life miserable in their
+        own unique way. This will not change the better you get. Because the better you get, the better your opponents get
+        at serving you their character's unique brand of
+        <MudLink Href="https://www.urbandictionary.com/define.php?term=200%20years">
+            200 years of game design experience
+        </MudLink>
+        . Of course, I'm being <MudLink Href="https://www.merriam-webster.com/dictionary/flippant">flippant</MudLink> with
+        the way im talking about the game, but you have to accept that the reason defense can sometimes suck so much is
+        the same reason that you get to have so much fun when wailing on your opponent with all the crazy stuff you've
+        learned to do to them.
+    </MudText>
+    <br/>
+    <MudText>
+        With all that being said, if you want your opponent's offense to be the least painful it can be,
+        you need to learn to settle down, cool off, think carefully, and observe your opponent during the course of a match.
+        If you don't, you will end up getting hit over and over again until you die and you will have learned very little
+        about where the points of interaction are in your opponent's offense. Now that I've laid that out, let's talk about
+        Baiken's best investigation tools for figuring out your opponent's offense:
+        <MudList T="string" ReadOnly>
+            First, universal skills:
+            <MudItem>
+                - Blocking
+            </MudItem>
+            <MudItem>
+                - Backdash
+            </MudItem>
+            <MudItem>
+                - Jump
+            </MudItem>
+            Next, Baiken-specific tools:
+            <MudItem>
+                - <BaikenMove Move="Moves._5P"/>
+            </MudItem>
+            <MudItem>
+                - <BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.English"/>
+            </MudItem>
+        </MudList>
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Blocking</MudText>
+    <br/>
+    <MudText>
+        Let's talk about blocking. Just hold the horizontal direction opposite from
+        your opponent and you will walk away while also blocking any* moves from your opponent. You can also hold crouch
+        while blocking, this prevents you from moving backward. If your opponent has jumped and is in the air, almost any
+        attack they do while they're up there will count as an
+        <MudLink Href="https://glossary.infil.net/?t=Overhead%20Attack" Target="_blank">overhead</MudLink> attack. Crouching
+        will prevent you from blocking these attacks. Certain attacks (typically performed while crouching) are
+        <MudLink Href="https://glossary.infil.net/?t=Low%20Attack" Target="_blank">low</MudLink> attacks. Standing will
+        prevent you from blocking these attacks.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Throws</MudText>
+    <br/>
+    <MudText>
+        Blocking cannot defend against a <BaikenMove Move="Moves.Throw"/>,
+        regardless of whether you are crouching. Throws have an
+        extremely short range and any throw attempt when not in range will cause that player to
+        <MudLink Href="https://glossary.infil.net/?t=Tiger%20Knee" Target="_blank">whiff</MudLink> the throw and be locked
+        in an animation that gives a free
+        <MudLink Href="https://glossary.infil.net/?t=Counter%20Hit" Target="_blank">counter hit</MudLink> if their opponent
+        makes contact. Defending against a throw can be done in several ways, you can input throw
+        as well within 10 frames of being thrown to
+        <MudLink Href="https://glossary.infil.net/?t=Throw%20Tech" Target="_blank">throw tech</MudLink> and make your opponent
+        bounce off of you, resetting you to
+        <MudLink Href="https://glossary.infil.net/?t=Neutral" Target="_blank">neutral</MudLink>. Alternatively, you can
+        become airborne, either through jump, backdash, some character-specific options
+        (<MudLink Href="https://glossary.infil.net/?t=Tiger%20Knee" Target="_blank">TK</MudLink>
+        <BaikenMove Move="Moves.Youzansen"/> counts as being airborne), or some other more niche defenses. Being airborne
+        makes you immune to ground throws and will cause a whiff from your opponent, making this the highest reward option
+        for defending against a throw. You may notice that you or your opponent may whiff a throw, even when you are right
+        next to each other and both grounded. This is caused by some form of throw immunity, which is gained in a few ways:
+        <MudList T="string" ReadOnly>
+            <MudListItem>
+                - Being in <MudLink Href="https://glossary.infil.net/?t=Block%20stun" Target="_blank">block stun</MudLink>
+                , in <MudLink Href="https://glossary.infil.net/?t=Hit%20stun" Target="_blank">hit stun</MudLink>, or
+                knocked on the ground.
+                This means your opponent cannot perform a true combo into a throw, except
+                for some characters who have access to the
+                <MudLink Href="https://www.dustloop.com/w/GGST/Mechanics#Stagger_Recovery">stagger</MudLink>
+                mechanic on their moves, like our <BaikenMove Move="Moves._6K"/> on counterhit. No need to focus on this,
+                just be aware that it can happen.
+            </MudListItem>
+            <MudListItem>
+                - Having recently exited block stun or hit stun. You get 5 frames where you are immune to throws after you
+                recover from blocking or getting hit. Think about the consequences of this. This means that there must always
+                be a 5 frame gap before any throw attempt by your opponent. Every character has a move that is 5 frames or
+                faster. Ours is <BaikenMove Move="Moves._5P"/> (it's actually 4 frames!), more about
+                <BaikenMove Move="Moves._5P"/> later.
+                <MudLink Href="https://www.dustloop.com/w/GGST/Mechanics#Guard_Crush">Guard crush</MudLink> is the exception
+                to this rule. Some moves apply guard crush on block, like
+                <BaikenMove Move="Moves.Kenjyu" Naming="NamePreference.English"/>. Again, don't focus on it too much, just
+                be aware it exists.
+            </MudListItem>
+            <MudListItem>
+                - Performing most invincible reversals. (<BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.English"/>
+                is an exception to this rule, it does not provide throw immunity. But <BaikenMove Move="Moves.SwordSuper"/>
+                does.)
+            </MudListItem>
+        </MudList>
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Backdash</MudText>
+    <br/>
+    <MudText>
+        Backdash gives you a short period of invulnerability, then leaves you in recovery for a bit. As mentioned earlier,
+        it's good for avoiding and punishing throw attempts preemptively. Your opponent typically will have options that
+        will catch and punish your backdash, even by accident, so use it sparingly, especially when your back is to the
+        corner.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Jump</MudText>
+    <br/>
+    <MudText>
+        Jump is what it sounds like and I already mentioned how it dodges throws, but it's worth mentioning that jump has a
+        small startup time for every character where they cannot block, so holding jump in the middle of your opponent's
+        blockstring can give them a free hit. Also note that you can block both lows and overheads while blocking in the air.
+        Blocking in the air leaves you super disadvantaged even after you land though, so be careful.
+    </MudText>
 
-<MudGrid Justify="Justify.Center">
-    <MudItem xs="4">
-        <MudCard>
-            <MudCardContent>
-                <MudText Typo="Typo.h4" Align="Align.Center">Under Construction</MudText>
-                <MudText Align="Align.Center">
-                    <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.Construction"/>
-                </MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-</MudGrid>
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h4" Align="Align.Center">Under Construction</MudText>
+                    <MudText Align="Align.Center">
+                        <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.Construction"/>
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
 
 @code {
     

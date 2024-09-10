@@ -3,67 +3,69 @@
 
 <PageTitle>@Constants.TitlePrefix Safejumps</PageTitle>
 
-<MudText>
-    Start <MudLink Href="https://glossary.infil.net/?t=Safe%20Jump" Target="_blank">here</MudLink> first.
-</MudText>
-<br/>
-<MudText>
-    Baiken has two typical aerial moves you'll use for safejumps: <BaikenMove Move="Moves.jH"/>
-    and <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>. The former is typically used after a soft knockdown from
-    <BaikenMove Move="Moves.Tatami" Naming="NamePreference.Friendly"/> and the latter is typically used after <BaikenMove Move="Moves.HkabH" Naming="NamePreference.Friendly"/>.
-    Safejumps using <BaikenMove Move="Moves.jH"/> are more "typical" than <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> ones,
-    so we'll discuss those first.
-</MudText>
-<br/>
-<MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves.jH"/> Safejumps</MudText>
-<MudText>
-    If you want your safejump to actually work, you have to be holding block as you're
-    landing, otherwise you'll start doing your attack before they do their reversal and you'll get counterhit. This
-    is because when the opponent does an invincible move when you're safejumping, your <BaikenMove Move="Moves.jH"/>
-    passes through them, meaning you don't get the little pause that happens when you make contact with an opponent.
-    What this means is that when doing a safejump, you should not be trying to block in reaction to your opponent doing a
-    reversal because that's impossible, as they happen too fast. What you should be doing instead is blocking as you land,
-    waiting some amount of time, then pressing <BaikenMove Move="Moves.cS"/>. If you get the rhythm down, you can use
-    the same timing every time you <BaikenMove Move="Moves.jH"/> safejump and if your opponent blocks or gets hit,
-    your <BaikenMove Move="Moves.cS"/> comes out at the right time but if they use an invincible option, you will block
-    their move before you have the chance to input <BaikenMove Move="Moves.cS"/>. Blocking the reversal is good because
-    it is typical of invincible moves to have fast startup but super long and very punishable recovery, which gives you
-    enough time to run up after blocking to get a guaranteed <BaikenMove Move="Moves.cS"/> hit.
-</MudText>
-<br/>
-<MudContainer><BaikenVideo Src="jH safejump"></BaikenVideo></MudContainer>
-<br/>
-<br/>
-<MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> Safejumps</MudText>
-<MudText>
-    <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> safejumps are a bit different than
-    <BaikenMove Move="Moves.jH"/> ones because <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
-    is a projectile. This means your character doesn't actually experience the little pause I mentioned in the earlier
-    section when the <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> makes contact.
-    This means you can't use the same timing every time because your <BaikenMove Move="Moves.cS"/> would just come out
-    right in front of their invincible move and you would get counterhit (There is an exception here for the fastest
-    of reversals because math, but the timing is so strict and so niche that you shouldn't be concerned with it).
-    What this means in practice is that <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
-    safejumps are more reaction-based than <BaikenMove Move="Moves.jH"/> safejumps. You have to wait and see what your
-    opponent does in order to make the right decision, but the timing can be a bit tight sometimes.
-    The basic idea with <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> safejumps is that while
-    you're landing, block by default and resist the urge to hit any buttons until you see one of several things:
-    <MudList T="string" ReadOnly>
-        <MudListItem>
-            - You block their reversal
-        </MudListItem>
-        <MudListItem>
-            - They block your <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
-        </MudListItem>
-        <MudListItem>
-            - They get hit by your <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
-        </MudListItem>
-    </MudList>
-    If they do a reversal, you can block it and punish like normal. If they block or they get hit, you're free to use
-    <BaikenMove Move="Moves.cS"/> to continue your offense.
-</MudText>
-<br/>
-<MudContainer><BaikenVideo Src="tatami safejump"></BaikenVideo></MudContainer>
+<MudContainer>
+    <MudText>
+        Start <MudLink Href="https://glossary.infil.net/?t=Safe%20Jump" Target="_blank">here</MudLink> first.
+    </MudText>
+    <br/>
+    <MudText>
+        Baiken has two typical aerial moves you'll use for safejumps: <BaikenMove Move="Moves.jH"/>
+        and <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>. The former is typically used after a soft knockdown from
+        <BaikenMove Move="Moves.Tatami" Naming="NamePreference.Friendly"/> and the latter is typically used after <BaikenMove Move="Moves.HkabH" Naming="NamePreference.Friendly"/>.
+        Safejumps using <BaikenMove Move="Moves.jH"/> are more "typical" than <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> ones,
+        so we'll discuss those first.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves.jH"/> Safejumps</MudText>
+    <MudText>
+        If you want your safejump to actually work, you have to be holding block as you're
+        landing, otherwise you'll start doing your attack before they do their reversal and you'll get counterhit. This
+        is because when the opponent does an invincible move when you're safejumping, your <BaikenMove Move="Moves.jH"/>
+        passes through them, meaning you don't get the little pause that happens when you make contact with an opponent.
+        What this means is that when doing a safejump, you should not be trying to block in reaction to your opponent doing a
+        reversal because that's impossible, as they happen too fast. What you should be doing instead is blocking as you land,
+        waiting some amount of time, then pressing <BaikenMove Move="Moves.cS"/>. If you get the rhythm down, you can use
+        the same timing every time you <BaikenMove Move="Moves.jH"/> safejump and if your opponent blocks or gets hit,
+        your <BaikenMove Move="Moves.cS"/> comes out at the right time but if they use an invincible option, you will block
+        their move before you have the chance to input <BaikenMove Move="Moves.cS"/>. Blocking the reversal is good because
+        it is typical of invincible moves to have fast startup but super long and very punishable recovery, which gives you
+        enough time to run up after blocking to get a guaranteed <BaikenMove Move="Moves.cS"/> hit.
+    </MudText>
+    <br/>
+    <MudContainer><BaikenVideo Src="jH safejump"></BaikenVideo></MudContainer>
+    <br/>
+    <br/>
+    <MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> Safejumps</MudText>
+    <MudText>
+        <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> safejumps are a bit different than
+        <BaikenMove Move="Moves.jH"/> ones because <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
+        is a projectile. This means your character doesn't actually experience the little pause I mentioned in the earlier
+        section when the <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> makes contact.
+        This means you can't use the same timing every time because your <BaikenMove Move="Moves.cS"/> would just come out
+        right in front of their invincible move and you would get counterhit (There is an exception here for the fastest
+        of reversals because math, but the timing is so strict and so niche that you shouldn't be concerned with it).
+        What this means in practice is that <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
+        safejumps are more reaction-based than <BaikenMove Move="Moves.jH"/> safejumps. You have to wait and see what your
+        opponent does in order to make the right decision, but the timing can be a bit tight sometimes.
+        The basic idea with <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/> safejumps is that while
+        you're landing, block by default and resist the urge to hit any buttons until you see one of several things:
+        <MudList T="string" ReadOnly>
+            <MudListItem>
+                - You block their reversal
+            </MudListItem>
+            <MudListItem>
+                - They block your <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
+            </MudListItem>
+            <MudListItem>
+                - They get hit by your <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>
+            </MudListItem>
+        </MudList>
+        If they do a reversal, you can block it and punish like normal. If they block or they get hit, you're free to use
+        <BaikenMove Move="Moves.cS"/> to continue your offense.
+    </MudText>
+    <br/>
+    <MudContainer><BaikenVideo Src="tatami safejump"></BaikenVideo></MudContainer>
+</MudContainer>
 
 @code {
     

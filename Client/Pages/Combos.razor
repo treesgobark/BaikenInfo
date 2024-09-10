@@ -3,25 +3,47 @@
 
 <PageTitle>@Constants.TitlePrefix Combos</PageTitle>
 
-<MudExpansionPanels MultiExpansion>
-    @foreach (ComboList list in AllCombos)
-    {
+<MudContainer>
+    <MudText>
+        The combos on this page have a very deliberate ordering to them. It is highly recommended that you do not advance
+        past a combo section until you've learned everything in the previous section, though feel free to move around
+        within sections. However, I'd like to talk a little bit about what I mean when I say you've "learned" the combo.
+        To have successfully learned a combo, you should be consistently landing the
+        whole combo and performing the right safejump afterward almost every time you get that starting move in a real match
+        against a human. Feel free to practice the combo against the AI to bridge the gap if you'd like, but it's not a
+        proper substitute.
+        <MudList T="string" ReadOnly>
+            In summary, here are some things that disqualify you from having "learned" any given combo:
+            <MudListItem>- you can't do it from the opposite side (switch sides every few attempts while learning)</MudListItem>
+            <MudListItem>- you haven't performed it in a real match</MudListItem>
+            <MudListItem>- you are dropping the combo in real matches despite landing the starter</MudListItem>
+            <MudListItem>- you aren't performing the proper safejump after landing the combo in real matches</MudListItem>
+        </MudList>
+        Remember what world-renowned martial artist Bruce Lee once said, as it rings just as true when fighting in a video
+        game as it does in real life: "I fear not the man who has practiced 10,000 kicks once, but I fear the man who has
+        practiced one kick 10,000 times." Consistency will win you more games than any flashy high damage combo ever will.
+    </MudText>
+    <br/>
+    <MudExpansionPanels MultiExpansion>
+        @foreach (ComboList list in AllCombos)
+        {
         <MudExpansionPanel Text="@list.SectionTitle">
             <MudGrid>
                 @foreach (Combo combo in list.Combos)
                 {
-                    <MudItem xs="12" md="6" lg="4" xl="3">
-                        <MudCard Style="height: 100%; padding: 24px;" Outlined>
-                            <MudCardContent>
-                                <BaikenCombo Combo="combo"/>
-                            </MudCardContent>
-                        </MudCard>
-                    </MudItem>
+                <MudItem md="12" lg="6">
+                    <MudCard Style="height: 100%; padding: 24px;" Outlined>
+                        <MudCardContent>
+                            <BaikenCombo Combo="combo"/>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
                 }
             </MudGrid>
         </MudExpansionPanel>
-    }
-</MudExpansionPanels>
+        }
+    </MudExpansionPanels>
+</MudContainer>
 
 @code {
 
