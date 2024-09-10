@@ -39,7 +39,7 @@
 
         _theme = new()
         {
-            // PaletteLight = _lightPalette,
+            PaletteLight = _lightPalette,
             PaletteDark = _darkPalette,
             LayoutProperties = new LayoutProperties()
         };
@@ -54,15 +54,17 @@
         _isDarkMode = !_isDarkMode;
     }
 
-    // private readonly PaletteLight _lightPalette = new()
-    // {
-    //     Black = "#110e2d",
-    //     AppbarText = "#424242",
-    //     AppbarBackground = "rgba(255,255,255,0.8)",
-    //     DrawerBackground = "#ffffff",
-    //     GrayLight = "#e8e8e8",
-    //     GrayLighter = "#f9f9f9",
-    // };
+    private readonly PaletteLight _lightPalette = new()
+    {
+        // Black = "#110e2d",
+        // AppbarText = "#424242",
+        AppbarBackground = "#665eb4",
+        // DrawerBackground = "#ffffff",
+        // GrayLight = "#e8e8e8",
+        // GrayLighter = "#f9f9f9",
+        Background = "#FBFBFB",
+        Surface = "#F7F7F7",
+    };
 
     private readonly PaletteDark _darkPalette = new()
     {
