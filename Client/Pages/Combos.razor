@@ -32,14 +32,14 @@
     <MudExpansionPanels MultiExpansion>
         @for (int i = 0; i < AllCombos.Count; i++)
         {
-            int               listIndex = i;
+            int       listIndex = i;
             ComboList list      = AllCombos[listIndex];
-            <MudExpansionPanel Text="@list.SectionTitle">
+            <MudExpansionPanel Text="@($"#{listIndex + 1}: {list.SectionTitle}")">
                 <MudGrid>
                     @for (int j = 0; j < list.Combos.Count; j++)
                     {
-                        int                       comboIndex = j;
-                        Combo combo     = list.Combos[comboIndex];
+                        int   comboIndex = j;
+                        Combo combo      = list.Combos[comboIndex];
                         <MudItem md="12" lg="6">
                             <MudCard Style="height: 100%; padding: 24px;" Outlined>
                                 <MudCardContent>
