@@ -12,9 +12,14 @@
         whole combo and performing the right safejump afterward almost every time you get that starting move in a real match
         against a human. Feel free to practice the combo against the AI to bridge the gap if you'd like, but it's not a
         proper substitute.
+        <br/>
+        <br/>
         <MudList T="string" ReadOnly>
             In summary, here are some things that disqualify you from having "learned" any given combo:
-            <MudListItem>- you can't do it from the opposite side (switch sides every few attempts while learning)</MudListItem>
+            <MudListItem>
+                - you can't do it from the opposite side (you should switch sides every few attempts while practicing
+                in training mode)
+            </MudListItem>
             <MudListItem>- you haven't performed it in a real match</MudListItem>
             <MudListItem>- you are dropping the combo in real matches despite landing the starter</MudListItem>
             <MudListItem>- you aren't performing the proper safejump after landing the combo in real matches</MudListItem>
@@ -25,22 +30,26 @@
     </MudText>
     <br/>
     <MudExpansionPanels MultiExpansion>
-        @foreach (ComboList list in AllCombos)
+        @for (int i = 0; i < AllCombos.Count; i++)
         {
-        <MudExpansionPanel Text="@list.SectionTitle">
-            <MudGrid>
-                @foreach (Combo combo in list.Combos)
-                {
-                <MudItem md="12" lg="6">
-                    <MudCard Style="height: 100%; padding: 24px;" Outlined>
-                        <MudCardContent>
-                            <BaikenCombo Combo="combo"/>
-                        </MudCardContent>
-                    </MudCard>
-                </MudItem>
-                }
-            </MudGrid>
-        </MudExpansionPanel>
+            int               listIndex = i;
+            ComboList list      = AllCombos[listIndex];
+            <MudExpansionPanel Text="@list.SectionTitle">
+                <MudGrid>
+                    @for (int j = 0; j < list.Combos.Count; j++)
+                    {
+                        int                       comboIndex = j;
+                        Combo combo     = list.Combos[comboIndex];
+                        <MudItem md="12" lg="6">
+                            <MudCard Style="height: 100%; padding: 24px;" Outlined>
+                                <MudCardContent>
+                                    <BaikenCombo Id="@($"{listIndex + 1}.{comboIndex + 1}")" Combo="combo"/>
+                                </MudCardContent>
+                            </MudCard>
+                        </MudItem>
+                    }
+                </MudGrid>
+            </MudExpansionPanel>
         }
     </MudExpansionPanels>
 </MudContainer>
@@ -59,6 +68,8 @@
                                If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
                                tiny bit.
                           </span>]),
+                new Combo([Moves.jS.AddPrefix("rising").AddSuffix("(CH ok)"), Moves.AirDash, Moves.jK, Moves.Youzansen],
+                          "neutral jS basic conversions"),
                 new Combo([Moves._2S.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],
                           "round start CH 2S 2H hkabh",
                           [@<span>
@@ -67,8 +78,6 @@
                           </span>]),
                 new Combo([Moves._2H, Moves.HKab, Moves.HkabH],
                           "round start 2H hkabh"),
-                new Combo([Moves.jS.AddPrefix("rising").AddSuffix("(CH ok)"), Moves.AirDash, Moves.jK, Moves.Youzansen],
-                          "neutral jS basic conversions"),
                 new Combo([Moves._5P, Moves._6K, Moves.Tatami],
                           "5P 6K tatami"),
             ]),
