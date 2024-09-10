@@ -4,41 +4,16 @@
 <PageTitle>@Constants.TitlePrefix Combos</PageTitle>
 
 <MudExpansionPanels MultiExpansion>
-    @foreach (var list in AllCombos)
+    @foreach (ComboList list in AllCombos)
     {
         <MudExpansionPanel Text="@list.SectionTitle">
             <MudGrid>
-                @foreach (var combo in list.Combos)
+                @foreach (Combo combo in list.Combos)
                 {
                     <MudItem xs="12" md="6" lg="4" xl="3">
                         <MudCard Style="height: 100%; padding: 24px;" Outlined>
                             <MudCardContent>
-                                <MudStack>
-                                    <BaikenVideo Src="@combo.VideoName"></BaikenVideo>
-                                    <MudDivider/>
-                                    <MudText HtmlTag="span" Align="Align.Center">
-                                        @for (int index = 0; index < combo.Moves.Count; index++)
-                                        {
-                                            Move? move = combo.Moves[index];
-                                            <BaikenMove Move="move"></BaikenMove>
-                                            if (index < combo.Moves.Count - 1)
-                                            {
-                                                <MudText HtmlTag="span"> &gt; </MudText>
-                                            }
-                                        }
-                                    </MudText>
-                                    @for (int index = 0; index < combo.AdditionalNotes.Count; index++)
-                                    {
-                                        if (index == 0)
-                                        {
-                                            <MudDivider/>
-                                        }
-                                        RenderFragment? note = combo.AdditionalNotes[index];
-                                        <MudText Align="Align.Center">
-                                            @note
-                                        </MudText>
-                                    }
-                                </MudStack>
+                                <BaikenCombo Combo="combo"/>
                             </MudCardContent>
                         </MudCard>
                     </MudItem>
@@ -49,24 +24,6 @@
 </MudExpansionPanels>
 
 @code {
-
-    private class Combo
-    {
-        public Combo(List<Move> moves, string videoName = "", List<RenderFragment> additionalNotes = null)
-        {
-            Moves     = moves;
-            VideoName = videoName;
-
-            if (additionalNotes is not null)
-            {
-                AdditionalNotes = additionalNotes;
-            }
-        }
-
-        public List<RenderFragment> AdditionalNotes { get; } = [];
-        public List<Move> Moves { get; init; }
-        public string VideoName { get; init; }
-    }
 
     private record ComboList(string SectionTitle, List<Combo> Combos);
 
