@@ -5,7 +5,7 @@
 
 <MudContainer>
     <MudText>
-        Start <MudLink Href="https://glossary.infil.net/?t=Pressure" Target="_blank">here</MudLink> first.
+        Glossary definition: <GlossaryLink Term="Pressure"/>.
     </MudText>
     <br/>
     <MudText>
@@ -24,8 +24,7 @@
     </MudText>
     <br/>
     <MudText>
-        Let's walk through an example of a typical
-        <MudLink Href="https://glossary.infil.net/?t=Pressure" Target="_blank">blockstring</MudLink> step-by-step. Suppose
+        Let's walk through an example of a typical <GlossaryLink Term="Block String"/> step-by-step. Suppose
         you have just knocked your opponent down with
         <BaikenMove Move="Moves.HkabH" Naming="NamePreference.Friendly"/>. You're in advantage because you have the ability
         to act and make decisions while your opponent is stuck on the ground, unable to act. We typically use this time to
@@ -84,8 +83,8 @@
                 - <BaikenMove Move="Moves._2D"/>
             </MudListItem>
             <MudListItem>
-                - <BaikenMove Move="Moves.Youzansen.AddPrefix(YouzansenPrefix)" Naming="NamePreference.English"/>
-                (<MudLink Href="https://glossary.infil.net/?t=Tiger%20Knee" Target="_blank">What does Tiger Knee mean?</MudLink>)
+                - <BaikenMove Move="Moves.Youzansen.AddPrefix(TigerKneePrefix)" Naming="NamePreference.English"/>
+                (<GlossaryLink Term="Tiger Knee">What does Tiger Knee mean?</GlossaryLink>)
             </MudListItem>
         </MudList>
         Alternatively, if you want to give up your safety to invincible reversals, you can choose not to react to them
@@ -94,7 +93,7 @@
         up and then subsequently blocking
         <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>. There are a couple reasons you would choose
         to do something unsafe to invincible moves. Either it's due to
-        <MudLink Href="https://glossary.infil.net/?t=Conditioning" Target="_blank">conditioning</MudLink> your opponent not
+        <GlossaryLink Term="Conditioning"/> your opponent not
         to by repeatedly punishing them for it or them not having access to an invincible reversal available at all. Over
         time you can learn which characters have invincible moves that don't require tension, which characters have
         invincible moves that do require tension, and which characters don't have any invincible moves so that you can
@@ -115,7 +114,7 @@
                 - <BaikenMove Move="Moves.Charged_5D"/>
             </MudListItem>
             <MudListItem>
-                - <BaikenMove Move="Moves.Youzansen.AddPrefix(YouzansenPrefix)" Naming="NamePreference.English"/>
+                - <BaikenMove Move="Moves.TkYouzansen" Naming="NamePreference.English"/>
             </MudListItem>
         </MudList>
     </MudText>
@@ -132,30 +131,91 @@
         little time to do their directional inputs after blocking
         <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>. Be aware of the possibility, but don't
         expect it. Luckily though, it's not terribly difficult to react in time to make the <BaikenMove Move="Moves.cS"/>
-        <MudLink Href="https://glossary.infil.net/?t=Frame%20Trap" Target="_blank">frametrap</MudLink> your opponent. The simple
+        <GlossaryLink Term="Frame Trap"/> your opponent. The simple
         explanation of a frametrap is very similar to the previous section where I explained what happens when your opponent
         tries using a non-invincible move when there's a tatami on top of them. Consider a frametrap to be the same concept
         except instead of your opponent using a move after waking up, it's after recovering from
-        <MudLink Href="https://glossary.infil.net/?t=Frame%20Trap" Target="_blank">blockstun</MudLink>. If you've timed your
+        <GlossaryLink Term="Block Stun"/>. If you've timed your
         <BaikenMove Move="Moves.cS"/> well, your opponent will have such a small amount of time between the moment they're
         able to act and the time your <BaikenMove Move="Moves.cS"/> hits them that no move in their kit could possibly finish
-        its <MudLink Href="https://glossary.infil.net/?t=Startup" Target="_blank">startup</MudLink> before they get hit.
+        its <GlossaryLink Term="Startup"/> before they get hit.
         Note that jumping also has a startup time during which your opponent cannot block, so a frametrap will also land a
         hit on an opponent holding jump during your pressure.
     </MudText>
     <br/>
-    <MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves._2K"/></MudText>
+    <MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves.cS"/> On Block</MudText>
     <br/>
     <MudText>
-        <BaikenMove Move="Moves._2K"/> is a safe and non-committal way to catch your opponent for blocking high after
-        <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>. Everything in the
-        <BaikenMove Move="Moves.cS"/> section is also true of <BaikenMove Move="Moves._2K"/>, the main difference being that
-        you're trading your excellent reward on hit or block with <BaikenMove Move="Moves.cS"/> for the requirement that
-        your opponent must low block 2K. Though keep in mind that your opponent may not have any reason to block high in
-        this situation unless you make a habit of also representing an overhead in this situation. However, representing an
-        overhead here is unsafe on block, so without access to an RC, you get higher reward on average from following lines
-        beginning with <BaikenMove Move="Moves.cS"/>.
+        If you've properly trained your opponent with good reactions and timing, your opponent will likely be blocking
+        your <BaikenMove Move="Moves.cS"/> here. Let's talk about options after they do:
+        <br/>
+        <br/>
+        <MudList T="string" ReadOnly>
+            Gapless Cancels (no window for the opponent to input, which means no invincible reversals but also means no
+            counterhits. Can be manually delayed for a frametrap):
+            <MudListItem>
+                - <BaikenMove Move="Moves.fS"/>/<BaikenMove Move="Moves._2S"/>: Safe options that push your opponent
+                away, typically in anticipation of a <BaikenMove Move="Moves._2H"/>, which usually makes cancelling
+                <BaikenMove Move="Moves._2H"/> into <BaikenMove Move="Moves.HKab"/> safe on block.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves._2D"/> forms a complement to
+                <BaikenMove Move="Moves.TkYouzansen" Naming="NamePreference.Friendly"/> because of its double-hitting
+                low. Will land a hit on anyone attempting to backdash or jump.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.TkYouzansen" Naming="NamePreference.English"/> (must use Roman Cancel to
+                both convert on hit and make it safe on block)
+            </MudListItem>
+            Frametrap Cancels (will give a counterhit if the opponent inputs any non-invincible move or a normal hit
+            if they jump):
+            <MudListItem>
+                - <BaikenMove Move="Moves._2H"/>: Committal, but high reward natural frametrap that must be cancelled
+                into a special move on block unless you like eating a massive punish. Note: doing
+                <BaikenMove Move="Moves._2H"/> after <BaikenMove Move="Moves.cS"/> leaves you close enough that
+                cancelling <BaikenMove Move="Moves._2H"/> into <BaikenMove Move="Moves.HKab"/> is throw punishable.
+            </MudListItem>
+            Frametrap Links (will give a counterhit if the opponent inputs any* non-invincible move or a normal hit
+            if they jump):
+            <MudListItem>
+                - <BaikenMove Move="Moves._5P"/>: Has a 3 frame gap after <BaikenMove Move="Moves.cS"/>, meaning it
+                trades with Sol 5K and Chipp 5P, but will beat out any other non-invincible move in the game. Leads to
+                significantly less committal strings that are better for representing
+                <GlossaryLink Term="Tick Throw" Text="Tick Throws"/>.
+            </MudListItem>
+            Resets (punishable during startup, but advantageous on block):
+            <MudListItem>
+                - Dash (no orange sparks) > <BaikenMove Move="Moves.Throw" Naming="NamePreference.Friendly"/> (see
+                <MudLink Href="Throwkizeme">Throwkizeme</MudLink> page for followups)
+            </MudListItem>
+            <MudListItem>
+                - Dash cancel (orange sparks) > <BaikenMove Move="Moves.Throw" Naming="NamePreference.Friendly"/>: This
+                is more reactable than a normal dash, so it's less recommended but is still within reason.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.SKab"/>: High reward reset option for passive opponents. (see
+                <MudLink Href="Tether">Tether</MudLink> page for more details)
+            </MudListItem>
+            <MudListItem>
+                - Dash up and <BaikenMove Move="Moves.cS"/>: Primarily for
+                <MudLink Href="https://www.merriam-webster.com/dictionary/goad" Target="_blank">goading</MudLink> your opponent into a
+                more proactive and therefore more risky defensive strategy.
+            </MudListItem>
+        </MudList>
     </MudText>
+    @* <br/> *@
+    @* <MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves._2K"/></MudText> *@
+    @* <br/> *@
+    @* <MudText> *@
+    @*     <BaikenMove Move="Moves._2K"/> is a safe and non-committal way to catch your opponent for blocking high after *@
+    @*     <BaikenMove Move="Moves.AerialTatami" Naming="NamePreference.Friendly"/>. Everything in the *@
+    @*     <BaikenMove Move="Moves.cS"/> section is also true of <BaikenMove Move="Moves._2K"/>, the main difference being that *@
+    @*     you're trading your excellent reward on hit or block with <BaikenMove Move="Moves.cS"/> for the requirement that *@
+    @*     your opponent must low block 2K. Though keep in mind that your opponent may not have any reason to block high in *@
+    @*     this situation unless you make a habit of also representing an overhead in this situation. However, representing an *@
+    @*     overhead here is unsafe on block, so without access to an RC, you get higher reward on average from following lines *@
+    @*     beginning with <BaikenMove Move="Moves.cS"/>. *@
+    @* </MudText> *@
     <MudGrid Justify="Justify.Center">
         <MudItem xs="4">
             <MudCard>
@@ -171,6 +231,6 @@
 </MudContainer>
 
 @code {
-    private const string YouzansenPrefix = "Tiger Knee";
+    private const string TigerKneePrefix = "Tiger Knee";
 
 }

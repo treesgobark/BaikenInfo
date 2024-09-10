@@ -95,6 +95,9 @@ public static class Moves
                                                   " Sometimes you may have to delay it, though, if your opponent is too high."]);
     public static Move SKab  { get; } = new Move("41236S",  "Kabari (S version)", "skab", AttackButton.S, "41236S", "Kabari");
     public static Move Youzansen  { get; } = new Move("j.236S",  "Youzansen", "yzn", AttackButton.S, "j236S", "Youzansen");
+
+    public static Move TkYouzansen { get; } =
+        new Move("TK 236S", "Tiger Knee Youzansen", "tk yzn", AttackButton.S, "j236S", "Youzansen");
     public static Move cS       { get; } = new Move("c.S",     "Close Slash", "", AttackButton.S, "cS", "c.S");
     public static Move fS       { get; } = new Move("f.S",     "Far Slash", "", AttackButton.S, "fS", "f.S");
     public static Move jP       { get; } = new Move("j.P",     "Aerial Punch", "", AttackButton.P, "jP", "j.P");
