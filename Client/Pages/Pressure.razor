@@ -167,7 +167,7 @@
                 - <BaikenMove Move="Moves.TkYouzansen" Naming="NamePreference.English"/> (must use Roman Cancel to
                 both convert on hit and make it safe on block)
             </MudListItem>
-            Frametrap Cancels (will give a counterhit if the opponent inputs any non-invincible move or a normal hit
+            Frametrap Cancel (will give a counterhit if the opponent inputs any non-invincible move or a normal hit
             if they jump):
             <MudListItem>
                 - <BaikenMove Move="Moves._2H"/>: Committal, but high reward natural frametrap that must be cancelled
@@ -175,7 +175,7 @@
                 <BaikenMove Move="Moves._2H"/> after <BaikenMove Move="Moves.cS"/> leaves you close enough that
                 cancelling <BaikenMove Move="Moves._2H"/> into <BaikenMove Move="Moves.HKab"/> is throw punishable.
             </MudListItem>
-            Frametrap Links (will give a counterhit if the opponent inputs any* non-invincible move or a normal hit
+            Frametrap Link (will give a counterhit if the opponent inputs any* non-invincible move or a normal hit
             if they jump):
             <MudListItem>
                 - <BaikenMove Move="Moves._5P"/>: Has a 3 frame gap after <BaikenMove Move="Moves.cS"/>, meaning it
@@ -194,12 +194,69 @@
             </MudListItem>
             <MudListItem>
                 - <BaikenMove Move="Moves.SKab"/>: High reward reset option for passive opponents. (see
-                <MudLink Href="Tether">Tether</MudLink> page for more details)
+                <MudLink Href="SKabariRps">S Kabari RPS</MudLink> page for more details)
             </MudListItem>
             <MudListItem>
                 - Dash up and <BaikenMove Move="Moves.cS"/>: Primarily for
                 <MudLink Href="https://www.merriam-webster.com/dictionary/goad" Target="_blank">goading</MudLink> your opponent into a
                 more proactive and therefore more risky defensive strategy.
+            </MudListItem>
+        </MudList>
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves.fS"/> On Block</MudText>
+    <br/>
+    <MudText>
+        You have a lot less options after <BaikenMove Move="Moves.fS"/> than <BaikenMove Move="Moves.cS"/>, but you do
+        still have options:
+        <br/>
+        <br/>
+        <MudList T="string" ReadOnly>
+            Gapless Cancel:
+            <MudListItem>
+                - <BaikenMove Move="Moves._5H"/>: Your only option to stay gapless. However, this will eventually
+                lead to a gap anyway since you'll be too far for
+                <BaikenMove Move="Moves.Tatami" Naming="NamePreference.Friendly"/> to connect and
+                <BaikenMove Move="Moves.HKab"/> would only gapless at close range.
+            </MudListItem>
+            Frametrap Cancel:
+            <MudListItem>
+                - <BaikenMove Move="Moves._2H"/>: Leaves a 4f gap, so around one-third of the cast can trade with this
+                option, but the trade is in your favor as you get a knockdown and they don't.
+            </MudListItem>
+            Resets:
+            <MudListItem>
+                - Dash > <BaikenMove Move="Moves.Throw" Naming="NamePreference.Friendly"/>: Very dangerous and reactable
+                option, but can still catch anyone sleeping at the wheel.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.SKab"/>: Again, high reward reset option for passive opponents.
+                (Reference: <MudLink Href="SKabariRps">S Kabari RPS</MudLink>)
+            </MudListItem>
+        </MudList>
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5"><BaikenMove Typo="Typo.h5" Move="Moves._2H"/> On Block</MudText>
+    <br/>
+    <MudText>
+        You have even less options after <BaikenMove Move="Moves._2S"/> than <BaikenMove Move="Moves.fS"/>. By the time
+        you're here, the spacing could vary a decent bit, so it's going to get more situational:
+        <br/>
+        <br/>
+        <MudList T="string" ReadOnly>
+            <MudListItem>
+                - <BaikenMove Move="Moves.HKab"/>: Unsafe on block when really close (throw punish), gapless and safe
+                on block when kinda close, frametraps at medium distances, jumpable gap at far distances. See the
+                <MudLink Href="HKabariRps">H Kabari RPS</MudLink> page for more info.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.Tatami"/>: Gapless up close, gets simultaneously less and more safe
+                progressively at increasing distance. See the
+                <MudLink Href="GroundedTatamiRps">Grounded Tatami RPS</MudLink> page for more info.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.SKab"/>: Still a high reward reset option for passive opponents.
+                (Reference: <MudLink Href="SKabariRps">S Kabari RPS</MudLink>)
             </MudListItem>
         </MudList>
     </MudText>
