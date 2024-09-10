@@ -1,0 +1,65 @@
+@inject ClipboardService Clipboard
+
+<MudStack>
+    @if (HasId)
+    {
+        <MudText>
+            @($"#{Id}: ")
+        </MudText>
+    }
+    @if (HasVideo)
+    {
+        <BaikenVideo Src="@Combo.VideoName"></BaikenVideo>
+    }
+    @if (HasId || HasVideo)
+    {
+        <MudDivider/>
+    }
+    <MudStack Row Style="width: 100%" Justify="Justify.Center">
+        <MudText HtmlTag="span" Align="Align.Center">
+            @for (int index = 0; index < Combo.Moves.Count; index++)
+            {
+                Move? move = Combo.Moves[index];
+                <BaikenMove Move="move"></BaikenMove>
+                if (index < Combo.Moves.Count - 1)
+                {
+                    <MudText HtmlTag="span"> &gt; </MudText>
+                }
+            }
+        </MudText>
+        <MudIconButton Icon="@Icons.Material.Filled.ContentCopy"
+                       Size="Size.Small"
+                       OnClick="@(async () => await Clipboard.WriteTextAsync(Combo.ComboString))"/>
+    </MudStack>
+    @for (int index = 0; index < Combo.AdditionalNotes.Count; index++)
+    {
+        if (index == 0)
+        {
+            <MudDivider/>
+        }
+
+        RenderFragment? note = Combo.AdditionalNotes[index];
+        <MudText Align="Align.Center">
+            @note
+        </MudText>
+    }
+</MudStack>
+
+@code {
+    [Parameter]
+    public Combo Combo { get; set; }
+    
+    [Parameter]
+    public string Id { get; set; }
+
+    private bool HasVideo => !string.IsNullOrWhiteSpace(Combo.VideoName);
+    private bool HasId => !string.IsNullOrWhiteSpace(Id);
+    
+    private bool IsClipboardSupported { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsClipboardSupported = await Clipboard.IsSupportedAsync();
+    }
+
+}
