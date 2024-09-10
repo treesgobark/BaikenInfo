@@ -48,22 +48,22 @@
         Baiken's best investigation tools for figuring out your opponent's offense:
         <MudList T="string" ReadOnly>
             First, universal skills:
-            <MudItem>
+            <MudListItem>
                 - Blocking
-            </MudItem>
-            <MudItem>
+            </MudListItem>
+            <MudListItem>
                 - Backdash
-            </MudItem>
-            <MudItem>
+            </MudListItem>
+            <MudListItem>
                 - Jump
-            </MudItem>
+            </MudListItem>
             Next, Baiken-specific tools:
-            <MudItem>
+            <MudListItem>
                 - <BaikenMove Move="Moves._5P"/>
-            </MudItem>
-            <MudItem>
+            </MudListItem>
+            <MudListItem>
                 - <BaikenMove Move="Moves.Hiiragi" Naming="NamePreference.English"/>
-            </MudItem>
+            </MudListItem>
         </MudList>
     </MudText>
     <br/>
@@ -83,7 +83,7 @@
     <MudText Typo="Typo.h5">Throws</MudText>
     <br/>
     <MudText>
-        Blocking cannot defend against a <BaikenMove Move="Moves.Throw"/>,
+        Blocking cannot defend against a <BaikenMove Move="Moves.Throw" Naming="NamePreference.Friendly"/>,
         regardless of whether you are crouching. Throws have an
         extremely short range and any throw attempt when not in range will cause that player to
         <MudLink Href="https://glossary.infil.net/?t=Tiger%20Knee" Target="_blank">whiff</MudLink> the throw and be locked
