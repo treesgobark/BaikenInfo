@@ -1,0 +1,32 @@
+<MudPaper>
+    <MudButton Href="@Href" Style="width: 100%;padding: 24px;">
+        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
+            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">
+                @if (ChildContent is not null)
+                {
+                    @ChildContent
+                }
+                else if (Href is not null)
+                {
+                    @Href
+                }
+                else if (ImageName is not null)
+                {
+                    @ImageName
+                }
+            </MudText>
+            <MudImage Src="@($"Moves/{ImageName}.png")" Style="height: 100%"></MudImage>
+        </MudStack>
+    </MudButton>
+</MudPaper>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    
+    [Parameter]
+    public string? ImageName { get; set; }
+    
+    [Parameter]
+    public string? Href { get; set; }
+}

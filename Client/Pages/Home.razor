@@ -11,50 +11,15 @@
     <MudGrid>
         <MudItem xs="12" md="6" lg="4">
             <MudStack Spacing="6">
-                <MudPaper>
-                    <MudButton Href="Neutral" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Neutral</MudText>
-                            <MudImage Src="Moves/fS.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
-                <MudPaper>
-                    <MudButton Href="Defense" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Defense</MudText>
-                            <MudImage Src="Moves/236P2.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
-                <MudPaper>
-                    <MudButton Href="Defense" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Throwkizeme</MudText>
-                            <MudImage Src="Moves/GroundThrow.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
-                <MudPaper>
-                    <MudButton Href="HKabariRps" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">H Kabari RPS</MudText>
-                            <MudImage Src="Moves/41236H.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
+                <HomeCard Href="Neutral" ImageName="fS"/>
+                <HomeCard Href="Defense" ImageName="236P2"/>
+                <HomeCard Href="Throwkizeme" ImageName="GroundThrow"/>
+                <HomeCard Href="HKabariRps" ImageName="41236H">H Kabari RPS</HomeCard>
             </MudStack>
         </MudItem>
         <MudItem xs="12" md="6" lg="4">
             <MudStack Spacing="6">
-                <MudPaper>
-                    <MudButton Href="Safejumps" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Safejumps</MudText>
-                            <MudImage Src="Moves/jH.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
+                <HomeCard Href="Safejumps" ImageName="jH"/>
                 <MudPaper Style="padding: 24px">
                     <MudStack>
                         <MudText Typo="Typo.h6">Some helpful external links:</MudText>
@@ -65,58 +30,16 @@
                         </MudList>
                     </MudStack>
                 </MudPaper>
-                <MudPaper>
-                    <MudButton Href="Tether" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Tether Mechanics</MudText>
-                            <MudImage Src="Moves/AirThrow.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
-                <MudPaper>
-                    <MudButton Href="GroundedTatamiRps" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Tatami RPS</MudText>
-                            <MudImage Src="Moves/236K.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
+                <HomeCard Href="Tether" ImageName="AirThrow">Tether Mechanics</HomeCard>
+                <HomeCard Href="GroundedTatamiRps" ImageName="236K">Tatami RPS</HomeCard>
             </MudStack>
         </MudItem>
         <MudItem xs="12" md="6" lg="4">
             <MudStack Spacing="6">
-                <MudPaper>
-                    <MudButton Href="Combos" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">COMBOS</MudText>
-                            <MudImage Src="Moves/jD.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
-                <MudPaper>
-                    <MudButton Href="Pressure" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Pressure</MudText>
-                            <MudImage Src="Moves/j236S.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
-                <MudPaper>
-                    <MudButton Href="Psychic_Damage" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">Psychic Damage</MudText>
-                            <MudImage Src="Moves/5D.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
-                <MudPaper>
-                    <MudButton Href="SKabariRps" Style="width: 100%;padding: 24px;">
-                        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
-                            <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">S Kabari RPS</MudText>
-                            <MudImage Src="Moves/41236S.png" Style="height: 100%"></MudImage>
-                        </MudStack>
-                    </MudButton>
-                </MudPaper>
+                <HomeCard Href="Combos" ImageName="jD"/>
+                <HomeCard Href="Pressure" ImageName="j236S"/>
+                <HomeCard Href="PsychicDamage" ImageName="5D">Psychic Damage</HomeCard>
+                <HomeCard Href="SKabariRps" ImageName="41236S">S Kabari RPS</HomeCard>
             </MudStack>
         </MudItem>
     </MudGrid>
