@@ -1,17 +1,57 @@
-﻿@inject NavigationManager NavigationManager
-
+﻿@using Blazored.LocalStorage
+@using Client.Shared
+@inject ISyncLocalStorageService LocalStorage
 
 <MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="Neutral" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.PedalBike">Neutral</MudNavLink>
-    <MudNavLink Href="Pressure" Match="NavLinkMatch.All" Icon="@Icons.Material.Outlined.Sync">Pressure</MudNavLink>
-    <MudNavLink Href="Defense" Match="NavLinkMatch.All" Icon="@Icons.Material.Outlined.Shield">Defense</MudNavLink>
-    <MudNavLink Href="Safejumps" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.SafetyCheck">Safejumps</MudNavLink>
-    <MudNavLink Href="Throwkizeme" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.SwapVert">Throwkizeme</MudNavLink>
-    <MudNavLink Href="HKabariRps" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Build">H Kabari RPS</MudNavLink>
-    <MudNavLink Href="SKabariRps" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Anchor">S Kabari RPS</MudNavLink>
-    <MudNavLink Href="GroundedTatamiRps" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Gradient">Grounded Tatami RPS</MudNavLink>
-    <MudNavLink Href="Psychic_Damage" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Transcribe">Psychic Damage</MudNavLink>
-    <MudNavLink Href="Tether" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Gesture">Tether Mechanics</MudNavLink>
-    <MudNavLink Href="Combos" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.ArrowForwardIos">Combos</MudNavLink>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Home"])" Href="" Icon="@Icons.Material.Filled.Home">Home</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Checklist"])" Href="Checklist" Icon="@Icons.Material.Filled.Checklist">Checklist</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Neutral"])" Href="Neutral" Icon="@Icons.Material.Filled.PedalBike">Neutral</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Pressure"])" Href="Pressure" Icon="@Icons.Material.Outlined.Sync">Pressure</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Defense"])" Href="Defense" Icon="@Icons.Material.Outlined.Shield">Defense</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Safejumps"])" Href="Safejumps" Icon="@Icons.Material.Filled.SafetyCheck">Safejumps</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Throwkizeme"])" Href="Throwkizeme" Icon="@Icons.Material.Filled.SwapVert">Throwkizeme</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["HKabariRps"])" Href="HKabariRps" Icon="@Icons.Material.Filled.Build">H Kabari RPS</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["SKabariRps"])" Href="SKabariRps" Icon="@Icons.Material.Filled.Anchor">S Kabari RPS</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["GroundedTatamiRps"])" Href="GroundedTatamiRps" Icon="@Icons.Material.Filled.Gradient">Grounded Tatami RPS</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["PsychicDamage"])" Href="PsychicDamage" Icon="@Icons.Material.Filled.Transcribe">Psychic Damage</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Tether"])" Href="Tether" Icon="@Icons.Material.Filled.Gesture">Tether Mechanics</NavLinkIndicator>
+    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Combos"])" Href="Combos" Icon="@Icons.Material.Filled.ArrowForwardIos">Combos</NavLinkIndicator>
 </MudNavMenu>
+
+@code
+{
+    private const string UnreadPagesKey = "UnreadPages";
+
+    private Dictionary<string, bool> UnreadPages { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        if (!LocalStorage.ContainKey(UnreadPagesKey))
+        {
+            UnreadPages["Home"] = false;
+            UnreadPages["Checklist"] = false;
+            UnreadPages["Neutral"] = false;
+            UnreadPages["Pressure"] = false;
+            UnreadPages["Defense"] = false;
+            UnreadPages["Safejumps"] = false;
+            UnreadPages["Throwkizeme"] = false;
+            UnreadPages["HKabariRps"] = false;
+            UnreadPages["SKabariRps"] = false;
+            UnreadPages["GroundedTatamiRps"] = false;
+            UnreadPages["PsychicDamage"] = false;
+            UnreadPages["Tether"] = false;
+            UnreadPages["Combos"] = false;
+            LocalStorage.SetItem(UnreadPagesKey, UnreadPages);
+        }
+
+        if (LocalStorage.TryGetItem(UnreadPagesKey, out Dictionary<string, bool> items))
+        {
+            UnreadPages = items;
+        }
+    }
+
+    private void MarkPageRead(string key)
+    {
+        UnreadPages[key] = true;
+    }
+}

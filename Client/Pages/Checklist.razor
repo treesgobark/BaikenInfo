@@ -1,0 +1,317 @@
+@page "/Checklist"
+@using Blazored.LocalStorage
+@using Client.Shared
+@inject ISyncLocalStorageService LocalStorage
+
+<MudContainer>
+    <MudText>
+        On this page, I've laid out a guide for what I believe is the best order to learn things in when new to both
+        Guilty Gear: Strive and Baiken. All the check boxes here will save your progress, even if you close your
+        browser.
+    </MudText>
+    <br/>
+    <MudText>
+        This guide is starting from pretty much the very beginning, so if you've already played Strive for a bit, feel
+        free to skip down to where the Baiken-specific advice starts.
+    </MudText>
+    <br/>
+    <MudText>
+        First thing's first, this site makes full use of both number notation for referring to moves as well as plenty
+        of fighting game jargon. I've done my best to put links to definitions on all the terms, but I'm not perfect.
+        Therefore your first two tasks are as follows:
+        <ChecklistItem Key="VisitGlossary" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Visit the <MudLink Href="https://glossary.infil.net/" Target="_blank">glossary</MudLink>
+        </ChecklistItem>
+        <ChecklistItem Key="SkimNotation" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Skim through the <MudLink Href="https://www.dustloop.com/w/Notation" Target="_blank">Dustloop notation guide</MudLink>
+        </ChecklistItem>
+        <br/>
+        I've added tooltips to every piece of notation on the site so you don't need to memorize it just yet. However,
+        it's a good idea to understand what the numbers mean so you don't have to rely on the tooltips forever.
+    </MudText>
+    <br/>
+    <MudText>
+        Training mode is one of your most important tools for becoming a better player. It is absolutely a myth that
+        you need to spend tons of time in training mode to be good, but you do have to spend a bit every so often. Take
+        some time now to enter training mode from the Dojo on the main menu and pick baiken. You can pick any character
+        to be player 2. Once you're inside, you can pause the game to see Baiken's move list.
+        <ChecklistItem Key="ReadMoves" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Read Baiken's move list and try some moves out
+        </ChecklistItem>
+        <br/>
+        While you're in training mode, it's not a bad idea to check your key bindings. The most important one is to make
+        sure that "Dash" is bound to a button. Personally, I prefer Left Bumper/L1.
+        <ChecklistItem Key="CheckKeybinds" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Check out the button settings and make sure Dash is bound to something comfortable
+        </ChecklistItem>
+        <br/>
+        You should also familiarize yourself with some of the most useful training mode options while you're here. Note
+        that you can reset the training dummy by pressing the back or select button on controller. Check your button
+        settings if you're having trouble. If you hold up while you reset, you'll switch sides, and if you hold left,
+        right, or down, you'll reset to one of three positions in the arena. Once you switch positions, you don't have
+        to hold the direction every time anymore.
+        The most important setting in training mode is called
+        "Guard after first hit". This means that after you hit the training dummy, it will start blocking for the duration
+        of your combo. This makes it very easy to tell if what you're doing is a true combo. You can find this setting
+        in the opponent status section. The next important setting is the Counter-Attack settings. Here you'll be able
+        to tell the training dummy what to do after specific situations. "After Block" and "After Recovery" are the
+        most common ones you'll use. After Recovery will trigger after the bot gets up from a knockdown.
+        <ChecklistItem Key="TryTrainingOptions" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Familiarize yourself with the training mode tool
+        </ChecklistItem>
+    </MudText>
+    <br/>
+    <MudText>
+        Once you've gotten your hands warmed up and you've used some moves, it's a good idea to check out mission mode.
+        From the main menu, you can go to the Dojo and then Missions. The missions help introduce you to all the system
+        mechanics of Guilty Gear Strive. They're super duper helpful and don't take very long. It's a good idea to work
+        you way through the missions if you're unfamiliar with Strive's system mechanics and especially if you're
+        unfamiliar with fighting games. You don't have to complete everything, of course, but the missions can be super
+        helpful for filling in some gaps in your knowledge that you didn't know you had.
+        <ChecklistItem Key="MissionMode" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Do some missions
+        </ChecklistItem>
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5" Color="Color.Error">Baiken-Specific Advice Begins Here</MudText>
+    <br/>
+    <MudText>
+        First thing to learn on Baiken or any character for that matter is neutral. I've got a relatively short page
+        here that covers about 90% of everything you need to know about neutral to climb up to the high floors.
+        <ChecklistItem Key="ReadNeutral" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Grasp control of the round from the very first move by reading the <MudLink Href="Neutral">Neutral</MudLink>
+            page
+        </ChecklistItem>
+        <br/>
+        You're also going to want to know some basic things about how not to die over and over again. This will make it
+        a lot easier to practice your neutral since you'll survive longer:
+        <ChecklistItem Key="ReadDefense" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Understand the power of staying safe by reading the <MudLink Href="Neutral">Defense</MudLink> page
+        </ChecklistItem>
+        <br/>
+        Once you've read those, feel free to go and try it out in some real matches. Focus only using those three moves
+        I mention in the neutral page. On defense, just focus on blocking and defending against throws if your
+        opponents use them, then you can usually jump out or use <BaikenMove Move="Moves.fS"/> to fight your way out
+        when it seems safe to do so.
+    </MudText>
+    <MudText>
+        Alright, now is the time to learn some combos! First up:
+        <ChecklistItem Key="ReadCombos" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Gain an understanding of how to be effective in your learning in the <MudLink Href="Combos">Combos</MudLink>
+            page's preamble.
+        </ChecklistItem>
+        <br/>
+        That information is incredibly relevant for the next step of the process: learning a combo for each one of your
+        neutral options. <BaikenMove Move="Moves._2H"/> should not be a very common neutral option since it's super
+        dangerous to whiff it, but it's included as a starter here moreso because it's a component of the other ones. 
+        <ChecklistItem Key="LearnCombo1.1" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #1.1
+        </ChecklistItem>
+        <br/>
+        All of these combos are going to end in a Safejump. This is a critical part of why these combos are so
+        effective and you need to learn to do it as you're learning these combos. To learn what they are and how to do
+        them correctly, there's a page for that:
+        <ChecklistItem Key="ReadSafejumps" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn and practice how to keep your opponent in the vortex on the
+            <MudLink Href="Safejumps">Safejumps</MudLink> page.
+        </ChecklistItem>
+        <br/>
+        Once you can do combo #1.1 and perform the safejump afterward, feel free to move on to the other combos.
+        But keep in mind what I said about what it means to "learn" a combo. This is going to be your first big hurdle.
+        It's not an easy thing to do to get all of these combos consistent in real matches, but it's far and away the
+        best thing you can do for yourself. If you want to be effective, you need to be consistent on the most common
+        combo starters. Learning all of these first combos will have a greater impact on your play than anything else
+        you could possibly work on at this point. Godspeed, soldier:
+        <ChecklistItem Key="LearnCombo1.1" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #1.2
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo1.1" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #1.3
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo1.1" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #1.4
+        </ChecklistItem>
+        <br/>
+        Once you've reached this point, you are more powerful than you could ever imagine. However, there are definitely
+        some holes in your gameplay. You should have already read the defense page, but that was mostly about how not to
+        die. The next step in your defensive journey is how to punish your opponent for their mistakes. You'll need the
+        next set of combos to do so:
+        <ChecklistItem Key="LearnCombo2.1" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #2.1
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo2.2" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #2.2
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo2.3" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #2.3
+        </ChecklistItem>
+        <br/>
+        Those three combos are your light button conversions, in order of ascending range and startup time. They are how
+        you turn your defense into offense. Next up are your invincible reversal punishes. Most invincible supers are
+        disadvantaged enough for your to run up and <BaikenMove Move="Moves.cS"/>. That's what these two are for:
+        <ChecklistItem Key="LearnCombo2.4" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #2.4
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo2.5" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #2.5
+        </ChecklistItem>
+        <br/>
+        Last up in this section is your callout to punish long-recovery attacks that hit low to the ground:
+        <ChecklistItem Key="LearnCombo2.4" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #2.6
+        </ChecklistItem>
+        <br/>
+        Now that you've taken back your turn, you have to learn to keep it. Here's how:
+        <ChecklistItem Key="ReadPressure" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn how you can keep your opponent guessing on the <MudLink Href="Pressure">Pressure</MudLink> page.
+        </ChecklistItem>
+        <br/>
+        Once you've caught your opponent lacking (as the kids say), you need to seal the deal to keep them in the
+        whirlwind of pain:
+        <ChecklistItem Key="LearnCombo3.1" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #3.1
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo3.2" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #3.2
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo3.3" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #3.3
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo3.4" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #3.4
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo3.5" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #3.5
+        </ChecklistItem>
+        <ChecklistItem Key="LearnCombo3.6" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn <MudLink Href="Combos">combo</MudLink> #3.6
+        </ChecklistItem>
+        <br/>
+        Eventually, people are going to start blocking, so you're going to want to start throwing your opponents when
+        they get too passive. Here's what to do when you land one:
+        <ChecklistItem Key="ReadThrowkizeme" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Explode your opponent's brain and mix the hell out of them by reading the
+            <MudLink Href="Throwkizeme">Throwkizeme</MudLink> page
+        </ChecklistItem>
+    </MudText>
+    <br/>
+    <MudText>
+        Your journey will become increasingly freeform as you go on. Here's some more items for the other pages. More
+        to come in the future!
+        <ChecklistItem Key="ReadHKabariRps" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Learn the ins and outs of spacing traps on the <MudLink Href="HKabariRps">H Kabari RPS</MudLink> page
+        </ChecklistItem>
+        <ChecklistItem Key="ReadSKabariRps" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Never let your prey escape with the <MudLink Href="SKabariRps">S Kabari RPS</MudLink> page
+        </ChecklistItem>
+        <ChecklistItem Key="ReadTatamiRps" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Make your opponent yell "HOW AM I NOT PLUS THERE?" with the
+            <MudLink Href="GroundedTatamiRps">Tatami RPS</MudLink> page
+        </ChecklistItem>
+        <ChecklistItem Key="ReadTether" Values="ChecklistItems" SetFunc="SetCheckbox">
+            BYOC (bring your own corner) to anywhere on the stage with the
+            <MudLink Href="Tether">Tether Mechanics</MudLink> page
+        </ChecklistItem>
+        <ChecklistItem Key="ReadPsychicDamage" Values="ChecklistItems" SetFunc="SetCheckbox">
+            Ruin your opponent's life with the disrespectful setups on the
+            <MudLink Href="PsychicDamage">Psychic Damage</MudLink> page
+        </ChecklistItem>
+    </MudText>
+    <br/>
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h4" Align="Align.Center">Under Construction</MudText>
+                    <MudText Align="Align.Center">
+                        <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.Construction"/>
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+
+    private const string ChecklistKey = "ChecklistItems";
+    private Dictionary<string, bool> ChecklistItems { get; set; } = new();
+    private IEnumerable<string> Keys { get; } = [
+        "VisitGlossary",
+        "SkimNotation",
+        "ReadMoves",
+        "CheckKeybinds",
+        "TryTrainingOptions",
+        "TryTrainingOptions",
+        "MissionMode",
+        "ReadNeutral",
+        "ReadDefense",
+        "ReadCombos",
+        "LearnCombo1.1",
+        "ReadSafejumps",
+        "LearnCombo1.2",
+        "LearnCombo1.3",
+        "LearnCombo1.4",
+        "LearnCombo2.1",
+        "LearnCombo2.2",
+        "LearnCombo2.3",
+        "LearnCombo2.4",
+        "LearnCombo2.5",
+        "LearnCombo2.6",
+        "LearnCombo2.7",
+        "ReadPressure",
+        "LearnCombo3.1",
+        "LearnCombo3.2",
+        "LearnCombo3.3",
+        "LearnCombo3.4",
+        "LearnCombo3.5",
+        "LearnCombo3.6",
+        "ReadThrowkizeme",
+        "ReadHKabariRps",
+        "ReadSKabariRps",
+        "ReadTatamiRps",
+        "ReadTether",
+        "ReadPsychicDamage",
+    ];
+
+    protected override void OnInitialized()
+    {
+        if (!LocalStorage.ContainKey(ChecklistKey))
+        {
+            SaveChanges();
+        }
+
+        if (LocalStorage.TryGetItem(ChecklistKey, out Dictionary<string, bool> items))
+        {
+            ChecklistItems = items;
+        }
+        
+        EnsureKeysPresent();
+    }
+
+    private void EnsureKeysPresent()
+    {
+        foreach (string key in Keys)
+        {
+            ChecklistItems.TryAdd(key, false);
+        }
+    }
+
+    private void SetCheckbox(string key, bool value)
+    {
+        ChecklistItems[key] = value;
+        SaveChanges();
+    }
+
+    private void ClearItems()
+    {
+        ChecklistItems.Clear();
+        SaveChanges();
+    }
+
+    private void SaveChanges()
+    {
+        LocalStorage.SetItem(ChecklistKey, ChecklistItems);
+    }
+
+}

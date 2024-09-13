@@ -1,0 +1,23 @@
+<MudNavLink Href="@Href" Match="NavLinkMatch.All" Icon="@Icon">
+    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+        <div>@ChildContent</div>
+        @if (IsIndicatorEnabled)
+        {
+            <MudIcon Icon="@Icons.Material.Filled.Circle" Style="color: #b26fda;font-size: .75rem;"></MudIcon>
+        }
+    </MudStack>
+</MudNavLink>
+
+@code {
+    [Parameter]
+    public string Href { get; set; }
+    
+    [Parameter]
+    public string Icon { get; set; }
+    
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    
+    [Parameter]
+    public bool IsIndicatorEnabled { get; set; }
+}

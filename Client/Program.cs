@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Client;
 using CurrieTechnologies.Razor.Clipboard;
 using Microsoft.AspNetCore.Components.Web;
@@ -13,5 +14,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddMudServices();
 builder.Services.AddMudExtensions();
 builder.Services.AddClipboard();
+builder.Services.AddBlazoredLocalStorage();
 
 await builder.Build().RunAsync();

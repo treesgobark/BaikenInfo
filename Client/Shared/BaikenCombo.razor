@@ -1,20 +1,11 @@
 @inject ClipboardService Clipboard
 
 <MudStack>
-    @if (HasId)
-    {
-        <MudText>
-            @($"#{Id}: ")
-        </MudText>
-    }
-    @if (HasVideo)
-    {
-        <BaikenVideo Src="@Combo.VideoName"></BaikenVideo>
-    }
-    @if (HasId || HasVideo)
-    {
-        <MudDivider/>
-    }
+    <MudText>
+        @($"#{Id}: ")
+    </MudText>
+    <BaikenVideo Src="@Combo.VideoName"></BaikenVideo>
+    <MudDivider/>
     <MudStack Row Style="width: 100%" Justify="Justify.Center">
         <MudText HtmlTag="span" Align="Align.Center">
             @for (int index = 0; index < Combo.Moves.Count; index++)
@@ -51,9 +42,6 @@
     
     [Parameter]
     public string Id { get; set; }
-
-    private bool HasVideo => !string.IsNullOrWhiteSpace(Combo.VideoName);
-    private bool HasId => !string.IsNullOrWhiteSpace(Id);
     
     private bool IsClipboardSupported { get; set; }
 
