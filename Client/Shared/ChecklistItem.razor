@@ -1,0 +1,17 @@
+<MudCheckBox @bind-Value:get="Values[Key]" @bind-Value:set="(value) => SetFunc(Key, value)" T="bool">
+    @ChildContent
+</MudCheckBox>
+
+@code {
+    [Parameter]
+    public Action<string, bool> SetFunc { get; set; }
+    
+    [Parameter]
+    public string Key { get; set; }
+    
+    [Parameter]
+    public Dictionary<string, bool> Values { get; set; }
+    
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

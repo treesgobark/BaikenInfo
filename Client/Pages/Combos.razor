@@ -60,8 +60,10 @@
 
     private List<ComboList> AllCombos { get; } =
         [
-            new ComboList("Your First Combos",
+            new ComboList("The Beginning of the End (neutral starters)",
             [
+                new Combo([Moves._2H, Moves.HKab, Moves.HkabH],
+                          "round start 2H hkabh"),
                 new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],
                           "round start fS 2H hkabh",
                           [@<span>
@@ -76,21 +78,15 @@
                               If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
                               tiny bit.
                           </span>]),
-                new Combo([Moves._2H, Moves.HKab, Moves.HkabH],
-                          "round start 2H hkabh"),
+            ]),
+            new ComboList("The Reward for Your Patience (punishes from defense)",
+            [
                 new Combo([Moves._5P, Moves._6K, Moves.Tatami],
                           "5P 6K tatami"),
-            ]),
-            new ComboList("The Next Step",
-            [
-                new Combo([Moves.IAD, Moves.AerialTatami, Moves.cS, Moves._2H, Moves.Tatami],
-                          "tatami safejump combo"),
-                new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami],
-                          "IAD jH cS 2H tatami"),
+                new Combo([Moves._2K, Moves._6K, Moves.Tatami]),
+                new Combo([Moves._5K, Moves._6K, Moves.Tatami]),
                 new Combo([Moves.cS, Moves._2H, Moves.HKab, Moves.HkabH],
                           "cS 2H hkabh"),
-                new Combo([Moves.IAD, Moves.jS, Moves.Youzansen],
-                          "IAD jS yzn"),
                 new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH],
                           "bnb",
                           [@<span>
@@ -98,9 +94,21 @@
                                in this section, but if you're spending too much time getting the timing right on the 
                                <BaikenMove Move="Moves._2S"/>, it's best move on to the next section and come back later.
                           </span>]),
+                new Combo([Moves.IAD, Moves.jS, Moves.Youzansen],
+                          "IAD jS yzn",
+                          [@<span>
+                               It's a good idea to spend some time in training mode practicing doing a delay on your
+                               <BaikenMove Move="Moves.Youzansen"/>. You want it to come out as late as possible without
+                               getting cancelled too early that it doesn't hit. This will help you immensely both on
+                               hit and on block by giving you more advantage.
+                           </span>]),
             ]),
-            new ComboList("Now That's What I Call Hit Confirms 56",
+            new ComboList("The Never-Ending Vortex (hit confirms in pressure)",
             [
+                new Combo([Moves.IAD, Moves.AerialTatami, Moves.cS, Moves._2H, Moves.Tatami],
+                          "tatami safejump combo"),
+                new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami],
+                          "IAD jH cS 2H tatami"),
                 new Combo([Moves._5K.AddPrefix("(aerial opponent)"), Moves._6H, Moves.HKab, Moves.HkabH],
                           "5K 6H hkabh",
                           [@<span>

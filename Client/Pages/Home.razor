@@ -1,5 +1,7 @@
 ﻿@page "/"
+@using Blazored.LocalStorage
 @using Client.Shared
+@inject ISyncLocalStorageService LocalStorage
 
 <PageTitle>@Constants.TitlePrefix Home</PageTitle>
 
@@ -20,16 +22,17 @@
         <MudItem xs="12" md="6" lg="4">
             <MudStack Spacing="6">
                 <HomeCard Href="Safejumps" ImageName="jH"/>
-                <MudPaper Style="padding: 24px">
-                    <MudStack>
-                        <MudText Typo="Typo.h6">Some helpful external links:</MudText>
-                        <MudList T="string">
-                            <MudListItem Href="https://glossary.infil.net" Target="_blank">Terms Glossary</MudListItem>
-                            <MudListItem Href="https://www.dustloop.com/w/Notation" Target="_blank">Dustloop's Notation Guide</MudListItem>
-                            <MudListItem Href="https://www.dustloop.com/w/GGST/Baiken" Target="_blank">Baiken's Dustloop Page</MudListItem>
-                        </MudList>
-                    </MudStack>
-                </MudPaper>
+                <HomeCard Href="Checklist" ImageName="Stand" Style="background: #5b535b">New? Start Here!</HomeCard>
+                @* <MudPaper Style="padding: 24px"> *@
+                @*     <MudStack> *@
+                @*         <MudText Typo="Typo.h6">Some helpful external links:</MudText> *@
+                @*         <MudList T="string"> *@
+                @*             <MudListItem Href="https://glossary.infil.net" Target="_blank">Terms Glossary</MudListItem> *@
+                @*             <MudListItem Href="https://www.dustloop.com/w/Notation" Target="_blank">Dustloop's Notation Guide</MudListItem> *@
+                @*             <MudListItem Href="https://www.dustloop.com/w/GGST/Baiken" Target="_blank">Baiken's Dustloop Page</MudListItem> *@
+                @*         </MudList> *@
+                @*     </MudStack> *@
+                @* </MudPaper> *@
                 <HomeCard Href="Tether" ImageName="AirThrow">Tether Mechanics</HomeCard>
                 <HomeCard Href="GroundedTatamiRps" ImageName="236K">Tatami RPS</HomeCard>
             </MudStack>
@@ -44,3 +47,7 @@
         </MudItem>
     </MudGrid>
 </MudStack>
+
+@code {
+
+}

@@ -1,4 +1,4 @@
-<MudPaper>
+<MudPaper Style="@Style">
     <MudButton Href="@Href" Style="width: 100%;padding: 24px;">
         <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3">
             <MudText Align="Align.Center" Typo="Typo.button" Style="font-size: 28px">
@@ -29,4 +29,7 @@
     
     [Parameter]
     public string? Href { get; set; }
+    
+    [Parameter]
+    public string? Style { get; set; }
 }
