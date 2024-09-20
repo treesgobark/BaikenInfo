@@ -29,11 +29,12 @@
         practiced one kick 10,000 times." Consistency will win you more games than any flashy high damage combo ever will.
     </MudText>
     <br/>
+    <MudText Typo="Typo.h5">Core Conversions</MudText>
     <MudExpansionPanels MultiExpansion>
-        @for (int i = 0; i < AllCombos.Count; i++)
+        @for (int i = 0; i < BasicCombos.Count; i++)
         {
             int       listIndex = i;
-            ComboList list      = AllCombos[listIndex];
+            ComboList list      = BasicCombos[listIndex];
             <MudExpansionPanel Text="@($"#{listIndex + 1}: {list.SectionTitle}")">
                 <MudGrid>
                     @for (int j = 0; j < list.Combos.Count; j++)
@@ -52,32 +53,58 @@
             </MudExpansionPanel>
         }
     </MudExpansionPanels>
+    <MudText Typo="Typo.h5">Optimizations</MudText>
+    <MudExpansionPanels MultiExpansion>
+        @for (int i = 0; i < ExtensionCombos.Count; i++)
+        {
+        int       listIndex = i;
+        ComboList list      = ExtensionCombos[listIndex];
+        listIndex += BasicCombos.Count;
+        <MudExpansionPanel Text="@($"#{listIndex + 1}: {list.SectionTitle}")">
+            <MudGrid>
+                @for (int j = 0; j < list.Combos.Count; j++)
+                {
+                int   comboIndex = j;
+                Combo combo      = list.Combos[comboIndex];
+                <MudItem md="12" lg="6">
+                    <MudCard Style="height: 100%; padding: 24px;" Outlined>
+                        <MudCardContent>
+                            <BaikenCombo Id="@($"{listIndex + 1}.{comboIndex + 1}")" Combo="combo"/>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+                }
+            </MudGrid>
+        </MudExpansionPanel>
+        }
+    </MudExpansionPanels>
 </MudContainer>
 
 @code {
 
     private record ComboList(string SectionTitle, List<Combo> Combos);
 
-    private List<ComboList> AllCombos { get; } =
+    private List<ComboList> BasicCombos { get; } =
         [
             new ComboList("The Beginning of the End (neutral starters)",
             [
                 new Combo([Moves._2H, Moves.HKab, Moves.HkabH],
                           "round start 2H hkabh"),
-                new Combo([Moves.fS.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves.fS.AddPrefix("CH "), Moves._2H, Moves.HKab, Moves.HkabH],
                           "round start fS 2H hkabh",
                           [@<span>
                                If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
                                tiny bit.
                           </span>]),
-                new Combo([Moves.jS.AddPrefix("rising").AddSuffix("(CH ok)"), Moves.AirDash, Moves.jK, Moves.Youzansen],
+                new Combo([Moves.jS.AddPrefix("rising ").AddSuffix(" (CH ok)"), Moves.AirDash, Moves.jK, Moves.Youzansen],
                           "neutral jS basic conversions"),
-                new Combo([Moves._2S.AddPrefix("CH"), Moves._2H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._2S.AddPrefix("CH "), Moves._2H, Moves.HKab, Moves.HkabH],
                           "round start CH 2S 2H hkabh",
                           [@<span>
                               If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
                               tiny bit.
                           </span>]),
+                new Combo([Moves._6P.AddPrefix("Grounded CH "), Moves.HKab, Moves.HkabH]),
             ]),
             new ComboList("The Reward for Your Patience (punishes from defense)",
             [
@@ -109,29 +136,80 @@
                           "tatami safejump combo"),
                 new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami],
                           "IAD jH cS 2H tatami"),
-                new Combo([Moves._5K.AddPrefix("(aerial opponent)"), Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._5K.AddPrefix("(aerial opponent) "), Moves._6H, Moves.HKab, Moves.HkabH],
                           "5K 6H hkabh",
                           [@<span>
-                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
                               for additional damage if in range.
                            </span>]),
-                new Combo([Moves._2H.AddPrefix("CH"), Moves.HKab, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._2H.AddPrefix("CH "), Moves.HKab, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
                           "CH 2H hkab 5K 6H hkabh",
                           [@<span>
-                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
                               for additional damage if in range.
                            </span>]),
-                new Combo([Moves._6K.AddPrefix("CH"), Moves.Tatami, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._6K.AddPrefix("CH "), Moves.Tatami, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
                           "CH 6K tatami 5K 6H hkabh",
                           [@<span>
-                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
                               for additional damage if in range.
                            </span>]),
-                new Combo([Moves.Tatami.AddPrefix("CH"), Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves.Tatami.AddPrefix("CH "), Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
                           "CH tatami 5K 6H hkabh",
                           [@<span>
-                              <BaikenMove Move="Moves._5K"/> can often be substituted for <BaikenMove Move="Moves.cS"/>
+                              <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
                               for additional damage if in range.
+                           </span>]),
+            ]),
+            new ComboList("Crouching Tiger, Hidden Knee (TK yzn combos)",
+            [
+                new Combo([Moves.TkYouzansen, Moves.RedRc, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH],
+                          "yzn RRC cS 6H hkabh",
+                          [@<span>
+                               Simple and effective. You don't need anything fancier than this. Optionally, insert an
+                               additional <BaikenMove Move="Moves.cS"/> after
+                              the first <BaikenMove Move="Moves.cS"/> for more damage and corner carry. This requires
+                              either a dash cancel or a normal dash to get in range.
+                           </span>]),
+                new Combo([Moves.TkYouzansen, Moves.DriftRedRc.AddPrefix("22"), Moves.AerialTatami.AddPrefix("IAD "),
+                              Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH], "yzn 22RRC IAD tatami cS 6H hkabh",
+                          [@<span>
+                               More corner carry than the non-drift version and a better situation on block.
+                           </span>]),
+                new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH,
+                              Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH], "yzn FRC jH cS 6H hkabh",
+                          [@<span>
+                               Reduced corner carry in exchange for reduced tension usage and a great situation on
+                               block. (+4 at minimum after <BaikenMove Move="Moves.jH"/>, mix available, see the
+                               <MudLink Href="TKYouzansen">TK Youzansen</MudLink> page for more details)
+                           </span>]),
+            ]),
+        ];
+
+    private List<ComboList> ExtensionCombos { get; } =
+        [
+            new ComboList("TK yzn",
+            [
+                new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH,
+                              Moves._5K, Moves.jS, Moves.jD, Moves.AirDash, Moves.jS, Moves.jH, Moves._5P,
+                              Moves._6H.AddSuffix(" (Wallbreak)")], "yzn FRC jH 5K jS jD jS jH 5P",
+                          [@<span>
+                               Midscreen to corner combo from <BaikenMove Move="Moves.TkYouzansen"/> that does not
+                               require normal jump TK.
+                           </span>]),
+                new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH, Moves.jS,
+                              Moves.ForwardJumpCancel, Moves.jS, Moves.jH, Moves.AerialTatami, Moves.cS, Moves._5H,
+                              Moves.HKab, Moves.HkabH, Moves._6H.AddSuffix(" (Wallbreak)")], "ladder corner",
+                          [@<span>
+                               Also known as the ladder combo. Optimal damage and corner carry from midscreen. Requires
+                               normal jump TK yzn. See <MudLink Href="TKYouzansen">TK Youzansen</MudLink> for more
+                               details.
+                           </span>]),
+                new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH, Moves.jD,
+                              Moves.AerialTatami, Moves.Jump, Moves.jD, Moves.AirDash, Moves.jD, Moves.Youzansen,
+                              Moves.jD.AddSuffix(" (Wallbreak)")], "yzn FRC jH jD tatami jD jD yzn",
+                          [@<span>
+                               Corner-specific optimization for tk yzn. Also, it's pretty saucy.
                            </span>]),
             ]),
         ];
