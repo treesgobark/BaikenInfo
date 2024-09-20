@@ -11,7 +11,10 @@
     </ChildContent>
     <TooltipContent>
         <MudStack AlignItems="AlignItems.Center">
-            <MudImage Src="@ImageUri" Height="200" Style="width: auto"></MudImage>
+            @if (!string.IsNullOrWhiteSpace(ImageUri))
+            {
+                <MudImage Src="@ImageUri" Height="200" Style="width: auto"></MudImage>
+            }
             <MudText>@Move.EnglishName</MudText>
             @if (!string.IsNullOrWhiteSpace(Move.FriendlyName))
             {
