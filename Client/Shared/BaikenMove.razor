@@ -2,11 +2,25 @@
     <ChildContent>
         @if (!string.IsNullOrWhiteSpace(Move.DustloopTag))
         {
-            <MudLink Typo="Typo" Color="@TextColor" Href="@DustloopUrl">@DisplayText</MudLink>
+            @if (ChildContent is not null)
+            {
+                <MudLink Typo="Typo" Color="@TextColor" Href="@DustloopUrl">@ChildContent</MudLink>
+            }
+            else
+            {
+                <MudLink Typo="Typo" Color="@TextColor" Href="@DustloopUrl">@DisplayText</MudLink>
+            }
         }
         else
         {
-            <MudText Typo="Typo" Color="@TextColor">@DisplayText</MudText>
+            @if (ChildContent is not null)
+            {
+                <MudText Typo="Typo" Color="@TextColor">@ChildContent</MudText>
+            }
+            else
+            {
+                <MudText Typo="Typo" Color="@TextColor">@DisplayText</MudText>
+            }
         }
     </ChildContent>
     <TooltipContent>
@@ -35,6 +49,7 @@
     [Parameter] public NamePreference Naming { get; set; } = NamePreference.Notation;
 
     [Parameter] public Typo Typo { get; set; } = Typo.body1;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
 
     private string ImageUri => $"Moves/{Move.ImageName}.png";
 

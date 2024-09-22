@@ -3,19 +3,36 @@
 @inject ISyncLocalStorageService LocalStorage
 
 <MudNavMenu>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Home"])" Href="" Icon="@Icons.Material.Filled.Home">Home</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Checklist"])" Href="Checklist" Icon="@Icons.Material.Filled.Checklist">Checklist</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Neutral"])" Href="Neutral" Icon="@Icons.Material.Filled.PedalBike">Neutral</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Pressure"])" Href="Pressure" Icon="@Icons.Material.Outlined.Sync">Pressure</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Defense"])" Href="Defense" Icon="@Icons.Material.Outlined.Shield">Defense</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Safejumps"])" Href="Safejumps" Icon="@Icons.Material.Filled.SafetyCheck">Safejumps</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Throwkizeme"])" Href="Throwkizeme" Icon="@Icons.Material.Filled.SwapVert">Throwkizeme</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["HKabariRps"])" Href="HKabariRps" Icon="@Icons.Material.Filled.Build">H Kabari RPS</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["SKabariRps"])" Href="SKabariRps" Icon="@Icons.Material.Filled.Anchor">S Kabari RPS</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["GroundedTatamiRps"])" Href="GroundedTatamiRps" Icon="@Icons.Material.Filled.Gradient">Grounded Tatami RPS</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["PsychicDamage"])" Href="PsychicDamage" Icon="@Icons.Material.Filled.Transcribe">Psychic Damage</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Tether"])" Href="Tether" Icon="@Icons.Material.Filled.Gesture">Tether Mechanics</NavLinkIndicator>
-    <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Combos"])" Href="Combos" Icon="@Icons.Material.Filled.ArrowForwardIos">Combos</NavLinkIndicator>
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Home"])" Href="" Icon="@Icons.Material.Filled.Home">Home</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Checklist"])" Href="Checklist" Icon="@Icons.Material.Filled.Checklist">Checklist</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Inputs"])" Href="Inputs" Icon="@Icons.Material.Filled.RadioButtonChecked">Inputs and Cancels</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Neutral"])" Href="Neutral" Icon="@Icons.Material.Filled.PedalBike">Neutral</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Pressure"])" Href="Pressure" Icon="@Icons.Material.Outlined.Science">Pressure</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Defense"])" Href="Defense" Icon="@Icons.Material.Outlined.Shield">Defense</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Safejumps"])" Href="Safejumps" Icon="@Icons.Material.Filled.SafetyCheck">Safejumps</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Throwkizeme"])" Href="Throwkizeme" Icon="@Icons.Material.Filled.SwapVert">Throwkizeme</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["HKabariRps"])" Href="HKabariRps" Icon="@Icons.Material.Filled.Build">H Kabari RPS</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["SKabariRps"])" Href="SKabariRps" Icon="@Icons.Material.Filled.Anchor">S Kabari RPS</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["GroundedTatamiRps"])" Href="GroundedTatamiRps" Icon="@Icons.Material.Filled.Gradient">Grounded Tatami RPS</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["PsychicDamage"])" Href="PsychicDamage" Icon="@Icons.Material.Filled.Transcribe">Psychic Damage</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Tether"])" Href="Tether" Icon="@Icons.Material.Filled.Gesture">Tether Mechanics</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["TKYouzansen"])" Href="TKYouzansen" Icon="@Icons.Material.Filled.Sync">TK Youzansen</NavLinkIndicator> *@
+    @* <NavLinkIndicator IsIndicatorEnabled="@(UnreadPages["Combos"])" Href="Combos" Icon="@Icons.Material.Filled.ArrowForwardIos">Combos</NavLinkIndicator> *@
+    <NavLinkIndicator Href="" Icon="@Icons.Material.Filled.Home">Home</NavLinkIndicator>
+    <NavLinkIndicator Href="Checklist" Icon="@Icons.Material.Filled.Checklist">Checklist</NavLinkIndicator>
+    <NavLinkIndicator Href="Inputs" Icon="@Icons.Material.Filled.RadioButtonChecked">Inputs and Cancels</NavLinkIndicator>
+    <NavLinkIndicator Href="Neutral" Icon="@Icons.Material.Filled.PedalBike">Neutral</NavLinkIndicator>
+    <NavLinkIndicator Href="Pressure" Icon="@Icons.Material.Outlined.Science">Pressure</NavLinkIndicator>
+    <NavLinkIndicator Href="Defense" Icon="@Icons.Material.Outlined.Shield">Defense</NavLinkIndicator>
+    <NavLinkIndicator Href="Safejumps" Icon="@Icons.Material.Filled.SafetyCheck">Safejumps</NavLinkIndicator>
+    <NavLinkIndicator Href="Throwkizeme" Icon="@Icons.Material.Filled.SwapVert">Throwkizeme</NavLinkIndicator>
+    <NavLinkIndicator Href="HKabariRps" Icon="@Icons.Material.Filled.Build">H Kabari RPS</NavLinkIndicator>
+    <NavLinkIndicator Href="SKabariRps" Icon="@Icons.Material.Filled.Anchor">S Kabari RPS</NavLinkIndicator>
+    <NavLinkIndicator Href="GroundedTatamiRps" Icon="@Icons.Material.Filled.Gradient">Grounded Tatami RPS</NavLinkIndicator>
+    <NavLinkIndicator Href="PsychicDamage" Icon="@Icons.Material.Filled.Transcribe">Psychic Damage</NavLinkIndicator>
+    <NavLinkIndicator Href="Tether" Icon="@Icons.Material.Filled.Gesture">Tether Mechanics</NavLinkIndicator>
+    <NavLinkIndicator Href="TKYouzansen" Icon="@Icons.Material.Filled.Sync">TK Youzansen</NavLinkIndicator>
+    <NavLinkIndicator Href="Combos" Icon="@Icons.Material.Filled.ArrowForwardIos">Combos</NavLinkIndicator>
 </MudNavMenu>
 
 @code
@@ -29,6 +46,7 @@
         if (!LocalStorage.ContainKey(UnreadPagesKey))
         {
             UnreadPages["Home"] = false;
+            UnreadPages["Inputs"] = false;
             UnreadPages["Checklist"] = false;
             UnreadPages["Neutral"] = false;
             UnreadPages["Pressure"] = false;
@@ -40,6 +58,7 @@
             UnreadPages["GroundedTatamiRps"] = false;
             UnreadPages["PsychicDamage"] = false;
             UnreadPages["Tether"] = false;
+            UnreadPages["TKYouzansen"] = false;
             UnreadPages["Combos"] = false;
             LocalStorage.SetItem(UnreadPagesKey, UnreadPages);
         }
