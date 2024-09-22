@@ -1,0 +1,79 @@
+@page "/Inputs"
+@using Client.Shared
+
+<PageTitle>@Constants.TitlePrefix Inputs and Cancels</PageTitle>
+
+<MudContainer>
+    <MudText>
+        A lot of new players struggle with inputting moves in this game when starting out, especially special moves. It's
+        because the game doesn't really explain to you how cancelling and buffering work. But that's why I'm here.
+        <br/>
+        <br/>
+        I'm going to separate inputs into three categories: attack inputs, directional inputs, and motion inputs. Let's
+        tackle them one at a time. I'm not talking about charge inputs because Baiken doesn't have any and I'm lazy.
+        <br/>
+        <br/>
+        Attack inputs are your punch, kick, slash, heavy slash, and dust buttons, also known as P, K, S, HS, and D. I will
+        be using these abbreviations for the remainder of the article. All the moves that can be done with just an attack
+        input and no motion input is called a normal attack. Every move in this game takes time to start up, stays
+        active for some time, then leaves you in a punishable recovery state for another period of time. However, for most
+        moves, this punishable recovery time can be cancelled into other moves. For the purposes of this article, I'm
+        just going to be using a couple moves but if you want the full story of what moves cancel into what, please
+        refer to this image:
+        <br/>
+        <MudContainer MaxWidth="MaxWidth.Medium"><ImageSpoiler Src="gatlingchart.png"/></MudContainer>
+        <br/>
+        <MudList T="string" ReadOnly>
+            Written as a list of rules, the chart says:
+            <MudListItem>- P cancels into any P</MudListItem>
+            <MudListItem>- Lights (P and K) cancel into command normals</MudListItem>
+            <MudListItem>- K cancels into D</MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.cS">Close S</BaikenMove> cancels into anything of the same weight or heavier
+                (S, H, and D) and command normals
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves._2S">Crouching S</BaikenMove> and
+                <BaikenMove Move="Moves.fS">Far S</BaikenMove> cancel into H
+            </MudListItem>
+            (thank you to @("@")Olyless in the <MudLink Href="https://discord.gg/ggstcommunity">GGST Community Discord</MudLink>)
+        </MudList>
+        <br/>
+        <br/>
+        In order to cancel one attack into another, it is imperative that you wait for the next attack to make contact
+        with the opponent. If you press the next attack before you make contact, nothing will happen and you will
+        still continue through the active and recovery portions of the move. You can try to hit some buttons way too
+        fast and see for yourself, especially your slower buttons, like trying
+        <BaikenMove Move="Moves._2S">Crouching S</BaikenMove> into
+        <BaikenMove Move="Moves._2H">Crouching H</BaikenMove> exactly once really fast.
+        <br/>
+        <br/>
+        Directional inputs are as they sound: holding on of the 8 directions on your D-pad, WASD, or (God forbid) analog
+        stick. Holding some of these directions will give you different attacks sometimes, most typically down or
+        forward. You can start holding them whenever you want and release them whenever you want so long as they're
+        down when you press the attack button. Any move that is done with forward plus an attack button is called a
+        command normal, but they're not actually different from any other normals, it's just that between the cast,
+        the command normals that characters have can vary. For example, Sol has a forward S, but not a forward K. Baiken
+        doesn't have a forward S, but does have a forward K. Baiken's command normals are
+        <BaikenMove Move="Moves._6P">Forward P</BaikenMove>, <BaikenMove Move="Moves._6K">Forward K</BaikenMove>, and
+        <BaikenMove Move="Moves._6H">Forward H</BaikenMove>.
+        <br/>
+        <br/>
+        Motion inputs are all reserved for special moves. They're the inputs where you make a smooth motion between a
+        set of directional inputs, which encompass both quarter circles, half circles and a couple outliers (outliers 
+        which I'm not explaining because Baiken doesn't have them). What's important to note about motion inputs is that
+        unlike attack inputs, they do not need to be done after you make contact with the opponent. This means you can
+        and should be <GlossaryLink Term="Buffer">Buffering</GlossaryLink> your motion input when you intend to cancel
+        a normal into a special move. What this means is that if you want to cancel
+        <BaikenMove Move="Moves._2H">Crouching H</BaikenMove> into
+        <BaikenMove Move="Moves.HKab" Naming="NamePreference.English"/>, you want to hold
+        crouch, press H, then immediately move to holding back and going through your half circle, before you even have
+        any idea whether this <BaikenMove Move="Moves._2H">Crouching H</BaikenMove> is going to land or not. Then, if
+        the move does make contact, you already have your half circle buffered and ready to go and you can input H to
+        begin your special move.
+    </MudText>
+</MudContainer>
+
+@code {
+    
+}
