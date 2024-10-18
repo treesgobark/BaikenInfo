@@ -4,18 +4,52 @@
 <PageTitle>@Constants.TitlePrefix TK Youzansen</PageTitle>
 
 <MudContainer>
-    <MudGrid Justify="Justify.Center">
-        <MudItem xs="4">
-            <MudCard>
-                <MudCardContent>
-                    <MudText Typo="Typo.h4" Align="Align.Center">Under Construction</MudText>
-                    <MudText Align="Align.Center">
-                        <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.Construction"/>
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudItem>
-    </MudGrid>
+    <MudText>
+        <BaikenMove Move="Moves.TkYouzansen"/> also known as <GlossaryLink Term="Tiger Knee"/> Youzansen or
+        Instant Air Special Youzansen is one of Baiken's standout tools. It's a gapless, unreactable overhead that,
+        when paired with <BaikenMove Move="Moves.RedRc"/> gives very rewarding combos on hit and mixups on block.
+        Without the tension to spend on <BaikenMove Move="Moves.RedRc"/>, it provides a very risky way to
+        incentivize your opponent to block high during your meterless pressure. On hit, your reward is about a third of
+        the damage of a typical combo with some pretty lackluster <GlossaryLink Term="Oki"/>. In midscreen, you get
+        <BaikenMove Move="Moves.fS"/> oki (this is pretty terrible) and in the corner, you get
+        <BaikenMove Move="Moves.cS"/> oki (much better but still pretty poor given how good our typical oki is). On the
+        flipside, if your opponent blocks it, you're at point blank range and super minus with no cancel options, which
+        gives every character in the game a full close slash starter punish on you (this is really bad).
+    </MudText>
+    <br/>
+    <MudText>
+        <BaikenMove Move="Moves.TkYouzansen" Naming="NamePreference.Friendly"/> is typically the most difficult single move input you have on Baiken.
+        That doesn't mean it's impossible or anything, but it's pretty tricky, so I'm compiling some tips for inputting
+        it. First off, there's two distinct ways you can perform this input: via a buffered jump cancel or doing it raw.
+        Recall that you have to be in the air to input <BaikenMove Move="Moves.Youzansen"/>, so if you want to input
+        this at the lowest possible height, in theory you would need to input jump, then in the 4 frames of prejump,
+        you would need to input <BaikenMove Move="Moves.Youzansen"/>. 4 inputs and
+        4 frames means you need to be nearly frame perfect. You can get around this by buffering a jump cancel from
+        either <BaikenMove Move="Moves.cS"/> or <BaikenMove Move="Moves._5K"/>. Simply land one of these moves, then
+        hit jump. It'll cancel your recovery and let you jump immediately. The jump buffer Tiger Knee input takes
+        advantage of the hitstop caused by landing one of these moves to allow you to hit jump and then have
+        significantly more time to input <BaikenMove Move="Moves.Youzansen" Naming="NamePreference.Notation"/> afterward.
+        So all in all, the input looks like <BaikenMove Move="Moves.cS"/>/<BaikenMove Move="Moves._5K"/> >
+        <BaikenMove Move="Moves.ForwardJumpCancel"/> > <BaikenMove Move="Moves.Youzansen"/>. Doing forward jump here is
+        not guaranteed to make this work, but it does help immensely with spacing consistency. I recommend getting used
+        to doing forward jump.
+    </MudText>
+    <MudText>
+        The other way to input <BaikenMove Move="Moves.TkYouzansen" Naming="NamePreference.Friendly"/> is doing it raw.
+        This refers to doing the input <BaikenMove Move="Moves.TkYouzansen"/>, no jump cancel buffer required. This
+        input method takes advantage of the game buffering your quarter circle for you for a little bit by having you
+        input the quarter circle first, then jump, then slash. That quarter circle gets stored by the game for a small
+        amount of time, just enough for you to get a jump in between your motion input and attack input. Note that because
+        you're hitting 2 and then 9 soon after, that baiken will perform a superjump in this instance. It will be tough
+        to see, since <BaikenMove Move="Moves.Youzansen" Naming="NamePreference.Friendly"/> slows your vertical air
+        momentum by a large amount, but it
+        matters for 2 reasons: it increases your disadvantage on block by a small amount and it also consumes your air
+        action, which means no double jump or air dash. This lack of an air action only actually matters for specific
+        combo routes, but it is required to take those routes. You can avoid the superjump with one of three methods:
+        you can do the jump cancel buffer input method, you can hold down 2 for a small amount of time and then do the
+        rest of your <BaikenMove Move="Moves.TkYouzansen"/>, or you can input your <BaikenMove Move="Moves.TkYouzansen"/>
+        in a slower and smoother fashion such that the 2 input and the 9 input occur farther away from each other.
+    </MudText>
 </MudContainer>
 
 @code {
