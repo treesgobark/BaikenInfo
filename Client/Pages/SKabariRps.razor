@@ -4,6 +4,36 @@
 <PageTitle>@Constants.TitlePrefix S Kabari RPS</PageTitle>
 
 <MudContainer>
+    <MudText>
+        <BaikenMove Move="Moves.SKab" Naming="NamePreference.English"/> is an all-in-one
+        <GlossaryLink Term="Pressure Reset"/> tool that can
+        cancelled into from any normal and is almost entirely <GlossaryLink Term="disjointed"/> (it's not a projectile).
+        It also pulls them closer to you and applies tether to the opponent, attaching them to you and you to them,
+        both on block and on hit (see <MudLink Href="Tether"/> for why this is cool). Plus, it converts into a full
+        combo from any distance on normal hit, counter hit, or aerial hit. Hard not to love it. There is a downside
+        though, the move is slow as heck on startup and thus reactable. Though the saving grace of this unfortunate
+        fact is that it looks very similar to <BaikenMove Move="Moves.HKab" Naming="NamePreference.Friendly"/> and as a
+        result is harder to react to than you may think.
+    </MudText>
+    <br/>
+    <MudText>
+        <BaikenMove Move="Moves.SKab" Naming="NamePreference.Friendly"/> is +3 on block regardless of how meaty it hits
+        the opponent. This is because both versions of kabari cancel their remaining active frames (but not recovery)
+        when they make contact with the opponent. The combination of +3, vacuum effect, and tether gives baiken the
+        perfect situation for a whole host of offensive options to be represented. Let's talk about them:
+        <MudList T="string" ReadOnly>
+            Point blank range:
+            <MudListItem>
+                - <BaikenMove Move="Moves._5P"/>: Your safest and typically most effective option
+            </MudListItem>
+        </MudList>
+        
+        
+        It converts into a full combo on normal hit
+        (link into <BaikenMove Move="Moves._2K"/>), counter hit (link into <BaikenMove Move="Moves.cS"/> or
+        <BaikenMove Move="Moves.fS"/>), or aerial hit (link into <BaikenMove Move="Moves.cS"/> or
+        <BaikenMove Move="Moves._5K"/>).
+    </MudText>
     <MudGrid Justify="Justify.Center">
         <MudItem xs="4">
             <MudCard>

@@ -53,6 +53,7 @@
             </MudExpansionPanel>
         }
     </MudExpansionPanels>
+    <br/>
     <MudText Typo="Typo.h5">Optimizations</MudText>
     <MudExpansionPanels MultiExpansion>
         @for (int i = 0; i < ExtensionCombos.Count; i++)
@@ -211,6 +212,22 @@
                               Moves.jD.AddSuffix(" (Wallbreak)")], "yzn FRC jH jD tatami jD jD yzn",
                           [@<span>
                                Corner-specific optimization for tk yzn. Also, it's pretty saucy.
+                           </span>]),
+            ]),
+            new ComboList("Rising j.S",
+            [
+                new Combo([Moves.jS.AddPrefix("Rising CH "), Moves.AirDash, Moves.jP, Moves.AerialTatami, Moves._5K,
+                              Moves.ForwardJumpCancel, Moves.jS, Moves.jD, Moves.AirDash, Moves.jS, Moves.jH, Moves._5P],
+                          "rising ch jS jP tatami 5K jS jD jS jH 5P",
+                          [@<span>
+                               Must be about midscreen or closer to corner. May rarely work on normal hit, depends on
+                               height.
+                           </span>]),
+                new Combo([Moves.jS.AddPrefix("Rising CH "), Moves.AirDash, Moves.jP, Moves.AerialTatami, Moves._5K,
+                              Moves._6H, Moves.HKab, Moves.HkabH],
+                          "rising ch jS jP tatami 5K 6H hkabh",
+                          [@<span>
+                               Non-corner version of previous combo. May rarely work on normal hit, depends on height.
                            </span>]),
             ]),
         ];
