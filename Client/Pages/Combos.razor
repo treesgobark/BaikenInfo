@@ -107,7 +107,7 @@
                           </span>]),
                 new Combo([Moves._6P.AddPrefix("Grounded CH "), Moves.HKab, Moves.HkabH]),
             ]),
-            new ComboList("The Reward for Your Patience (punishes from defense)",
+            new ComboList("The Reward for Your Patience (punishes and combos from defense)",
             [
                 new Combo([Moves._5P, Moves._6K, Moves.Tatami],
                           "5P 6K tatami"),
@@ -115,13 +115,6 @@
                 new Combo([Moves._5K, Moves._6K, Moves.Tatami]),
                 new Combo([Moves.cS, Moves._2H, Moves.HKab, Moves.HkabH],
                           "cS 2H hkabh"),
-                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH],
-                          "bnb",
-                          [@<span>
-                               This is the higher damage alternative to the first <BaikenMove Move="Moves.cS"/> combo
-                               in this section, but if you're spending too much time getting the timing right on the 
-                               <BaikenMove Move="Moves._2S"/>, it's best move on to the next section and come back later.
-                          </span>]),
                 new Combo([Moves.IAD, Moves.jS, Moves.Youzansen],
                           "IAD jS yzn",
                           [@<span>
@@ -189,6 +182,16 @@
 
     private List<ComboList> ExtensionCombos { get; } =
         [
+            new ComboList("Punishes",
+            [
+                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves.Dash, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH]),
+                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH],
+                          "bnb",
+                          [@<span>
+                               Less damage but leaves opponent at favorable spacing for some <GlossaryLink Term="Oki"/>
+                               setups like <MudLink Href="KabariSideslash"/>.
+                           </span>]),
+            ]),
             new ComboList("TK yzn",
             [
                 new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH,
@@ -200,12 +203,12 @@
                                consistent. I just haven't updated the video yet. Sue me.
                            </span>]),
                 new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH, Moves.jS,
-                              Moves.ForwardJumpCancel, Moves.jS, Moves.jH, Moves.AerialTatami, Moves.cS, Moves._5H,
-                              Moves.HKab, Moves.HkabH, Moves._6H.AddSuffix(" (Wallbreak)")], "ladder corner",
+                              Moves.ForwardJumpCancel, Moves.jS, Moves.jH, Moves.AerialTatami, Moves.cS, Moves._6H,
+                              Moves.HKab, Moves.HkabH.AddSuffix(" (Wallbreak)")], "ladder corner",
                           [@<span>
                                Also known as the ladder combo. Optimal damage and corner carry from midscreen. Requires
                                normal jump TK yzn. See <MudLink Href="TKYouzansen">TK Youzansen</MudLink> for more
-                               details.
+                               details. Video is outdated, the 5H is now 6H in season 4.
                            </span>]),
                 new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH, Moves.jD,
                               Moves.AerialTatami, Moves.Jump, Moves.jD, Moves.AirDash, Moves.jD, Moves.Youzansen,
