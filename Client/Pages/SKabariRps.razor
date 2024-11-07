@@ -9,22 +9,39 @@
         <GlossaryLink Term="Pressure Reset"/> tool that can
         cancelled into from any normal and is almost entirely <GlossaryLink Term="disjointed"/> (it's not a projectile).
         It also pulls them closer to you and applies tether to the opponent, attaching them to you and you to them,
-        both on block and on hit (see <MudLink Href="Tether"/> for why this is cool). Plus, it converts into a full
+        both on block and on hit. Plus, it converts into a full
         combo from any distance on normal hit, counter hit, or aerial hit. Hard not to love it. There is a downside
-        though, the move is slow as heck on startup and thus reactable. Though the saving grace of this unfortunate
+        though, the move is slow as frick on startup and thus reactable. Though the saving grace of this unfortunate
         fact is that it looks very similar to <BaikenMove Move="Moves.HKab" Naming="NamePreference.Friendly"/> and as a
         result is harder to react to than you may think.
     </MudText>
     <br/>
     <MudText>
-        <BaikenMove Move="Moves.SKab" Naming="NamePreference.Friendly"/> is +3 on block regardless of how meaty it hits
-        the opponent. This is because both versions of kabari cancel their remaining active frames (but not recovery)
-        when they make contact with the opponent. The combination of +3, vacuum effect, and tether gives baiken the
-        perfect situation for a whole host of offensive options to be represented. Let's talk about them:
+        <BaikenMove Move="Moves.SKab" Naming="NamePreference.Friendly"/> is +3 on block regardless of how
+        <GlossaryLink Term="meaty"/> it hits
+        the opponent. (Info for nerds: This is because both versions of kabari cancel their remaining active frames
+        (but not recovery) when they make contact with the opponent). The combination of +3, vacuum effect, and tether
+        gives baiken the perfect situation for a whole host of offensive options to be represented. Let's talk about them:
         <MudList T="string" ReadOnly>
-            Point blank range:
             <MudListItem>
-                - <BaikenMove Move="Moves._5P"/>: Your safest and typically most effective option
+                - <BaikenMove Move="Moves._5P"/>: Your safest and typically most effective option. has 4f startup and
+                you're +3, so this leaves a 1f gap, not enough for you to be thrown by the opponent.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves._2K"/>: Your safest low option. Frametraps anything except throw, so you
+                typically want your opponent to be conditioned away from doing that before you go for this.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.TkYouzansen"/>: Utilizes your conditioning of the opponent to make them hold
+                a 10f gap and subject themselves to high/low mix. Still doesn't convert without meter or counterhit.
+                Notably, beats throw as this is an aerial move.
+            </MudListItem>
+            <MudListItem>
+                - <BaikenMove Move="Moves.Throw"/>: Another option your opponent must be conditioned for. The amount
+                that you have to delay your throw input here makes it a little tough to get the timing right to both
+                throw the opponent if they do nothing and to tech their throw if they throw you. Since they're tethered
+                you have the option to hold the <MudText HtmlTag="span" Color="Color.Warning">dust</MudText> input to
+                do a full combo. See <MudLink Href="Tether">Tether Mechanics</MudLink> for more info.
             </MudListItem>
         </MudList>
         

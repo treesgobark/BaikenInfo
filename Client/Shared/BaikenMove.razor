@@ -29,10 +29,17 @@
             {
                 <MudImage Src="@ImageUri" Height="200" Style="width: auto"></MudImage>
             }
-            <MudText>@Move.EnglishName</MudText>
+            @if (!string.IsNullOrWhiteSpace(Move.NotationName))
+            {
+            <MudText>@Move.NotationName</MudText>
+            }
+            @if (!string.IsNullOrWhiteSpace(Move.EnglishName))
+            {
+                <MudText>@Move.EnglishName</MudText>
+            }
             @if (!string.IsNullOrWhiteSpace(Move.FriendlyName))
             {
-                <MudText>"@Move.FriendlyName"</MudText>
+            <MudText>"@Move.FriendlyName"</MudText>
             }
             @foreach (string note in Move.AdditionalNotes)
             {

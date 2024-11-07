@@ -142,7 +142,10 @@ public static class Moves
 
     public static Move Dash { get; } = new("66", "Dash", "", AttackButton.None, "Dash", "");
     public static Move AirDash { get; } = new("j.66", "Air Dash", "", AttackButton.None, "AirDash", "");
-    public static Move IAD { get; } = new("IAD", "Instant Air Dash", "", AttackButton.None, "AirDash", "");
+    public static Move IAD { get; } = new("IAD", "Instant Air Dash", "", AttackButton.None, "AirDash", "",
+    [
+        "Performing an air dash immediately after jumping"
+    ]);
     public static Move Delay { get; } = new("dl.", "Wait a few frames", "delay", AttackButton.None, "Stand", "");
 
     public static Move SwordSuper { get; } = new("236236S", "Tsurane Sanzu-watashi", "Sword Super", AttackButton.None,

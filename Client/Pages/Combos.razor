@@ -89,33 +89,38 @@
         [
             new ComboList("The Beginning of the End (neutral starters)",
             [
-                new Combo([Moves._2H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._2H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "round start 2H hkabh"),
-                new Combo([Moves.fS.AddPrefix("CH "), Moves._2H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves.fS.AddPrefix("CH "), Moves._2H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "round start fS 2H hkabh",
                           [@<span>
                                If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
                                tiny bit.
                           </span>]),
-                new Combo([Moves.jS.AddPrefix("rising ").AddSuffix(" (CH ok)"), Moves.AirDash, Moves.jK, Moves.Youzansen],
-                          "neutral jS basic conversions"),
-                new Combo([Moves._2S.AddPrefix("CH "), Moves._2H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves.jS.AddPrefix("rising "), Moves.AirDash, Moves.jK, Moves.Youzansen, Moves.IAD, Moves.jH.AddSuffix(" (Safejump)")],
+                          "neutral jS basic conversions",
+                          [@<span>
+                               If the initial <BaikenMove Move="Moves.jS"/> is a counter hit, the combo will still work,
+                               but you need to do a <BaikenMove Move="Moves.AerialTatami">Tatami</BaikenMove>
+                               safejump instead.
+                          </span>]),
+                new Combo([Moves._2S.AddPrefix("CH "), Moves._2H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "round start CH 2S 2H hkabh",
                           [@<span>
                               If your <BaikenMove Move="Moves.HkabH"/> goes under the opponent, you need to delay it a
                               tiny bit.
                           </span>]),
-                new Combo([Moves._6P.AddPrefix("Grounded CH "), Moves.HKab, Moves.HkabH]),
+                new Combo([Moves._6P.AddPrefix("Grounded CH "), Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")]),
             ]),
             new ComboList("The Reward for Your Patience (punishes and combos from defense)",
             [
-                new Combo([Moves._5P, Moves._6K, Moves.Tatami],
+                new Combo([Moves._5P, Moves._6K, Moves.Tatami, Moves.IAD, Moves.jH.AddSuffix(" (Safejump)")],
                           "5P 6K tatami"),
-                new Combo([Moves._2K, Moves._6K, Moves.Tatami]),
-                new Combo([Moves._5K, Moves._6K, Moves.Tatami]),
-                new Combo([Moves.cS, Moves._2H, Moves.HKab, Moves.HkabH],
-                          "cS 2H hkabh"),
-                new Combo([Moves.IAD, Moves.jS, Moves.Youzansen],
+                new Combo([Moves._2K, Moves._6K, Moves.Tatami, Moves.IAD, Moves.jH.AddSuffix(" (Safejump)")]),
+                new Combo([Moves._5K, Moves._6K, Moves.Tatami, Moves.IAD, Moves.jH.AddSuffix(" (Safejump)")]),
+                new Combo([Moves.cS, Moves.fS, Moves._5H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
+                          ""),
+                new Combo([Moves.IAD, Moves.jS, Moves.Youzansen, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "IAD jS yzn",
                           [@<span>
                                It's a good idea to spend some time in training mode practicing doing a delay on your
@@ -126,29 +131,29 @@
             ]),
             new ComboList("The Never-Ending Vortex (hit confirms in pressure)",
             [
-                new Combo([Moves.IAD, Moves.AerialTatami, Moves.cS, Moves._2H, Moves.Tatami],
+                new Combo([Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)"), Moves.cS, Moves._2H, Moves.Tatami, Moves.IAD, Moves.jH.AddSuffix(" (Safejump)")],
                           "tatami safejump combo"),
-                new Combo([Moves.IAD, Moves.jH, Moves.cS, Moves._2H, Moves.Tatami],
+                new Combo([Moves.IAD, Moves.jH.AddSuffix(" (Safejump)"), Moves.cS, Moves._2H, Moves.Tatami, Moves.IAD, Moves.jH.AddSuffix(" (Safejump)")],
                           "IAD jH cS 2H tatami"),
-                new Combo([Moves._5K.AddPrefix("(aerial opponent) "), Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._5K.AddPrefix("(aerial opponent) "), Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "5K 6H hkabh",
                           [@<span>
                               <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
                               for additional damage if in range.
                            </span>]),
-                new Combo([Moves._2H.AddPrefix("CH "), Moves.HKab, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._2H.AddPrefix("CH "), Moves.HKab, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "CH 2H hkab 5K 6H hkabh",
                           [@<span>
                               <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
                               for additional damage if in range.
                            </span>]),
-                new Combo([Moves._6K.AddPrefix("CH "), Moves.Tatami, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves._6K.AddPrefix("CH "), Moves.Tatami, Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "CH 6K tatami 5K 6H hkabh",
                           [@<span>
                               <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
                               for additional damage if in range.
                            </span>]),
-                new Combo([Moves.Tatami.AddPrefix("CH "), Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves.Tatami.AddPrefix("CH "), Moves._5K, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "CH tatami 5K 6H hkabh",
                           [@<span>
                               <BaikenMove Move="Moves._5K"/> can often be replaced by <BaikenMove Move="Moves.cS"/>
@@ -157,7 +162,7 @@
             ]),
             new ComboList("Crouching Tiger, Hidden Knee (TK yzn combos)",
             [
-                new Combo([Moves.TkYouzansen, Moves.RedRc, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH],
+                new Combo([Moves.TkYouzansen, Moves.RedRc, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "yzn RRC cS 6H hkabh",
                           [@<span>
                                Simple and effective. You don't need anything fancier than this. Optionally, insert an
@@ -166,12 +171,14 @@
                               either a dash cancel or a normal dash to get in range.
                            </span>]),
                 new Combo([Moves.TkYouzansen, Moves.DriftRedRc.AddPrefix("22"), Moves.AerialTatami.AddPrefix("IAD "),
-                              Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH], "yzn 22RRC IAD tatami cS 6H hkabh",
+                              Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
+                          "yzn 22RRC IAD tatami cS 6H hkabh",
                           [@<span>
                                More corner carry than the non-drift version and a better situation on block.
                            </span>]),
                 new Combo([Moves.TkYouzansen, Moves.FastRrc.AddPrefix("66"), Moves.jH,
-                              Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH], "yzn FRC jH cS 6H hkabh",
+                              Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
+                          "yzn FRC jH cS 6H hkabh",
                           [@<span>
                                Reduced corner carry in exchange for reduced tension usage and a great situation on
                                block. (+4 at minimum after <BaikenMove Move="Moves.jH"/>, mix available, see the
@@ -184,8 +191,8 @@
         [
             new ComboList("Punishes",
             [
-                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves.Dash, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH]),
-                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH],
+                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves.Dash, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")]),
+                new Combo([Moves.cS, Moves._2H, Moves.Tatami, Moves._2S, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "bnb",
                           [@<span>
                                Less damage but leaves opponent at favorable spacing for some <GlossaryLink Term="Oki"/>
@@ -220,14 +227,15 @@
             new ComboList("Rising j.S",
             [
                 new Combo([Moves.jS.AddPrefix("Rising CH "), Moves.AirDash, Moves.jP, Moves.AerialTatami, Moves._5K,
-                              Moves.ForwardJumpCancel, Moves.jS, Moves.jD, Moves.AirDash, Moves.jS, Moves.jH, Moves._5P],
+                              Moves.ForwardJumpCancel, Moves.jS, Moves.jD, Moves.AirDash, Moves.jS, Moves.jH, Moves._5P,
+                          Moves._6H.AddSuffix(" (Wallbreak)")],
                           "rising ch jS jP tatami 5K jS jD jS jH 5P",
                           [@<span>
                                Must be about midscreen or closer to corner. May rarely work on normal hit, depends on
                                height.
                            </span>]),
                 new Combo([Moves.jS.AddPrefix("Rising CH "), Moves.AirDash, Moves.jP, Moves.AerialTatami, Moves._5K,
-                              Moves._6H, Moves.HKab, Moves.HkabH],
+                              Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
                           "rising ch jS jP tatami 5K 6H hkabh",
                           [@<span>
                                Non-corner version of previous combo. May rarely work on normal hit, depends on height.
