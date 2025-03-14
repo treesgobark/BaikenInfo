@@ -16,7 +16,11 @@
         and neutral: <BaikenMove Move="Moves.fS"/>, <BaikenMove Move="Moves.jS"/>, and <BaikenMove Move="Moves._2S"/>.
     </MudText>
     <br/>
-    <BaikenMove Typo="Typo.h5" Move="Moves.fS"/>
+    <MudText Typo="Typo.h5"><BaikenMove Move="Moves.fS"/>: The War Crime</MudText>
+    <MudText Typo="Typo.subtitle2">
+        "I triple dog doughnut dare you to swing at me"
+    </MudText>
+    <br/>
     <MudText>
         <BaikenMove Move="Moves.fS"/> is your god button. It has great
         <GlossaryLink Term="Startup"/> speed and
@@ -29,7 +33,12 @@
         going above it or going below it. This is where the other two neutral options come in.
     </MudText>
     <br/>
-    <BaikenMove Typo="Typo.h5" Move="Moves.jS"/>
+    <MudText Typo="Typo.h5"><BaikenMove Move="Moves.jS"/>: The Flyswatter</MudText>
+    <MudText Typo="Typo.subtitle2">
+        Basically the <MudLink Typo="Typo.inherit" Href="https://en.wikipedia.org/wiki/Iron_Dome" Target="_blank">Iron Dome</MudLink>
+        if you think about it
+    </MudText>
+    <br/>
     <MudText>
         <BaikenMove Move="Moves.jS"/> is Baiken's most commonly used way to cover your opponent approaching from the air,
         above your <BaikenMove Move="Moves.fS"/>.
@@ -39,7 +48,9 @@
         in with it, you can form a pretty effective "wall" in the air that your opponents can't get through.
     </MudText>
     <br/>
-    <BaikenMove Typo="Typo.h5" Move="Moves._2S"/>
+    <MudText Typo="Typo.h5"><BaikenMove Move="Moves._2S"/>: The, uh... Also Pretty Good One</MudText>
+    <MudText Typo="Typo.subtitle2">Here because we need it to be, not because we like it</MudText>
+    <br/>
     <MudText>
         it's less common that enemies will go under your <BaikenMove Move="Moves.fS"/>, but it can happen and you should
         have an answer prepared. <BaikenMove Move="Moves._2S"/> is one such answer. While not as generically amazing as
@@ -71,6 +82,7 @@
     </MudText>
     <br/>
     <MudText Typo="Typo.h5">Putting It All Together</MudText>
+    <br/>
     <MudText>
         You can consider the arena you're fighting in to have 3 different horizontal "lanes" like so:
     </MudText>
@@ -88,6 +100,69 @@
         a knockdown. To learn how to convert these options into knockdowns, reference the first section in the
         <MudLink Href="Combos">Combos</MudLink> page. More information about why knockdowns are so important in the
         <MudLink Href="Pressure">Pressure</MudLink> and <MudLink Href="Safejumps">Safejumps</MudLink> pages.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Let's Talk about <BaikenMove Move="Moves.IAD" Typo="Typo.h5" Naming="NamePreference.English"/></MudText>
+    <br/>
+    <MudText>
+        Instant air dashing is a powerful tool in your arsenal, but let's talk about why it's not something I've
+        mentioned in this neutral framework. <BaikenMove Move="Moves.IAD"/> is a powerful
+        "<GlossaryLink Term="Neutral Skip"/>" that is
+        <strong>reactable with anti-air moves</strong>. Moves like
+        <BaikenMove Move="Moves._6P"/> (which every character has some version of) can entirely shut this down as an
+        attack angle against opponents with sufficiently trained reactions.
+    </MudText>
+    <MudText Typo="Typo.h6" Style="font-style: italic;">
+        However
+    </MudText>
+    <MudText>
+        Attacking with an <BaikenMove Move="Moves.IAD"/> while your opponent has committed to a move with long
+        <GlossaryLink Term="recovery"/> time means that they are unable to input their anti-air to counter you. This
+        typically requires <GlossaryLink Term="Read" Text="reading"/> your opponent's next move, but as your opponent
+        could also just <i>not</i> use that move, this is an inherently less stable gameplan than punishing your
+        opponent's mistakes with less committal options, like the ones described above.
+    </MudText>
+    <MudText Typo="Typo.h5" Style="font-style: italic; font-weight: bold">
+        However
+    </MudText>
+    <MudText>
+        Your opponents are <i>human</i>. And because of that, they have flaws. One of these flaws may very well be a
+        lack of well-trained anti-air reactions. This can be abused by using <BaikenMove Move="Moves.IAD"/> >
+        <BaikenMove Move="Moves.jS"/> > <BaikenMove Move="@(Moves.Youzansen.AddPrefix("(Delayed) "))" Naming="NamePreference.Friendly"/>, but not delaying
+        the <BaikenMove Move="Moves.Youzansen" Naming="NamePreference.Friendly"/> will actually put you in a disadvantageous position if your opponent
+        blocks it and delaying it too much will leave you <i>very</i> disadvantageous. Due to the additional execution
+        requirements, as well as it not being entirely needed in order for you to have a functional neutral gameplan,
+        I recommend against brand new players using this as an option. Additionally, I wouldn't even recommend more
+        experienced players use it until they've practiced and are confident in their ability to properly delay the
+        <BaikenMove Move="Moves.Youzansen" Naming="NamePreference.Friendly"/>.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">
+        What about <BaikenMove Move="Moves.SKab" Typo="Typo.h5" Naming="NamePreference.English"/>
+        and <BaikenMove Move="Moves.HKab" Typo="Typo.h5" Naming="NamePreference.English"/>?
+    </MudText>
+    <br/>
+    <MudText>
+        <BaikenMove Move="Moves.SKab" Naming="NamePreference.Friendly"/> is incredibly slow to start up and applies tether so even if you
+        do land it, you'd need to learn how to handle tether shenanigans to make effective use of it. Too much complexity
+        and not enough situations in which it's useful for it to be in a starter guide. Any further information may be
+        found in <MudLink Href="Tether">Tether</MudLink>.
+    </MudText>
+    <br/>
+    <MudText>
+        <BaikenMove Move="Moves.HKab" Naming="NamePreference.Friendly"/> is actually a very commonly useful neutral tool.
+        It has incredible reach, is
+        safe on block, and can confirm into a hard knockdown on hit by cancelling into
+        <BaikenMove Move="Moves.HkabH" Naming="NamePreference.Friendly"/>. Plus at longer ranges like this,
+        <BaikenMove Move="Moves.HkabH" Naming="NamePreference.Friendly"/>
+        is typically also safe on block which means it's not always a bad idea to just throw it out. Also keep in mind
+        that <BaikenMove Move="Moves.HkabH" Naming="NamePreference.Friendly"/> can be performed even if the first part
+        whiffs, which is nice for neutral.
+        The one true downside of this move that holds it back from being part of the original framework is its
+        long total animation time, making it very susceptible to <BaikenMove Move="Moves.IAD"/>, as noted in the
+        previous section. It's pretty typical that players will fall into a pattern of using <BaikenMove Move="Moves.IAD"/>
+        all the time so if you rely on using <BaikenMove Move="Moves.HKab" Naming="NamePreference.Friendly"/> too much,
+        you may play right into the hands of these animals. So use it if you'd like, just be wary of the risks.
     </MudText>
 </MudContainer>
 

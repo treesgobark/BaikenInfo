@@ -21,13 +21,13 @@ public enum AttackButton
 
 public class Move
 {
-    public Move(string       NotationName,
-                string       EnglishName,
-                string       FriendlyName,
-                AttackButton AttackButton,
-                string       ImageName,
-                string       DustloopTag,
-                List<string> AdditionalNotes = null)
+    public Move(string        NotationName,
+                string        EnglishName,
+                string        FriendlyName,
+                AttackButton  AttackButton,
+                string        ImageName,
+                string        DustloopTag,
+                List<string>? AdditionalNotes = null)
     {
         this.NotationName    = NotationName;
         this.EnglishName     = EnglishName;
@@ -35,10 +35,10 @@ public class Move
         this.AttackButton    = AttackButton;
         this.ImageName       = ImageName;
         this.DustloopTag     = DustloopTag;
-        this.AdditionalNotes = AdditionalNotes is null ? [] : AdditionalNotes;
+        this.AdditionalNotes = AdditionalNotes ?? [];
     }
 
-    public Move(Move other)
+    private Move(Move other)
     {
         NotationName    = other.NotationName;
         EnglishName     = other.EnglishName;

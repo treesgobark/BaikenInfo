@@ -64,9 +64,9 @@
             LocalStorage.SetItem(UnreadPagesKey, UnreadPages);
         }
 
-        if (LocalStorage.TryGetItem(UnreadPagesKey, out Dictionary<string, bool> items))
+        if (LocalStorage.TryGetItem(UnreadPagesKey, out Dictionary<string, bool>? items))
         {
-            UnreadPages = items;
+            UnreadPages = items!;
         }
     }
 

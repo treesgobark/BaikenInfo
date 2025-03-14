@@ -281,9 +281,9 @@
             SaveChanges();
         }
 
-        if (LocalStorage.TryGetItem(ChecklistKey, out Dictionary<string, bool> items))
+        if (LocalStorage.TryGetItem(ChecklistKey, out Dictionary<string, bool>? items))
         {
-            ChecklistItems = items;
+            ChecklistItems = items!;
         }
         
         EnsureKeysPresent();

@@ -51,11 +51,11 @@
 
 @code {
     [Parameter]
-    public Move Move { get; set; }
+    public required Move Move { get; set; }
 
     [Parameter] public NamePreference Naming { get; set; } = NamePreference.Notation;
 
-    [Parameter] public Typo Typo { get; set; } = Typo.body1;
+    [Parameter] public Typo Typo { get; set; } = Typo.inherit;
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
     private string ImageUri => $"Moves/{Move.ImageName}.png";
@@ -67,7 +67,7 @@
         AttackButton.S => Color.Success,
         AttackButton.H => Color.Error,
         AttackButton.D => Color.Warning,
-        _              => Color.Default,
+        _              => Color.Tertiary,
     };
 
     private string DisplayText => Naming switch
