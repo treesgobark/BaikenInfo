@@ -185,6 +185,24 @@
                                <MudLink Href="TKYouzansen">TK Youzansen</MudLink> page for more details)
                            </span>]),
             ]),
+            new ComboList("S Kabari? More like S Shibari (Tether Combos)",
+            [
+                new Combo([Moves.SKab, Moves._5P, Moves._6K, Moves.Tatami, Moves.cS, Moves._2K, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
+                          "skab 5p 6k tatami cs 2k cs 6h hkabh",
+                          [@<span>First Combo in Video</span>]),
+                new Combo([Moves._5P.AddPrefix("(Tethered) "), Moves._6K, Moves.Tatami, Moves.cS, Moves._2K, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
+                          "skab 5p 6k tatami cs 2k cs 6h hkabh",
+                          [@<span>Second Combo in Video</span>]),
+                new Combo([Moves.cS.AddPrefix("(Tethered) "), Moves.fS, Moves._5H, Moves.Tatami, Moves.cS, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
+                          "throwki cs fs 5h tatami cs 6h hkabh",
+                          [@<span>Your mileage may vary depending on tether duration.
+                               See <MudLink Href="Tether">Tether Mechanics</MudLink> for more info.</span>]),
+                new Combo([Moves.cS.AddPrefix("(Tethered) "), Moves._2K, Moves._6K, Moves.Tatami, Moves.cS, Moves._6H, Moves.HKab, Moves.HkabH, Moves.IAD, Moves.AerialTatami.AddSuffix(" (Safejump)")],
+                          "throw cS 2K 6K tatami c.S 6H hkabh",
+                          [@<span>Only applicable on a sufficiently meaty <BaikenMove Move="Moves.cS"/>, most commonly
+                               from the throw setup shown. Note that you do not cancel <BaikenMove Move="Moves.cS"/> into
+                               <BaikenMove Move="Moves._2K"/>, this is a link and will feel a bit different than normal</span>]),
+            ]),
         ];
 
     private List<ComboList> ExtensionCombos { get; } =

@@ -4,22 +4,123 @@
 <PageTitle>@Constants.TitlePrefix Tether Mechanics</PageTitle>
 
 <MudContainer>
-    @* <MudText> *@
-    @*     If you want to use the tether effectively, there's a few main strings you need to know *@
-    @* </MudText> *@
-
-    <MudGrid Justify="Justify.Center">
-        <MudItem xs="4">
-            <MudCard>
-                <MudCardContent>
-                    <MudText Typo="Typo.h4" Align="Align.Center">Under Construction</MudText>
-                    <MudText Align="Align.Center">
-                        <MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.Construction"/>
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudItem>
-    </MudGrid>
+    <MudText Typo="Typo.h4">Tether Mechanics</MudText>
+    <br/>
+    <MudText>
+        Baiken's tether is a fairly complicated mechanic. This page will not cover <MudLink Href="Throwkizeme">throwki</MudLink>
+        or <MudLink Href="SKabariRps">RPS after S Kabari</MudLink>. What it will cover is the properties of a tethered
+        opponent, options you have that are only available once an opponent is tethered, how to convert hits during tethered
+        offense/<GlossaryLink Text="scrambles" Term="scramble"/>, and <GlossaryLink Term="okizeme"/> specific to tether.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Tether Properties</MudText>
+    <br/>
+    <MudText>
+        Tether's simple purpose is to keep your opponent within striking distance of you. This applies both to
+        <GlossaryLink Text="blockstrings" Term="blockstring"/> and combos. When your opponent reaches a certain horizontal distance
+        from you, the tether will stretch like a bungie cord and, after a small delay, pull you both closer to each other.
+        Tether duration is on a simple timer, but that timer's remaining duration gets reduced further every time the
+        tether is stretched and pulls you and your opponent.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Unique Options</MudText>
+    <br/>
+    <MudText>
+        Baiken's backdash and air backdash change while she has her tether applied to the opponent.
+        She will cover more distance than usual, allowing her to forcibly stretch
+        the tether from shorter distances than she could otherwise. Because of friction, the tether will move characters
+        in the air more than characters standing on the ground, so backdashing in this manner will slingshot you back
+        into the opponent for an air approach. If you initiated this slingshot with your grounded backdash, you have the
+        additional option to air dash past their head to hit them with a
+        <BaikenMove Move="Moves.Youzansen" Naming="NamePreference.English"/> from behind. This would not be possible
+        after an air backdash since your air dash would have been consumed already.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h6">A Note For Baiken Mirrors</MudText>
+    <br/>
+    <MudText>
+        Note that I said that the backdashing property applies while <i>her</i> tether is applied, which would exclude
+        the opposing Baiken's tether. An opponent's tether does not give your moves the small tweaks that would normally
+        occur while your tether is active. Keep this in mind because it <i>will</i> cause you to drop combos. I'm not
+        going to cover the extent of these differences. Good luck if you want to explore them on your own.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Converting Hits With Tether</MudText>
+    <br/>
+    <MudText>
+        Tether combos all have distinct stages to them:
+        <MudList T="string" ReadOnly>
+            <MudListItem>
+                1. Launch the opponent
+            </MudListItem>
+            <MudListItem>
+                1a. Stall tether duration (optional)
+            </MudListItem>
+            <MudListItem>
+                2. End with a knockdown
+            </MudListItem>
+        </MudList>
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h6">Blastoff</MudText>
+    <br/>
+    <MudText>
+        The most common way your opponent will enter the air while tethered is via
+        <BaikenMove Move="Moves.Tatami" Naming="NamePreference.English"/>. You have many ways to route into it. If you
+        need ideas, check <MudLink Href="Combos">Combos</MudLink> and look for anything that includes
+        <BaikenMove Move="Moves.Tatami" Naming="NamePreference.Notation"/>. Your opponent could also be launched by
+        <BaikenMove Move="Moves.Youzansen" Naming="NamePreference.English"/>, or
+        <BaikenMove Move="Moves.RedRc" Naming="NamePreference.English"/>, among others. The opponent can also begin the
+        tether combo already launched by launching and then comboing into
+        <BaikenMove Move="Moves.SKab" Naming="NamePreference.English"/>. Candidates for this include, but are not limited
+        to <BaikenMove Move="Moves._6H"/>,
+        <BaikenMove Move="@(Moves._5H.AddPrefix("CH "))"/>, <BaikenMove Move="@(Moves._2H.AddPrefix("CH "))"/>, or
+        <BaikenMove Move="@(Moves.DriftRedRc.AddPrefix("Upward "))" Naming="NamePreference.English"/>.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h6">Touchdown</MudText>
+    <br/>
+    <MudText>
+        Once you've successfully launched your opponent, now it's time to knock them back down again. This is where
+        <MudLink Href="Combos">Combo #3.3</MudLink> comes in, as it is your standard air confirm combo. Your opponent
+        should get pulled back into you after you launch them, putting them at the perfect distance for you to begin
+        with <BaikenMove Move="Moves.cS"/>/<BaikenMove Move="Moves._5K"/>/<BaikenMove Move="Moves._2K"/>, all of which
+        will combo into <BaikenMove Move="Moves._6H"/>. Note that combo #3.3 shows the combo routing into
+        <BaikenMove Move="Moves.HKab" Naming="NamePreference.English"/>. However, with tether you also have the option to
+        combo into <BaikenMove Move="Moves.SKab" Naming="NamePreference.English"/> instead. This gives a less advantageous
+        knockdown but does reapply the tether so that you can begin a new round of offense with a fresh one. However,
+        if you do choose to end with <BaikenMove Move="Moves.HkabH" Naming="NamePreference.English"/>, you can still
+        reapply tether in a different manner if the tether is still applied when you knock them down. Doing an
+        <BaikenMove Move="@(Moves._6H.AddPrefix("OTG "))"/> and cancelling into
+        <BaikenMove Move="Moves.SKab" Naming="NamePreference.English"/> will cause it to hit them meaty, which also
+        gives you a guaranteed tether application. This method also has the benefit of being safe to many
+        <GlossaryLink Term="dragon punch">DPs</GlossaryLink> and some supers since you outspace their hitboxes. As a
+        bonus tip, you can also use this technique on an <BaikenMove Move="Moves.HKab" Naming="NamePreference.English"/>
+        knockdown in the corner since you are also close to your opponent in that case.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h6">Clown College</MudText>
+    <br/>
+    <MudText>
+        It's juggling time! You may notice that in your tether combos, you will route into
+        <BaikenMove Move="Moves.HkabH" Naming="NamePreference.English"/>, then do your typical safejump and end up flying
+        past the opponent. This is an unfortunate reality of tether combos, but is luckily a solvable problem. In between
+        your launch and your knockdown, you will want to stall the tether duration with some combination of
+        <BaikenMove Move="Moves.cS"/>/<BaikenMove Move="Moves._2K"/>/<BaikenMove Move="Moves._5K"/>. These moves will
+        <GlossaryLink Term="link"/> into each other, depending on the current gravity scaling of your combo. You may
+        have to do some experimentation for any routes you want to use, but as a general rule of thumb, it typically
+        doesn't hurt to sneak in a <BaikenMove Move="Moves._2K"/> after any aerial hit <BaikenMove Move="Moves.cS"/> you
+        land during a tether combo.
+    </MudText>
+    <br/>
+    <MudText Typo="Typo.h5">Putting It All Together</MudText>
+    <br/>
+    <MudText>
+        Here's a route that combines all those concepts into one combo and works the same for two common situations you
+        will find yourself in.
+    </MudText>
+    <br/>
+    <MudContainer><BaikenVideo Src="skab 5p 6k tatami cs 2k cs 6h hkabh"></BaikenVideo></MudContainer>
 </MudContainer>
 
 @code {

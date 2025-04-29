@@ -1,0 +1,1 @@
+Blazor is cool. Baiken is cool. :)
