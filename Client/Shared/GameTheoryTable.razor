@@ -16,7 +16,7 @@
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Add" OnClick="@OnClickAddTable" />
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Remove" OnClick="@OnClickRemoveTable" />
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Save" OnClick="@SaveTables" />
-        <MudButton Variant="Variant.Filled" OnClick="@ResetTablesToDefault">Default All Tables</MudButton>
+        <MudButton Variant="Variant.Filled" OnClick="@OnClickResetTables">Default All Tables</MudButton>
         <MudButton Variant="Variant.Filled" OnClick="@PasteTable">Paste Table From Clipboard</MudButton>
     </MudStack>
     @if (CurrentTable is not null)
@@ -63,7 +63,7 @@
         }
     }
 
-    private async Task ResetTablesToDefault()
+    private async Task OnClickResetTables()
     {
         bool? result = await DialogService.ShowMessageBox(
             "Default all tables", 
@@ -71,14 +71,20 @@
             yesText:"yeah", cancelText:"nah");
         if (result is true)
         {
-            Tables =
-            [
-                GameTheoryTableDefaults.WakeupVsSol,
-                GameTheoryTableDefaults.BaikenMirrorHkabRPS,
-            ];
-            CurrentTable = Tables.FirstOrDefault();
-            StateHasChanged();
+            ResetTables();
         }
+    }
+
+    private void ResetTables()
+    {
+        Tables =
+        [
+            GameTheoryTableDefaults.WakeupVsSol,
+            GameTheoryTableDefaults.BaikenMirrorHkabRPS,
+            GameTheoryTableDefaults.BaikenVsSolSkabRps,
+        ];
+        CurrentTable = Tables.FirstOrDefault();
+        StateHasChanged();
     }
 
     private async Task PasteTable()
@@ -119,13 +125,7 @@
         else
         {
             Console.WriteLine("no table found");
-            Tables =
-            [
-                GameTheoryTableDefaults.WakeupVsSol,
-                GameTheoryTableDefaults.BaikenMirrorHkabRPS,
-            ];
-            CurrentTable = Tables.FirstOrDefault();
-            StateHasChanged();
+            ResetTables();
         }
     }
 }

@@ -197,4 +197,9 @@ public static class GameTheoryTableDefaults
     private static readonly string _baikenMirrorHkabRPS = """
                                                           {"Id":"3306ea04-cd5f-47cf-8990-8f39a5b5f907","Name":"Baiken Mirror hkab RPS","Data":[[0,0,100,150,150],[-150,0,-70,150,150],[48,-70,48,-100,-80],[150,0,150,-100,-80]],"TopHeaders":["f.S","Block","6P","Parry","Throw"],"SideHeaders":["Block","f.S","~H Follow-up","~H RRC"],"Probabilities":[5,3,1,1,1],"IsEmpty":false}
                                                           """;
+
+    public static GameTheoryTableData BaikenVsSolSkabRps => JsonSerializer.Deserialize<GameTheoryTableData>(_baikenVsSolSkabRps);
+    private static readonly string _baikenVsSolSkabRps = """
+                                                        {"Id":"65c8426b-9fe1-42b5-8d5d-fb5873a4c08d","Name":"Baiken vs Sol Skab RPS","Data":[[0,150,160,-40,-180,150],[120,0,-150,-40,-180,-100],[160,200,165,-40,-140,-100],[0,-80,160,-40,-180,160],[0,-80,160,250,250,0]],"TopHeaders":["Low Block","Throw","Backdash","DP","Tyrant Rave","5P"],"SideHeaders":["5P","Throw","TK Youzansen RRC","2K","Low Block"],"Probabilities":[6,4,2,1,1,2],"IsEmpty":false}
+                                                        """;
 }

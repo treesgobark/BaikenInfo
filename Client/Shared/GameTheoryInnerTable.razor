@@ -1,4 +1,5 @@
 @using System.Text.Json
+@using MudBlazor.Utilities
 @inject ClipboardService Clipboard
 <div>
 @if (TableData.IsEmpty)
@@ -66,10 +67,10 @@ else
                             }
                             else
                             {
-                                <td><MudText>@row.Values[i]</MudText></td>
+                                <td><MudText Class="@DamageValueColor(row.Values[i])">@row.Values[i]</MudText></td>
                             }
                         }
-                        <td><MudText>@float.Round(row.ExpectedValue)</MudText></td>
+                        <td><MudText Class="@DamageValueColor((int)row.ExpectedValue)">@float.Round(row.ExpectedValue)</MudText></td>
                     </tr>
                 }
             </table>
@@ -127,6 +128,15 @@ else
     tr:nth-child(2n+3) {
         background-color: #32333D;
     }
+    .negative-value {
+        color: palevioletred;
+    }
+    .zero-value {
+        color: lightgoldenrodyellow;
+    }
+    .positive-value {
+        color: darkseagreen;
+    }
 </style>
 
 @code {
@@ -168,5 +178,14 @@ else
     private async Task OnClickCopy()
     {
         await Clipboard.WriteTextAsync(SerializedTableData);
+    }
+
+    private static string DamageValueColor(int value)
+    {
+        return new CssBuilder()
+              .AddClass("negative-value", value < 0)
+              .AddClass("zero-value", value == 0)
+              .AddClass("positive-value", value > 0)
+              .Build();
     }
 }
