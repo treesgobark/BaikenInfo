@@ -12,23 +12,24 @@ public class GameTheoryTableData
     [JsonIgnore]
     public int ColumnCount => TopHeaders.Count;
 
+    private readonly List<List<int>> _data = [[]];
     public List<List<int>> Data
     {
         get
         {
-            while (field.Count < RowCount)
+            while (_data.Count < RowCount)
             {
                 Console.WriteLine("Adding data row");
-                field.Add([]);
+                _data.Add([]);
             }
             
-            while (field.Count > RowCount)
+            while (_data.Count > RowCount)
             {
                 Console.WriteLine("removing data row");
-                field.RemoveAt(field.Count - 1);
+                _data.RemoveAt(_data.Count - 1);
             }
 
-            foreach (var rowData in field)
+            foreach (var rowData in _data)
             {
                 while (rowData.Count < ColumnCount)
                 {
@@ -43,70 +44,73 @@ public class GameTheoryTableData
                 }
             }
 
-            return field;
+            return _data;
         }
-        init;
-    } = [[]];
+        init => _data = value;
+    }
 
+    private readonly List<string> _topHeaders = [];
     public List<string> TopHeaders
     {
         get
         {
-            if (Editable && (field.Count == 0 || field.Last() != ""))
+            if (Editable && (_topHeaders.Count == 0 || _topHeaders.Last() != ""))
             {
-                field.Add("");
+                _topHeaders.Add("");
             }
-            else if (!Editable && field.Last() == "")
+            else if (!Editable && _topHeaders.Last() == "")
             {
-                field.RemoveAt(field.Count - 1);
+                _topHeaders.RemoveAt(_topHeaders.Count - 1);
             }
 
-            return field;
+            return _topHeaders;
         }
-        init;
-    } = [];
+        init => _topHeaders = value;
+    }
 
+    private readonly List<string> _sideHeaders = [];
     public List<string> SideHeaders
     {
         get
         {
-            if (Editable && (field.Count == 0 || field.Last() != ""))
+            if (Editable && (_sideHeaders.Count == 0 || _sideHeaders.Last() != ""))
             {
-                field.Add("");
+                _sideHeaders.Add("");
             }
-            else if (!Editable && field.Last() == "")
+            else if (!Editable && _sideHeaders.Last() == "")
             {
-                field.RemoveAt(field.Count - 1);
+                _sideHeaders.RemoveAt(_sideHeaders.Count - 1);
             }
 
-            return field;
+            return _sideHeaders;
         }
-        init;
-    } = [];
+        init => _sideHeaders = value;
+    }
 
+    private readonly List<int> _probabilities = [];
     public List<int> Probabilities
     {
         get
         {
-            while (field.Count < ColumnCount)
+            while (_probabilities.Count < ColumnCount)
             {
-                field.Add(0);
+                _probabilities.Add(0);
             }
             
-            while (field.Count > ColumnCount)
+            while (_probabilities.Count > ColumnCount)
             {
-                field.RemoveAt(field.Count - 1);
+                _probabilities.RemoveAt(_probabilities.Count - 1);
             }
 
-            if (field.Count > 0 && field.All(x => x == 0))
+            if (_probabilities.Count > 0 && _probabilities.All(x => x == 0))
             {
-                field[0] = 1;
+                _probabilities[0] = 1;
             }
             
-            return field;
+            return _probabilities;
         }
-        init;
-    } = [];
+        init => _probabilities = value;
+    }
 
     [JsonIgnore]
     public GameTheoryRow ProbabilitiesRow =>
