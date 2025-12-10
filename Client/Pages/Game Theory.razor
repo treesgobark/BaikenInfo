@@ -3,19 +3,21 @@
 
 <PageTitle>@Constants.TitlePrefix Game Theory</PageTitle>
 
-<MudContainer MaxWidth="MaxWidth.ExtraLarge">
-    <MudText>
-        Game Theory is a branch of mathematics that studies the decision-making processes of individuals and groups.
-        You can use this to your advantage to become a better player. I've filled in an example defensive situation for you to
-        try it out. Positive numbers mean you get damage on the opponent and negative numbers mean they get damage on
-        you. This doesn't mean you
-        should always pick the highest Expected Value, because keep in mind that your opponent will become more or less
-        likely to use certain options as the match progresses. Try simulating an opponent who has gotten parried on your
-        wakeup a bunch of times by changing the probability of their next attack accordingly and see how the Expected
-        Values change.
-    </MudText>
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudText>
+            Game Theory is a branch of mathematics that studies the decision-making processes of individuals and groups.
+            You can use this to your advantage to become a better player. I've filled in an example defensive situation for you to
+            try it out. Positive numbers mean you get damage on the opponent and negative numbers mean they get damage on
+            you. This doesn't mean you
+            should always pick the highest Expected Value, because keep in mind that your opponent will become more or less
+            likely to use certain options as the match progresses. Try simulating an opponent who has gotten parried on your
+            wakeup a bunch of times by changing the probability of their next attack accordingly and see how the Expected
+            Values change.
+        </MudText>
+    </MudContainer>
     <br/>
-    <GameTheoryTable />
+    <GameTheoryTable/>
 </MudContainer>
 
 @code {

@@ -79,6 +79,28 @@ else
         @if (!DisableControls)
         {
             <MudStack AlignItems="AlignItems.Center" Justify="Justify.FlexEnd" Row>
+                @if (TableData.Editable)
+                {
+                    <MudStack AlignItems="AlignItems.Center" Justify="Justify.FlexEnd" Row>
+                        <MudSelect Style="min-width: 130px" Label="Your Character" @bind-Value="@TableData.YourCharacter">
+                            @foreach (StriveCharacter character in Enum.GetValues<StriveCharacter>())
+                            {
+                                <MudSelectItem Value="@character">@(Enum.GetName(character))</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudText>vs</MudText>
+                        <MudSelect Style="min-width: 130px" Label="Enemy Character" @bind-Value="@TableData.EnemyCharacter">
+                            @foreach (StriveCharacter character in Enum.GetValues<StriveCharacter>())
+                            {
+                                <MudSelectItem Value="@character">@(Enum.GetName(character))</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudStack>
+                }
+                else
+                {
+                    <MudText>@(Enum.GetName(TableData.YourCharacter)) vs @(Enum.GetName(TableData.EnemyCharacter))</MudText>
+                }
                 @if (!TableData.ReadOnly)
                 {
                     <MudButton OnClick="OnClickClear">Clear Table</MudButton>

@@ -7,6 +7,9 @@ public class GameTheoryTableData
 {
     public Guid Id { get; } = Guid.NewGuid();
     public string Name { get; set; } = "";
+    
+    public StriveCharacter YourCharacter { get; set; } = StriveCharacter.Baiken;
+    public StriveCharacter EnemyCharacter { get; set; } = StriveCharacter.Default;
 
     [JsonIgnore]
     public bool Editable
@@ -174,7 +177,7 @@ public class GameTheoryTableData
 
     public override string ToString()
     {
-        return string.Join(", ", Data.Select(d => $"[{string.Join(", ", d)}]"));
+        return TableIdentifier;
     }
 
     public void Clear()
@@ -207,16 +210,16 @@ public static class GameTheoryTableDefaults
     
     public static GameTheoryTableData WakeupVsSol => Deserialize(_wakeupVsSol);
     private static readonly string _wakeupVsSol = """
-                                                  {"Id":"f9787bfc-e59d-4379-bfcd-71584db66575","Name":"Baiken Wakeup vs Sol","Data":[[0,-80,0],[0,-80,0],[-200,70,35],[100,-80,-200],[130,130,-150]],"TopHeaders":["c.S","Throw","Bait"],"SideHeaders":["Block","Up-Back","5P","Parry","Sword Super"],"Probabilities":[4,2,1],"IsEmpty":false}
+                                                  {"Id":"e7a51d55-c56a-4dc5-ab78-aa308627fa5c","Name":"Baiken Wakeup vs Sol","YourCharacter":5,"EnemyCharacter":28,"Data":[[0,-80,0],[0,-80,0],[-200,70,35],[100,-80,-200],[130,130,-150]],"TopHeaders":["c.S","Throw","Bait"],"SideHeaders":["Block","Up-Back","5P","Parry","Sword Super"],"Probabilities":[4,2,1]}
                                                   """;
 
     public static GameTheoryTableData BaikenMirrorHkabRPS => Deserialize(_baikenMirrorHkabRPS);
     private static readonly string _baikenMirrorHkabRPS = """
-                                                          {"Id":"3306ea04-cd5f-47cf-8990-8f39a5b5f907","Name":"Baiken Mirror hkab RPS","Data":[[0,0,100,150,150],[-150,0,-70,150,150],[48,-70,48,-100,-80],[150,0,150,-100,-80]],"TopHeaders":["f.S","Block","6P","Parry","Throw"],"SideHeaders":["Block","f.S","~H Follow-up","~H RRC"],"Probabilities":[5,3,1,1,1],"IsEmpty":false}
+                                                          {"Id":"f78fcb8f-3529-491f-a80e-97474c5b0632","Name":"Baiken Mirror hkab RPS","YourCharacter":5,"EnemyCharacter":5,"Data":[[0,0,100,150,150],[-150,0,-70,150,150],[48,-70,48,-100,-80],[150,0,150,-100,-80]],"TopHeaders":["f.S","Block","6P","Parry","Throw"],"SideHeaders":["Block","f.S","~H Follow-up","~H RRC"],"Probabilities":[5,3,1,1,1]}
                                                           """;
 
     public static GameTheoryTableData BaikenVsSolSkabRps => Deserialize(_baikenVsSolSkabRps);
     private static readonly string _baikenVsSolSkabRps = """
-                                                        {"Id":"65c8426b-9fe1-42b5-8d5d-fb5873a4c08d","Name":"Baiken vs Sol Skab RPS","Data":[[0,150,160,-40,-180,150],[120,0,-150,-40,-180,-100],[160,200,165,-40,-140,-100],[0,-80,160,-40,-180,160],[0,-80,160,250,250,0]],"TopHeaders":["Low Block","Throw","Backdash","DP","Tyrant Rave","5P"],"SideHeaders":["5P","Throw","TK Youzansen RRC","2K","Low Block"],"Probabilities":[6,4,2,1,1,2],"IsEmpty":false}
+                                                        {"Id":"f703493b-b11a-4fa0-8f90-4179c77e1f66","Name":"Baiken vs Sol Skab RPS","YourCharacter":5,"EnemyCharacter":28,"Data":[[0,150,160,-40,-180,150],[120,0,-150,-40,-180,-100],[160,200,165,-40,-140,-100],[0,-80,160,-40,-180,160],[0,-80,160,250,250,0]],"TopHeaders":["Low Block","Throw","Backdash","DP","Tyrant Rave","5P"],"SideHeaders":["5P","Throw","TK Youzansen RRC","2K","Low Block"],"Probabilities":[6,4,2,1,1,2]}
                                                         """;
 }

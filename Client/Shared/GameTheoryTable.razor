@@ -6,12 +6,29 @@
 @inject ClipboardService Clipboard
 
 <MudStack AlignItems="AlignItems.Center">
-    <MudStack Row>
-        <MudSelect Style="min-width: 400px" Variant="Variant.Filled" Clearable @bind-Value="@CurrentTable">
-            <MudSelectItem T="GameTheoryTableData" Disabled>Built-in Tables</MudSelectItem>
-            @foreach (GameTheoryTableData table in ReadOnlyTables)
+    <MudStack Row AlignItems="AlignItems.Center">
+        <MudSelect Variant="Variant.Filled" Clearable Style="min-width: 250px" Label="Your Character" @bind-Value="@YourCharacterFilter">
+            @foreach (StriveCharacter character in Enum.GetValues<StriveCharacter>())
             {
-                <MudSelectItem Value="table">@table.TableIdentifier</MudSelectItem>
+                <MudSelectItem Value="@character">@(Enum.GetName(character))</MudSelectItem>
+            }
+        </MudSelect>
+        <MudText>vs</MudText>
+        <MudSelect Variant="Variant.Filled" Clearable Style="min-width: 250px" Label="Enemy Character" @bind-Value="@EnemyCharacterFilter">
+            @foreach (StriveCharacter character in Enum.GetValues<StriveCharacter>())
+            {
+                <MudSelectItem Value="@character">@(Enum.GetName(character))</MudSelectItem>
+            }
+        </MudSelect>
+        <MudText>:</MudText>
+        <MudSelect Label="Select Table" Style="min-width: 300px" Variant="Variant.Filled" @bind-Value="@CurrentTable">
+            @if (ReadOnlyTables.Any())
+            {
+                <MudSelectItem T="GameTheoryTableData" Disabled>Built-in Tables</MudSelectItem>
+                @foreach (GameTheoryTableData table in ReadOnlyTables)
+                {
+                    <MudSelectItem Value="table">@table.TableIdentifier</MudSelectItem>
+                }
             }
             @if (UserTables.Any())
             {
@@ -22,9 +39,11 @@
                 }
             }
         </MudSelect>
-        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Add" OnClick="@OnClickAddTable" />
-        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Remove" OnClick="@OnClickRemoveTable" />
-        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Save" OnClick="@SaveTables" />
+        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Add" OnClick="@OnClickAddTable"/>
+        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Remove" OnClick="@OnClickRemoveTable"/>
+        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Save" OnClick="@SaveTables"/>
+    </MudStack>
+    <MudStack Row AlignItems="AlignItems.Center">
         <MudButton Variant="Variant.Filled" OnClick="@OnClickResetTables">Clear User Tables</MudButton>
         <MudButton Variant="Variant.Filled" OnClick="@PasteTable">Paste Table From Clipboard</MudButton>
     </MudStack>
@@ -41,8 +60,15 @@
     private List<GameTheoryTableData> Tables { get; set; } = [];
     private GameTheoryTableData? CurrentTable { get; set; }
 
-    private IEnumerable<GameTheoryTableData> ReadOnlyTables => Tables.Where(t => t.ReadOnly);
-    private IEnumerable<GameTheoryTableData> UserTables => Tables.Where(t => !t.ReadOnly);
+    private StriveCharacter YourCharacterFilter { get; set; }
+    private StriveCharacter EnemyCharacterFilter { get; set; }
+
+    private IEnumerable<GameTheoryTableData> FilteredTables => Tables
+       .Where(t => (t.YourCharacter     == YourCharacterFilter  || YourCharacterFilter  == StriveCharacter.Default)
+                   && (t.EnemyCharacter == EnemyCharacterFilter || EnemyCharacterFilter == StriveCharacter.Default));
+    
+    private IEnumerable<GameTheoryTableData> ReadOnlyTables => FilteredTables.Where(t => t.ReadOnly);
+    private IEnumerable<GameTheoryTableData> UserTables => FilteredTables.Where(t => !t.ReadOnly);
 
     private async Task SaveTables()
     {
@@ -59,7 +85,7 @@
 
     private async Task OnClickRemoveTable()
     {
-        if (CurrentTable is not null)
+        if (CurrentTable is { ReadOnly: false })
         {
             bool? result = await DialogService.ShowMessageBox(
                 "Remove Table", 
