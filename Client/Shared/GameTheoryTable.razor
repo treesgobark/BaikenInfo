@@ -98,7 +98,13 @@
         else
         {
             Console.WriteLine("no table found");
-            await ResetTablesToDefault();
+            Tables =
+            [
+                GameTheoryTableDefaults.WakeupVsSol,
+                GameTheoryTableDefaults.BaikenMirrorHkabRPS,
+            ];
+            CurrentTable = Tables.FirstOrDefault();
+            StateHasChanged();
         }
     }
 }
