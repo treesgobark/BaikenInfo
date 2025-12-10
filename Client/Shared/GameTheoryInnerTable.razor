@@ -1,0 +1,135 @@
+@using System.Text.Json
+<div>
+@if (TableData.IsEmpty)
+{
+    <MudText>table is kil</MudText>
+}
+else
+{
+    <MudStack AlignItems="AlignItems.Center">
+        <MudText>Enemy Options</MudText>
+        <MudStack AlignItems="AlignItems.Center" Row>
+            <MudText>Your Options</MudText>
+            <table>
+                <tr>
+                    <th><MudTextField @bind-Value="TableData.Name" Placeholder="Enter Table Name" /></th>
+                    @foreach ((int index, _) in TableData.TopHeaders.Index())
+                    {
+                        <th><MudTextField @bind-Value="@TableData.TopHeaders[index]" Placeholder="Enter Move Name"/></th>
+                    }
+                    <th><MudText>Expected Value</MudText></th>
+                </tr>
+                <tr>
+                    <td><MudText>Probability</MudText></td>
+                    @foreach ((int i, _) in TableData.ProbabilitiesRow.Values.Index())
+                    {
+                        <td>
+                            <MudText>@(float.Round(TableData.ProbabilitiesRow.Values[i] / (float)TableData.ProbabilitiesRow.Values.Sum() * 100))%</MudText>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td><MudText>Probability Weights</MudText></td>
+                    @foreach ((int i, _) in TableData.ProbabilitiesRow.Values.Index())
+                    {
+                        <td><MudNumericField Min="0" @bind-Value="@TableData.ProbabilitiesRow.Values[i]"/></td>
+                    }
+                </tr>
+                @foreach (GameTheoryRow row in DataRows)
+                {
+                    <tr>
+                        <td><MudTextField @bind-Value="@TableData.SideHeaders[row.Index]" Placeholder="Enter Move Name"/></td>
+                        @foreach ((int i, _) in row.Values.Index())
+                        {
+                            <td><MudNumericField @bind-Value="@row.Values[i]" HideSpinButtons ReadOnly="!TableData.Editable"/></td>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(TableData.SideHeaders[row.Index]))
+                        {
+                            <td><MudText>@float.Round(row.ExpectedValue)</MudText></td>
+                        }
+                    </tr>
+                }
+            </table>
+        </MudStack>
+        @if (!DisableControls)
+        {
+            <MudStack AlignItems="AlignItems.Center" Justify="Justify.FlexEnd" Row>
+                <MudButton @onclick="OnClickClear">Clear Table</MudButton>
+                @* <MudButton @onclick="StoreTable">Save Table Values</MudButton> *@
+                @* <MudButton @onclick="OnResetClicked">Reset To Default</MudButton> *@
+                <MudText>Edit Mode</MudText>
+                <MudSwitch Disabled="TableData.Editable && (TableData.ColumnCount == 1 || TableData.RowCount == 1)" @bind-Value="TableData.Editable"/>
+                <MudText>Show Import/Export</MudText>
+                <MudSwitch @bind-Value="_isImportVisible"/>
+            </MudStack>
+        }
+        @if (_isImportVisible)
+        {
+            <MudPaper Width="800px" Outlined Style="padding: 1rem">
+                <MudTextField AutoGrow @bind-Value="SerializedTableData" ReadOnly="!TableData.Editable"></MudTextField>
+            </MudPaper>
+        }
+    </MudStack>
+}
+</div>
+<style>
+    table {
+        font-size: x-large;
+        .mud-input-adornment-text {
+            font-size: large;
+            text-align: center;
+        }
+        .mud-input {
+            font-size: large;
+        }
+        input {
+            text-align: center;
+        }
+        border-width: 1px;
+        border-style: solid;
+    }
+    th, td {
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+        border-color: gray;
+        padding: 5px;
+    }
+</style>
+
+@code {
+
+    [Parameter]
+    public required GameTheoryTableData TableData { get; set; }
+
+    [Parameter]
+    public required EventCallback<GameTheoryTableData> TableDataChanged { get; set; }
+
+    [Parameter] public bool DisableControls { get; set; }
+
+    private IEnumerable<GameTheoryRow> DataRows
+    {
+        get
+        {
+            if (TableData.Editable)
+            {
+                return TableData.DataRows;
+            }
+            return TableData.DataRows.OrderByDescending(dr => dr.ExpectedValue);
+        }
+    }
+
+    private bool _isImportVisible;
+
+    private string SerializedTableData
+    {
+        get => JsonSerializer.Serialize(TableData);
+        set => TableData = JsonSerializer.Deserialize<GameTheoryTableData>(value);
+    }
+    
+    private void OnClickClear()
+    {
+        TableData.Editable = true;
+        TableData.Clear();
+    }
+}

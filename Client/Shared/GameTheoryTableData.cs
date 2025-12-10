@@ -1,9 +1,13 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Client.Shared;
 
 public class GameTheoryTableData
 {
+    public Guid Id { get; } = Guid.NewGuid();
+    public string Name { get; set; } = "";
+    
     [JsonIgnore]
     public bool Editable { get; set; }
     
@@ -11,6 +15,8 @@ public class GameTheoryTableData
     public int RowCount => SideHeaders.Count;
     [JsonIgnore]
     public int ColumnCount => TopHeaders.Count;
+    [JsonIgnore]
+    public string TableIdentifier => string.IsNullOrWhiteSpace(Name) ? "(Unnamed)" : Name;
 
     private readonly List<List<int>> _data = [[]];
     public List<List<int>> Data
@@ -54,11 +60,18 @@ public class GameTheoryTableData
     {
         get
         {
-            if (Editable && (_topHeaders.Count == 0 || _topHeaders.Last() != ""))
+            if (_topHeaders.Count == 0)
+            {
+                _topHeaders.Add("");
+                Editable = true;
+            }
+            
+            if (Editable && _topHeaders.Last() is not "")
             {
                 _topHeaders.Add("");
             }
-            else if (!Editable && _topHeaders.Last() == "")
+
+            if (!Editable && _topHeaders.Count > 1 && _topHeaders.Last() is "")
             {
                 _topHeaders.RemoveAt(_topHeaders.Count - 1);
             }
@@ -73,11 +86,18 @@ public class GameTheoryTableData
     {
         get
         {
-            if (Editable && (_sideHeaders.Count == 0 || _sideHeaders.Last() != ""))
+            if (_sideHeaders.Count == 0)
+            {
+                _sideHeaders.Add("");
+                Editable = true;
+            }
+            
+            if (Editable && _sideHeaders.Last() is not "")
             {
                 _sideHeaders.Add("");
             }
-            else if (!Editable && _sideHeaders.Last() == "")
+
+            if (!Editable && _sideHeaders.Count > 1 && _sideHeaders.Last() is "")
             {
                 _sideHeaders.RemoveAt(_sideHeaders.Count - 1);
             }
@@ -147,6 +167,16 @@ public class GameTheoryTableData
     {
         return string.Join(", ", Data.Select(d => $"[{string.Join(", ", d)}]"));
     }
+
+    public void Clear()
+    {
+        Data.Clear();
+        TopHeaders.Clear();
+        SideHeaders.Clear();
+        Probabilities.Clear();
+    }
+
+    public bool IsEmpty => TopHeaders.Count == 0 && SideHeaders.Count == 0;
 }
 
 public class GameTheoryRow
@@ -158,53 +188,13 @@ public class GameTheoryRow
 
 public static class GameTheoryTableDefaults
 {
-    public static string VsSol =>
-        """
-        {
-        	"Data": [
-        		[
-        			0,
-        			-80,
-        			0
-        		],
-        		[
-        			0,
-        			-80,
-        			0
-        		],
-        		[
-        			-200,
-        			70,
-        			35
-        		],
-        		[
-        			100,
-        			-80,
-        			-200
-        		],
-        		[
-        			130,
-        			130,
-        			-150
-        		]
-        	],
-        	"TopHeaders": [
-        		"c.S",
-        		"Throw",
-        		"Bait"
-        	],
-        	"SideHeaders": [
-        		"Block",
-        		"Up-Back",
-        		"5P",
-        		"Parry",
-        		"Sword Super"
-        	],
-        	"Probabilities": [
-        		4,
-        		2,
-        		1
-        	]
-        }
-        """;
+    public static GameTheoryTableData WakeupVsSol => JsonSerializer.Deserialize<GameTheoryTableData>(_wakeupVsSol);
+    private static readonly string _wakeupVsSol = """
+                                                  {"Id":"f9787bfc-e59d-4379-bfcd-71584db66575","Name":"Baiken Wakeup vs Sol","Data":[[0,-80,0],[0,-80,0],[-200,70,35],[100,-80,-200],[130,130,-150]],"TopHeaders":["c.S","Throw","Bait"],"SideHeaders":["Block","Up-Back","5P","Parry","Sword Super"],"Probabilities":[4,2,1],"IsEmpty":false}
+                                                  """;
+
+    public static GameTheoryTableData BaikenMirrorHkabRPS => JsonSerializer.Deserialize<GameTheoryTableData>(_baikenMirrorHkabRPS);
+    private static readonly string _baikenMirrorHkabRPS = """
+                                                          {"Id":"01bcfc59-4a7b-4544-ba05-f64408bbe722","Name":"Baiken Mirror hkab RPS","Data":[[0,0,100,150,150],[-150,0,-70,150,150],[48,-70,48,-100,-80],[150,0,-70,-100,-80]],"TopHeaders":["f.S","Block","6P","Parry","Throw"],"SideHeaders":["Block","f.S","~H Follow-up","~H RRC"],"Probabilities":[5,3,1,1,1],"IsEmpty":false}
+                                                          """;
 }

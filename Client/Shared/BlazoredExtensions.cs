@@ -1,10 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
 using Blazored.LocalStorage;
 
 namespace Client.Shared;
 
 public static class BlazoredExtensions
 {
-    public static bool TryGetItem<T>(this ISyncLocalStorageService localStorageService, string key, out T? item)
+    public static bool TryGetItem<T>(this ISyncLocalStorageService localStorageService, string key, [MaybeNullWhen(false)] out T item)
     {
         if (!localStorageService.ContainKey(key))
         {
