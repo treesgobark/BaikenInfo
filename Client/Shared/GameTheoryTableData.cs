@@ -195,6 +195,6 @@ public static class GameTheoryTableDefaults
 
     public static GameTheoryTableData BaikenMirrorHkabRPS => JsonSerializer.Deserialize<GameTheoryTableData>(_baikenMirrorHkabRPS);
     private static readonly string _baikenMirrorHkabRPS = """
-                                                          {"Id":"01bcfc59-4a7b-4544-ba05-f64408bbe722","Name":"Baiken Mirror hkab RPS","Data":[[0,0,100,150,150],[-150,0,-70,150,150],[48,-70,48,-100,-80],[150,0,-70,-100,-80]],"TopHeaders":["f.S","Block","6P","Parry","Throw"],"SideHeaders":["Block","f.S","~H Follow-up","~H RRC"],"Probabilities":[5,3,1,1,1],"IsEmpty":false}
+                                                          {"Id":"3306ea04-cd5f-47cf-8990-8f39a5b5f907","Name":"Baiken Mirror hkab RPS","Data":[[0,0,100,150,150],[-150,0,-70,150,150],[48,-70,48,-100,-80],[150,0,150,-100,-80]],"TopHeaders":["f.S","Block","6P","Parry","Throw"],"SideHeaders":["Block","f.S","~H Follow-up","~H RRC"],"Probabilities":[5,3,1,1,1],"IsEmpty":false}
                                                           """;
 }
