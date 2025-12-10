@@ -8,15 +8,24 @@
 <MudStack AlignItems="AlignItems.Center">
     <MudStack Row>
         <MudSelect Style="min-width: 400px" Variant="Variant.Filled" Clearable @bind-Value="@CurrentTable">
-            @foreach (GameTheoryTableData table in Tables)
+            <MudSelectItem T="GameTheoryTableData" Disabled>Built-in Tables</MudSelectItem>
+            @foreach (GameTheoryTableData table in ReadOnlyTables)
             {
                 <MudSelectItem Value="table">@table.TableIdentifier</MudSelectItem>
+            }
+            @if (UserTables.Any())
+            {
+                <MudSelectItem Value="@((GameTheoryTableData?)null)" Disabled>User Tables</MudSelectItem>
+                foreach (GameTheoryTableData table in UserTables)
+                {
+                    <MudSelectItem Value="table">@table.TableIdentifier</MudSelectItem>
+                }
             }
         </MudSelect>
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Add" OnClick="@OnClickAddTable" />
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Remove" OnClick="@OnClickRemoveTable" />
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Save" OnClick="@SaveTables" />
-        <MudButton Variant="Variant.Filled" OnClick="@OnClickResetTables">Default All Tables</MudButton>
+        <MudButton Variant="Variant.Filled" OnClick="@OnClickResetTables">Clear User Tables</MudButton>
         <MudButton Variant="Variant.Filled" OnClick="@PasteTable">Paste Table From Clipboard</MudButton>
     </MudStack>
     @if (CurrentTable is not null)
@@ -32,11 +41,13 @@
     private List<GameTheoryTableData> Tables { get; set; } = [];
     private GameTheoryTableData? CurrentTable { get; set; }
 
+    private IEnumerable<GameTheoryTableData> ReadOnlyTables => Tables.Where(t => t.ReadOnly);
+    private IEnumerable<GameTheoryTableData> UserTables => Tables.Where(t => !t.ReadOnly);
 
     private async Task SaveTables()
     {
         Snackbar.Add("Tables Saved", Severity.Success);
-        LocalStorage.SetItem(GameTheoryTablesKey, Tables);
+        LocalStorage.SetItem(GameTheoryTablesKey, Tables.Where(t => !t.ReadOnly));
     }
 
     private async Task OnClickAddTable()
@@ -72,6 +83,7 @@
         if (result is true)
         {
             ResetTables();
+            await SaveTables();
         }
     }
 
@@ -109,13 +121,14 @@
     
     protected override async Task OnInitializedAsync()
     {
+        ResetTables();
         if (LocalStorage.TryGetItem(GameTheoryTablesKey, out List<GameTheoryTableData>? item))
         {
             try
             {
                 Console.WriteLine("tables loaded");
-                Tables       = item;
-                CurrentTable = item.FirstOrDefault();
+                Tables.AddRange(item);
+                CurrentTable = item.FirstOrDefault(t => !t.ReadOnly) ?? CurrentTable;
             }
             catch (Exception e)
             {
@@ -125,7 +138,6 @@
         else
         {
             Console.WriteLine("no table found");
-            ResetTables();
         }
     }
 }

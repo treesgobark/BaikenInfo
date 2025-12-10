@@ -79,8 +79,11 @@ else
         @if (!DisableControls)
         {
             <MudStack AlignItems="AlignItems.Center" Justify="Justify.FlexEnd" Row>
-                <MudButton OnClick="OnClickClear">Clear Table</MudButton>
-                <MudSwitch Label="Edit Mode" @bind-Value="TableData.Editable"/>
+                @if (!TableData.ReadOnly)
+                {
+                    <MudButton OnClick="OnClickClear">Clear Table</MudButton>
+                    <MudSwitch Label="Edit Mode" @bind-Value="TableData.Editable"/>
+                }
                 <MudButton OnClick="OnClickCopy">Copy To Clipboard</MudButton>
             </MudStack>
         }
@@ -148,6 +151,7 @@ else
     public required EventCallback<GameTheoryTableData> TableDataChanged { get; set; }
 
     [Parameter] public bool DisableControls { get; set; }
+    [Parameter] public bool ReadOnly { get; set; }
 
     private IEnumerable<GameTheoryRow> DataRows
     {
