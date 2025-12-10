@@ -1,0 +1,150 @@
+@inject ISyncLocalStorageService LocalStorage
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+@using System.Text.Json
+@using Blazored.LocalStorage
+<MudPaper>
+    <MudStack AlignItems="AlignItems.Center">
+        <MudText Style="padding-top: 1rem">Enemy Options</MudText>
+        <MudStack AlignItems="AlignItems.Center" Row>
+            <MudText Style="padding-left: 1rem">Your Options</MudText>
+            <table>
+                <tr>
+                    <th><MudTextField ReadOnly Value="@("Moves")"></MudTextField></th>
+                    @foreach ((int index, _) in TableData.TopHeaders.Index())
+                    {
+                        <th><MudTextField @bind-Value="@TableData.TopHeaders[index]" Placeholder="Enter Move Name"/></th>
+                    }
+                    <th><MudTextField ReadOnly Value="@("Expected Value")"></MudTextField></th>
+                </tr>
+                <tr>
+                    <td><MudTextField Value="@("Probability")" ReadOnly/></td>
+                    @foreach ((int i, _) in TableData.ProbabilitiesRow.Values.Index())
+                    {
+                        <td>
+                            <MudNumericField
+                                Typo="Typo.h3"
+                                Value="@(float.Round(TableData.ProbabilitiesRow.Values[i] / (float)TableData.ProbabilitiesRow.Values.Sum() * 100))"
+                                HideSpinButtons
+                                Adornment="Adornment.End"
+                                AdornmentText="%"/>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td><MudTextField Value="@("Probability Weights")" ReadOnly/></td>
+                    @foreach ((int i, _) in TableData.ProbabilitiesRow.Values.Index())
+                    {
+                        <td><MudNumericField Min="0" @bind-Value="@TableData.ProbabilitiesRow.Values[i]"/></td>
+                    }
+                </tr>
+                @foreach (GameTheoryRow row in DataRows)
+                {
+                    <tr>
+                        <td><MudTextField @bind-Value="@TableData.SideHeaders[row.Index]" Placeholder="Enter Move Name"/></td>
+                        @foreach ((int i, _) in row.Values.Index())
+                        {
+                            <td><MudNumericField @bind-Value="@row.Values[i]" HideSpinButtons ReadOnly="!TableData.Editable"/></td>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(TableData.SideHeaders[row.Index]))
+                        {
+                            <td><MudTextField ReadOnly Value="@float.Round(row.ExpectedValue)"/></td>
+                        }
+                    </tr>
+                }
+            </table>
+        </MudStack>
+    </MudStack>
+    <MudStack AlignItems="AlignItems.Center" Justify="Justify.FlexEnd" Row>
+        <MudButton @onclick="StoreTable">Save Table Values</MudButton>
+        <MudButton @onclick="OnResetClicked">Reset To Default</MudButton>
+        <MudText>Edit Mode</MudText>
+        <MudSwitch Disabled="TableData.Editable && (TableData.ColumnCount == 1 || TableData.RowCount == 1)" @bind-Value="TableData.Editable"/>
+        <MudText>Show Import/Export</MudText>
+        <MudSwitch @bind-Value="_isImportVisible"/>
+    </MudStack>
+    @if (_isImportVisible)
+    {
+        <div style="padding: 1rem;">
+            <MudPaper Outlined Style="padding: 1rem">
+                <MudTextField AutoGrow @bind-Value="SerializedTableData" ReadOnly="!TableData.Editable"></MudTextField>
+            </MudPaper>
+        </div>
+    }
+</MudPaper>
+<style>
+    table {
+        font-size: x-large;
+        .mud-typography-body1 {
+            font-size: x-large;
+        }
+    }
+</style>
+
+@code {
+
+    private const string GameTheoryTableKey = "GameTheoryTable";
+
+    private GameTheoryTableData TableData { get; set; }
+
+    private IEnumerable<GameTheoryRow> DataRows
+    {
+        get
+        {
+            if (TableData.Editable)
+            {
+                return TableData.DataRows;
+            }
+            return TableData.DataRows.OrderByDescending(dr => dr.ExpectedValue);
+        }
+    }
+
+    private bool _isImportVisible;
+
+    private string SerializedTableData
+    {
+        get => JsonSerializer.Serialize(TableData);
+        set => TableData = JsonSerializer.Deserialize<GameTheoryTableData>(value);
+    }
+
+    private void StoreTable()
+    {
+        Snackbar.Add("Table Saved", Severity.Success);
+        string serializedValue = JsonSerializer.Serialize(TableData);
+        LocalStorage.SetItem(GameTheoryTableKey, serializedValue);
+    }
+
+    protected override void OnInitialized()
+    {
+        if (LocalStorage.TryGetItem(GameTheoryTableKey, out string? item))
+        {
+            try
+            {
+                Console.WriteLine("table loaded");
+                SerializedTableData = item!;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("error loading table");
+            }
+        }
+        else
+        {
+            Console.WriteLine("no table found");
+            SerializedTableData = GameTheoryTableDefaults.VsSol;
+        }
+    }
+
+    private async void OnResetClicked()
+    {
+        bool? result = await DialogService.ShowMessageBox(
+            "Warning", 
+            "Are you sure you want to reset the table?", 
+            yesText:"Yep", cancelText:"Nah");
+        if (result is true)
+        {
+            SerializedTableData = GameTheoryTableDefaults.VsSol;
+        }
+        StateHasChanged();
+    }
+}

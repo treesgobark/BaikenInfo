@@ -1,0 +1,19 @@
+@page "/GameTheory"
+@using Client.Shared
+
+<PageTitle>@Constants.TitlePrefix Game Theory</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge">
+    <MudText>
+        Game Theory is a branch of mathematics that studies the decision-making processes of individuals and groups.
+        You can use this to your advantage to become a better player. I've filled in an example defensive situation for you to
+        try it out. Positive numbers mean you get damage on the opponent and negative numbers mean they get damage on
+        you. Try adjusting the probabilities or adding your own moves/numbers to see what happens.
+    </MudText>
+    <br/>
+    <GameTheoryTable />
+</MudContainer>
+
+@code {
+
+}
