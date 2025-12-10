@@ -23,7 +23,6 @@
                     {
                         <td>
                             <MudNumericField
-                                Typo="Typo.h3"
                                 Value="@(float.Round(TableData.ProbabilitiesRow.Values[i] / (float)TableData.ProbabilitiesRow.Values.Sum() * 100))"
                                 HideSpinButtons
                                 Adornment="Adornment.End"
@@ -76,6 +75,9 @@
     table {
         font-size: x-large;
         .mud-typography-body1 {
+            font-size: x-large;
+        }
+        .mud-input {
             font-size: x-large;
         }
     }
