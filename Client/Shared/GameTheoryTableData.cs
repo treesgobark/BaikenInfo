@@ -150,7 +150,7 @@ public class GameTheoryTableData
                 float expectedValue = row.Select((x, i) => x * Probabilities[i] / (float)Probabilities.Sum()).Sum();
                 if (string.IsNullOrWhiteSpace(SideHeaders[index]))
                 {
-                    expectedValue = float.MinValue;
+                    expectedValue = 0;
                 }
                 
                 yield return new GameTheoryRow

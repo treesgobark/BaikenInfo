@@ -1,7 +1,9 @@
+@using System.Text.Json
 @using Blazored.LocalStorage
 @inject ISyncLocalStorageService LocalStorage
 @inject IDialogService DialogService
 @inject ISnackbar Snackbar
+@inject ClipboardService Clipboard
 
 <MudStack AlignItems="AlignItems.Center">
     <MudStack Row>
@@ -15,12 +17,11 @@
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Remove" OnClick="@OnClickRemoveTable" />
         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Save" OnClick="@SaveTables" />
         <MudButton Variant="Variant.Filled" OnClick="@ResetTablesToDefault">Default All Tables</MudButton>
+        <MudButton Variant="Variant.Filled" OnClick="@PasteTable">Paste Table From Clipboard</MudButton>
     </MudStack>
     @if (CurrentTable is not null)
     {
-        <MudPaper Style="padding: 12px">
-            <GameTheoryInnerTable TableData="@CurrentTable"/>
-        </MudPaper>
+        <GameTheoryInnerTable TableData="@CurrentTable"/>
     }
 </MudStack>
 
@@ -77,6 +78,26 @@
             ];
             CurrentTable = Tables.FirstOrDefault();
             StateHasChanged();
+        }
+    }
+
+    private async Task PasteTable()
+    {
+        try
+        {
+            string? json = await Clipboard.ReadTextAsync();
+            var table = JsonSerializer.Deserialize<GameTheoryTableData>(json);
+            Tables.Add(table);
+            CurrentTable = table;
+            Snackbar.Add("Table Pasted", Severity.Success);
+        }
+        catch (JsonException e)
+        {
+            Snackbar.Add("Invalid Paste", Severity.Error);
+        }
+        catch (ArgumentNullException e)
+        {
+            Snackbar.Add("Unknown Paste Error", Severity.Error);
         }
     }
     

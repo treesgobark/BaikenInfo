@@ -1,4 +1,5 @@
 @using System.Text.Json
+@inject ClipboardService Clipboard
 <div>
 @if (TableData.IsEmpty)
 {
@@ -7,74 +8,94 @@
 else
 {
     <MudStack AlignItems="AlignItems.Center">
-        <MudText>Enemy Options</MudText>
+        <MudText Typo="Typo.h6">Enemy Options</MudText>
         <MudStack AlignItems="AlignItems.Center" Row>
-            <MudText>Your Options</MudText>
-            <table>
+            <MudText Typo="Typo.h6">Your Options</MudText>
+            <div>
+                <table>
                 <tr>
-                    <th><MudTextField @bind-Value="TableData.Name" Placeholder="Enter Table Name" /></th>
+                    @if (TableData.Editable)
+                    {
+                        <th><MudTextField @bind-Value="TableData.Name" Placeholder="Enter Table Name" /></th>
+                    }
+                    else
+                    {
+                        <th><MudText>@TableData.Name</MudText></th>
+                    }
                     @foreach ((int index, _) in TableData.TopHeaders.Index())
                     {
-                        <th><MudTextField @bind-Value="@TableData.TopHeaders[index]" Placeholder="Enter Move Name"/></th>
+                        if (TableData.Editable)
+                        {
+                            <th><MudTextField @bind-Value="@TableData.TopHeaders[index]" Placeholder="Enter Move Name"/></th>
+                        }
+                        else
+                        {
+                            <th><MudText>@TableData.TopHeaders[index]</MudText></th>
+                        }
                     }
-                    <th><MudText>Expected Value</MudText></th>
-                </tr>
-                <tr>
-                    <td><MudText>Probability</MudText></td>
-                    @foreach ((int i, _) in TableData.ProbabilitiesRow.Values.Index())
-                    {
-                        <td>
-                            <MudText>@(float.Round(TableData.ProbabilitiesRow.Values[i] / (float)TableData.ProbabilitiesRow.Values.Sum() * 100))%</MudText>
-                        </td>
-                    }
+                    <th rowspan="2"><MudText>Expected Value</MudText></th>
                 </tr>
                 <tr>
                     <td><MudText>Probability Weights</MudText></td>
                     @foreach ((int i, _) in TableData.ProbabilitiesRow.Values.Index())
                     {
-                        <td><MudNumericField Min="0" @bind-Value="@TableData.ProbabilitiesRow.Values[i]"/></td>
+                        <td>
+                            <MudStack AlignItems="AlignItems.Center" Row>
+                                <MudNumericField Min="0" @bind-Value="@TableData.ProbabilitiesRow.Values[i]" Style="max-width: 100px"/>
+                                <MudText>(@(float.Round(TableData.ProbabilitiesRow.Values[i] / (float)TableData.ProbabilitiesRow.Values.Sum() * 100))%)</MudText>
+                            </MudStack>
+                        </td>
                     }
                 </tr>
                 @foreach (GameTheoryRow row in DataRows)
                 {
                     <tr>
-                        <td><MudTextField @bind-Value="@TableData.SideHeaders[row.Index]" Placeholder="Enter Move Name"/></td>
+                        @if (TableData.Editable)
+                        {
+                            <td><MudTextField @bind-Value="@TableData.SideHeaders[row.Index]" Placeholder="Enter Move Name"/></td>
+                        }
+                        else
+                        {
+                            <td><MudText>@TableData.SideHeaders[row.Index]</MudText></td>
+                        }
                         @foreach ((int i, _) in row.Values.Index())
                         {
-                            <td><MudNumericField @bind-Value="@row.Values[i]" HideSpinButtons ReadOnly="!TableData.Editable"/></td>
+                            if (TableData.Editable)
+                            {
+                                <td><MudNumericField @bind-Value="@row.Values[i]" HideSpinButtons/></td>
+                            }
+                            else
+                            {
+                                <td><MudText>@row.Values[i]</MudText></td>
+                            }
                         }
-                        @if (!string.IsNullOrWhiteSpace(TableData.SideHeaders[row.Index]))
-                        {
-                            <td><MudText>@float.Round(row.ExpectedValue)</MudText></td>
-                        }
+                        <td><MudText>@float.Round(row.ExpectedValue)</MudText></td>
                     </tr>
                 }
             </table>
+            </div>
         </MudStack>
         @if (!DisableControls)
         {
             <MudStack AlignItems="AlignItems.Center" Justify="Justify.FlexEnd" Row>
-                <MudButton @onclick="OnClickClear">Clear Table</MudButton>
-                @* <MudButton @onclick="StoreTable">Save Table Values</MudButton> *@
-                @* <MudButton @onclick="OnResetClicked">Reset To Default</MudButton> *@
-                <MudText>Edit Mode</MudText>
-                <MudSwitch Disabled="TableData.Editable && (TableData.ColumnCount == 1 || TableData.RowCount == 1)" @bind-Value="TableData.Editable"/>
-                <MudText>Show Import/Export</MudText>
-                <MudSwitch @bind-Value="_isImportVisible"/>
+                <MudButton OnClick="OnClickClear">Clear Table</MudButton>
+                <MudSwitch Label="Edit Mode" @bind-Value="TableData.Editable"/>
+                <MudButton OnClick="OnClickCopy">Copy To Clipboard</MudButton>
             </MudStack>
-        }
-        @if (_isImportVisible)
-        {
-            <MudPaper Width="800px" Outlined Style="padding: 1rem">
-                <MudTextField AutoGrow @bind-Value="SerializedTableData" ReadOnly="!TableData.Editable"></MudTextField>
-            </MudPaper>
         }
     </MudStack>
 }
 </div>
 <style>
+    div:has(> table) {
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        border-color: #505050;
+    }
     table {
         font-size: x-large;
+        border-collapse: collapse;
         .mud-input-adornment-text {
             font-size: large;
             text-align: center;
@@ -85,15 +106,26 @@ else
         input {
             text-align: center;
         }
-        border-width: 1px;
-        border-style: solid;
     }
     th, td {
         text-align: center;
-        border-width: 1px;
+        border-width: 2px;
         border-style: solid;
-        border-color: gray;
-        padding: 5px;
+        border-radius: 4px;
+        border-color: #505050;
+        padding: 8px;
+    }
+    tr:nth-child(1) {
+        background-color: #2c2c2f;
+    }
+    td:nth-child(1) {
+        background-color: #2c2c2f;
+    }
+    tr:nth-child(2n) {
+        background-color: #2D2E37;
+    }
+    tr:nth-child(2n+3) {
+        background-color: #32333D;
     }
 </style>
 
@@ -131,5 +163,10 @@ else
     {
         TableData.Editable = true;
         TableData.Clear();
+    }
+    
+    private async Task OnClickCopy()
+    {
+        await Clipboard.WriteTextAsync(SerializedTableData);
     }
 }
